@@ -5,10 +5,15 @@ from realestate.models import *
 
 @admin.register(RealEstate)
 class realestateAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name','total_amount','amount_deposited','unit_price','created_at']
+    # search_fields = ['student__startswith', 'year__startswith']
+    list_filter = ['name','created_at']
+    # actions = [filter_student]
 
 
 
 @admin.register(RealEstatePlot)
 class realestatePlotAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['realestate','name','price','size','created_at']
+    # search_fields = ['student__startswith', 'year__startswith']
+    list_filter = ['realestate','name','created_at']

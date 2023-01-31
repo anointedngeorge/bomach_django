@@ -20,6 +20,47 @@ services:
       - db
       - redis
 
+  customer:
+    build:
+      context: ./customer_app
+      dockerfile: Dockerfile
+    volumes:
+      - ./customer/:/customer/
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: gunicorn customer_app.wsgi:application --reload -w 2 -b 0.0.0.0:8011
+    env_file:
+      - .env
+
+    ports:
+      - 8011:8011
+    restart: "on-failure"
+
+    depends_on:
+      - db
+      - redis
+
+  staff:
+    build:
+      context: ./staff_app
+      dockerfile: Dockerfile
+    volumes:
+      - ./staff/:/staff/
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: gunicorn staff_app.wsgi:application --reload -w 2 -b 0.0.0.0:8012
+    env_file:
+      - .env
+
+    ports:
+      - 8012:8012
+    restart: "on-failure"
+
+    depends_on:
+      - db
+      - redis
+
+
+  
+
   db:
       image: postgres:12.1-alpine
       volumes:

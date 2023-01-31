@@ -9,7 +9,7 @@ import uuid
 
 
 class RealEstate(models.Model):
-    uuid = models.UUIDField(default=uuid.uuid4, primary_key=True, editable = False)
+    # id=models.CharField(primary_key=True,default=uuid.uuid4, editable=False, max_length=36)
     name = models.CharField(max_length=500, null=True)
     total_amount = models.CharField(max_length=500, null=True)
     amount_deposited = models.CharField(max_length=500, null=True)
@@ -34,8 +34,7 @@ class RealEstate(models.Model):
 
 
 class RealEstatePlot(models.Model):
-    uuid = models.UUIDField(primary_key = True,
-         default = uuid.uuid4, editable = False)
+    id=models.CharField(primary_key=True,default=uuid.uuid4, editable=False, max_length=36)
     
     realestate = models.ForeignKey("Realestate", verbose_name=("Realestate"), null=True, on_delete=models.CASCADE, related_name="realestate_rel")
     
@@ -44,8 +43,8 @@ class RealEstatePlot(models.Model):
     size = models.CharField(max_length=500, null=True)
     status = models.CharField(max_length=500, null=True)
     content = models.CharField(max_length=500, null=True)
-    timer_date = models.CharField(max_length=500, null=True)
-    timer = models.CharField(max_length=500, null=True)
+    timer_date = models.DateField(auto_now=False, null=True)
+    timer = models.TimeField(auto_now=False, null=True)
     transactional_code = models.CharField(max_length=500, null=True)
     purchase_code = models.CharField(max_length=500, null=True)
     unique_code = models.CharField(max_length=500, null=True)
@@ -55,3 +54,4 @@ class RealEstatePlot(models.Model):
     is_featured = models.BooleanField(default=False, null=True)
     is_frontend = models.BooleanField(default=False, null=True)
     is_sold = models.BooleanField(default=False, null=True)
+    created_at = models.DateField(auto_now=True)

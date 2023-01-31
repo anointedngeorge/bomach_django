@@ -1,9 +1,9 @@
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "SuperAdmin - Bomach Group",
+    "site_title": "Customer - Bomach Group",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "SuperAdmin interface Bomach Group",
+    "site_header": "Customer interface Bomach Group",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_brand": "Bomach",
@@ -27,7 +27,7 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Welcome to the library",
 
     # Copyright on the footer
-    "copyright": "Bomach Group Of Company",
+    "copyright": "Customer - Bomach Group Of Company",
 
     # List of model admins to search from the search bar, search bar omitted if excluded
     # If you want to use a single search field you dont need to use a list, you can use a simple string 

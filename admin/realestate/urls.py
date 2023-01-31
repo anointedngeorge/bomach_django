@@ -7,5 +7,5 @@ from frontend.views import index
 app_name = "realestate"
 
 urlpatterns = [
-    path('/realestate/', index),
+    path('/realestate', index),
 ]
