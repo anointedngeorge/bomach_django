@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-=af--evn#t-51+v#xb9@iefqh8kze0@ihe$_(%z0otqb@v#p!$
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://superadmin.bgbot.app']
 
 # Application definition
