@@ -6,6 +6,6 @@ from django.http import HttpResponse
 def index(request):
     message =  '''
         Welcome to bomach 0.1. \n
-        To login <a href='/admin'>Click Superadmin Dashboard</a>
+        To login <a href='/admin'>Click Customer Dashboard</a>
     '''
     return HttpResponse(message)
