@@ -21,9 +21,9 @@ services:
       - redis
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.customer.rule=Host(`superadmin.bgbot.app`)"
-      - "traefik.http.routers.customer.tls=true"
-      - "traefik.http.routers.customer.tls.certresolver=le"
+      - "traefik.http.routers.admin.rule=Host(`superadmin.bgbot.app`)"
+      - "traefik.http.routers.admin.tls=true"
+      - "traefik.http.routers.admin.tls.certresolver=le"
 
   customer:
     build:
@@ -70,9 +70,9 @@ services:
 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.customer.rule=Host(`staff.bgbot.app`)"
-      - "traefik.http.routers.customer.tls=true"
-      - "traefik.http.routers.customer.tls.certresolver=le"
+      - "traefik.http.routers.staff.rule=Host(`staff.bgbot.app`)"
+      - "traefik.http.routers.staff.tls=true"
+      - "traefik.http.routers.staff.tls.certresolver=le"
 
   
   traefik:
@@ -128,7 +128,7 @@ services:
         - POSTGRES_PASSWORD= odoo
       restart: "on-failure"
 
-      
+
   redis:
     image: "redis:latest"
     expose:
