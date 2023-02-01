@@ -17,7 +17,8 @@ SECRET_KEY = 'django-insecure-v0+1$y5r=y7i=m^1egtaa3x3^!2my%3)d7z7w-(#3j)r3!p72%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['https://staff.bgbot.app', 'staff.bgbot.app']
 
 
 # Application definition
@@ -115,7 +116,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'static/'
