@@ -17,8 +17,8 @@ SECRET_KEY = 'django-insecure-v0+1$y5r=y7i=m^1egtaa3x3^!2my%3)d7z7w-(#3j)r3!p72%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['127.0.0.1']
-ALLOWED_HOSTS = ['https://staff.bgbot.app', 'staff.bgbot.app']
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://staff.bgbot.app']
 
 
 # Application definition
