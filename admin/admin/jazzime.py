@@ -47,13 +47,14 @@ JAZZMIN_SETTINGS = {
         {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
 
         # external url that opens in a new window (Permissions can be added)
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+        {"name": "Support", "url": "/", "new_window": True},
 
         # model admin to link to (Permissions checked against model)
-        {"model": "auth.User"},
+        # {"model": "authuser.User"},
 
         # App with dropdown menu to all its models pages (Permissions checked against models)
-        {"app": "realestate"},
+        {"app": "employee"},
+        {"app": "customer"},
     ],
 
     #############
@@ -63,7 +64,7 @@ JAZZMIN_SETTINGS = {
     # Additional links to include in the user menu on the top right ("app" url type is not allowed)
     "usermenu_links": [
         {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-        {"model": "auth.user"}
+        {"model": "authuser.user"}
     ],
 
     #############
@@ -72,7 +73,6 @@ JAZZMIN_SETTINGS = {
 
     # Whether to display the side menu
     "show_sidebar": True,
-
     # Whether to aut expand the menu
     "navigation_expanded": False,
 
@@ -84,10 +84,11 @@ JAZZMIN_SETTINGS = {
 
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
     "order_with_respect_to": [
-    "auth", 
-    "realestate",
+    "authuser",
+    "auth",
     "employee",
     "customer"
+    "realestate",
     ],
 
     # Custom links to append to app groups, keyed on app name
@@ -103,8 +104,8 @@ JAZZMIN_SETTINGS = {
     # Custom icons for side menu apps/models See https://fontawesome.com/icons?d=gallery&m=free&v=5.0.0,5.0.1,5.0.10,5.0.11,5.0.12,5.0.13,5.0.2,5.0.3,5.0.4,5.0.5,5.0.6,5.0.7,5.0.8,5.0.9,5.1.0,5.1.1,5.2.0,5.3.0,5.3.1,5.4.0,5.4.1,5.4.2,5.13.0,5.12.0,5.11.2,5.11.1,5.10.0,5.9.0,5.8.2,5.8.1,5.7.2,5.7.1,5.7.0,5.6.3,5.5.0,5.4.2
     # for the full list of 5.13.0 free icon classes
     "icons": {
-        "auth": "fas fa-users-cog",
-        "auth.user": "fas fa-user",
+        "authuser.user": "fas fa-users-cog",
+        "authuser.user": "fas fa-user",
         "auth.Group": "fas fa-users",
         "realestate.realestate": "fas fa-warehouse",
         "customer.customer":"fas fa-user-plus",

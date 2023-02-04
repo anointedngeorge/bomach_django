@@ -14,15 +14,21 @@ SECRET_KEY = 'django-insecure-=af--evn#t-51+v#xb9@iefqh8kze0@ihe$_(%z0otqb@v#p!$
 
 DEBUG = True
 
+SITE_ID = 1
+
+
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://superadmin.bgbot.app']
 
+ADMIN_LOGIN_PATH = 'admin/'
 # Application definition
 
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
+    'authuser',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -30,8 +36,13 @@ INSTALLED_APPS = [
     'realestate',
     'customer',
     'employee',
-    'task'
+    'task',
+    
 ]
+
+# specify the new user model for this app
+AUTH_USER_MODEL = 'authuser.User'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -41,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'authuser.middleware.CheckUserSiteMiddleware',
 ]
 
 ROOT_URLCONF = 'admin.urls'

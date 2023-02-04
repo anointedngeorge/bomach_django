@@ -7,7 +7,7 @@ from staff_app.jazzime_ui import *
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+ADMIN_LOGIN_PATH = 'staff/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -26,13 +26,17 @@ CSRF_TRUSTED_ORIGINS = ['https://staff.bgbot.app']
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
+    'authuser',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'frontend'
+    'frontend',
+    'realestate'
 ]
+
+AUTH_USER_MODEL = 'authuser.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -42,6 +46,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'authuser.middleware.CheckUserSiteMiddleware',
+    'authuser.middleware.SetLoggedinUserRoleAsGroup',
+    
 ]
 
 ROOT_URLCONF = 'staff_app.urls'

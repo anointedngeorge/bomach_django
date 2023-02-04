@@ -22,10 +22,13 @@ ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://client.bgbot.app']
 
 
+ADMIN_LOGIN_PATH = 'customer/'
+
 # Application definition
 
 INSTALLED_APPS = [
     'jazzmin',
+    'authuser',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -35,6 +38,8 @@ INSTALLED_APPS = [
     'frontend'
 ]
 
+AUTH_USER_MODEL = 'authuser.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -43,6 +48,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # SetLoggedinUserRoleAsGroup
+    'authuser.middleware.CheckUserSiteMiddleware',
+    'authuser.middleware.SetLoggedinUserRoleAsGroup',
 ]
 
 ROOT_URLCONF = 'customer_app.urls'

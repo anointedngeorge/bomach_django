@@ -124,7 +124,7 @@ services:
         - 5434:5434
       environment:
         - POSTGRES_DB=bomach
-        - POSTGRES_user= postgres
+        - POSTGRES_user= bomach_user
         - POSTGRES_PASSWORD= odoo
       restart: "on-failure"
 

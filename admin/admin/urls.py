@@ -5,12 +5,12 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from admin.api_url import api
-
+from django.conf import settings
 # api versions 
 VERSION = 'v1'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(f"{settings.ADMIN_LOGIN_PATH}", admin.site.urls),
     path(f"", include('frontend.urls')),
     path(f"", include('realestate.urls')),
 
