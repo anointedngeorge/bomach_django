@@ -21,6 +21,7 @@ ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://superadmin.bgbot.app']
 
 ADMIN_LOGIN_PATH = 'admin/'
+ADMIN_URI = ""
 # Application definition
 
 INSTALLED_APPS = [

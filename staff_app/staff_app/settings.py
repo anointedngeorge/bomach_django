@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'frontend',
-    'realestate'
+    'realestate',
+    'customer'
 ]
 
 AUTH_USER_MODEL = 'authuser.User'

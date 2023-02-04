@@ -7,5 +7,4 @@ from frontend.views import index
 
 urlpatterns = [
     path('', index),
-    # path('', include('frontend.urls')),
 ]

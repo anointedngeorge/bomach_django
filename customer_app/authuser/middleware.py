@@ -15,11 +15,11 @@ class CheckUserSiteMiddleware(MiddlewareMixin):
          try:
             if (user.is_authenticated):
                # print('Yes authenticated')
-               if  (not user.is_superuser) and (user.roles_name == 'customer') and (request.path.startswith('/customer/')):
+               if  (user.is_superuser) and (request.path.startswith('/admin/')):
                   pass
                else:
-                  # request.session.flush()
-                  return HttpResponseForbidden("You're not a customer")
+                  request.session.flush()
+                  return HttpResponseForbidden()
          except Exception as e:
              return HttpResponse(e)
 

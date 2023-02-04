@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'frontend'
+    'frontend',
+    'customer'
 ]
 
 AUTH_USER_MODEL = 'authuser.User'
@@ -49,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # SetLoggedinUserRoleAsGroup
-    'authuser.middleware.CheckUserSiteMiddleware',
+    # 'authuser.middleware.CheckUserSiteMiddleware',
     'authuser.middleware.SetLoggedinUserRoleAsGroup',
 ]
 

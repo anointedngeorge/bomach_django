@@ -75,3 +75,11 @@ class ClientModel(admin.ModelAdmin):
     search_fields = ['user__startswith']
     list_display = ['user']
     list_filter = ['user']
+
+
+
+@admin.register(Branch)
+class BranchModel(admin.ModelAdmin):
+    search_fields = ['name__startswith']
+    list_display = ['name','description']
+    list_filter = ['name']

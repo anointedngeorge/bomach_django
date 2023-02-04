@@ -6,5 +6,5 @@ from frontend.views import index
 
 
 urlpatterns = [
-    path(f"", index),
+    path('', index),
 ]

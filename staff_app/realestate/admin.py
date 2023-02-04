@@ -1,6 +1,11 @@
 from django.contrib import admin
 from realestate.models import *
-# Register your models here.
+from django.urls import path, reverse
+from django.http import HttpResponse, JsonResponse
+from django.template.response import TemplateResponse
+from django.contrib import messages as messag
+from customer.models import *
+
 
 
 @admin.register(RealEstate)
@@ -12,7 +17,7 @@ class realestateAdmin(admin.ModelAdmin):
  
     fieldsets = (
       ('Realestate Details', {
-          'fields': ('branch','name',)
+          'fields': ('branch','name')
       }),
       ('Quantity Price', {
           'fields': ('total_amount', 'amount_deposited', 'unit_price')
@@ -21,14 +26,22 @@ class realestateAdmin(admin.ModelAdmin):
       ('Extra Fees', {
           'fields': ('legal_fee', 'survey_plan', 'development_fee')
       }),
+
+      ('Estate Status', {
+          'fields': ('status',)
+      }),
    )
 
-    # def get_queryset(self, request):
-    #     user =  request.user
-    #     if not user.is_superuser: 
-    #         return self.model.objects.all().filter(user=user)
-    #     else:
-    #         return super().get_queryset(request)
+
+    
+
+
+    def get_queryset(self, request):
+        user =  request.user
+        if not user.is_superuser: 
+            return self.model.objects.all().filter(user=user)
+        else:
+            return super().get_queryset(request)
 
 
     def save_model(self, request, obj, form, change) -> None:
@@ -52,8 +65,36 @@ class realestatePlotAdmin(admin.ModelAdmin):
       ('Quantity Price', {
           'fields': ('price', 'size',)
       }),
+      ('Plot Status', {
+          'fields': ('status',)
+      }),
    )
+    def get_urls(self):
+        urls = super().get_urls()
 
+        # path('sell-plot', for urls with queries ?id=2
+        new_url = [
+            path('sell-plot', self.admin_site.admin_view(
+                self.sell_plot), name="sell-plot"),
+    
+        ]
+        return new_url + urls
+
+
+    def sell_plot(self, request):
+        context = dict(self.admin_site.each_context(request),)
+        # grab query parameters
+        query = request.GET.dict()
+        id = int(query.get('id'))
+        customers = Customer.objects.all()
+        context['title'] = 'Sell '
+        context['page_title'] = query.get('title')
+        context['id'] = id
+        context['customers'] = customers
+
+        return TemplateResponse(request, 'templateResponse/sell_plot.html', context=context)
+
+        
     def get_queryset(self, request):
         user =  request.user
         if not user.is_superuser: 

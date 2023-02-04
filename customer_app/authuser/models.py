@@ -76,8 +76,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_username(self):
         return f"{self.first_name} {self.last_name}"
         # return self.email
-    # def has_perm(self, perm, obj=None):
-    #     return True
     
     def get_short_name(self):
         return f"{self.first_name} {self.last_name}" or self.email.split('@')[0]
@@ -122,3 +120,16 @@ class Customer(models.Model):
 
     def __str__(self) -> str:
         return f"{self.user}"
+
+
+
+class Branch(models.Model):
+    name = models.CharField(max_length = 150)
+    description = models.TextField()
+    
+    class Meta:
+        verbose_name = "branch"
+        verbose_name_plural = "branch"
+
+    def __str__(self) -> str:
+        return f"{self.name}"
