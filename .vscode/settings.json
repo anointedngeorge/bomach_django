@@ -11,6 +11,8 @@
         "./admin",
         "./admin",
         "./admin",
+        "./admin",
+        "./staff_app/staff_app",
         "./admin"
     ]
 }

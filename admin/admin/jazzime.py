@@ -34,7 +34,7 @@ JAZZMIN_SETTINGS = {
     "search_model": ["auth.User", "auth.Group"],
 
     # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
-    "user_avatar": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKtQJFrTSBNT9-bKa-nKEeyL6F494xzjyPcg&usqp=CAU',
+    "user_avatar": '',
 
     ############
     # Top Menu #
@@ -142,7 +142,7 @@ JAZZMIN_SETTINGS = {
     # - vertical_tabs
     # - collapsible
     # - carousel
-    "changeform_format": "horizontal_tabs",
+    "changeform_format": "vertical_tabs",
     # override change forms on a per modeladmin basis
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
     # Add a language dropdown into the admin

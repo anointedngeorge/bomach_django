@@ -18,7 +18,7 @@ class CheckUserSiteMiddleware(MiddlewareMixin):
                if  (user.is_superuser) and (request.path.startswith('/admin/')):
                   pass
                else:
-                  # request.session.flush()
+                  request.session.flush()
                   return HttpResponseForbidden()
          except Exception as e:
              return HttpResponse(e)
