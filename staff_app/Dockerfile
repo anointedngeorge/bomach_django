@@ -13,7 +13,7 @@ WORKDIR /staff_app
 RUN pip3 install --upgrade pip
 
 # copy requirements files
-COPY ./requirements.txt /staff_app/requirements.txt
+COPY ./requirements.txt /staff_app
 
 
 # install requirements
@@ -32,3 +32,4 @@ COPY . /staff_app/
 
 # Set user to be bomach
 # USER bomach_django
+

@@ -23,6 +23,8 @@ CSRF_TRUSTED_ORIGINS = ['https://client.bgbot.app']
 
 
 ADMIN_LOGIN_PATH = 'customer/'
+ADMIN_URI = ""
+# Application definition
 
 # Application definition
 

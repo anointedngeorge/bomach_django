@@ -9,6 +9,7 @@ services:
       - ./admin/:/admin/
       - /var/run/docker.sock:/var/run/docker.sock
     command: gunicorn admin.wsgi:application --reload -w 2 -b 0.0.0.0:8010
+    
     env_file:
       - .env
 
@@ -46,6 +47,7 @@ services:
       - ./staff_app/:/staff_app/
       - /var/run/docker.sock:/var/run/docker.sock
     command: gunicorn staff_app.wsgi:application --reload -w 2 -b 0.0.0.0:8012
+    
     env_file:
       - .env
     ports:
@@ -71,12 +73,15 @@ services:
     
   redis:
     image: "redis:latest"
+   
     expose:
       - 6379
     working_dir: /data
     volumes:
       - redis_data:/data
     restart: "on-failure"
+
+
 
 volumes:
   postgres_data:

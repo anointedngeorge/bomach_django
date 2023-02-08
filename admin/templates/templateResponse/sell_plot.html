@@ -1,10 +1,126 @@
 {% extends 'admin/base_site.html' %}
+{% load static %}
 
+{% load model_tags %}
+
+{% block extrahead %}
+    <script src="{% static 'htmx.min.js' %}" defer></script>
+{% endblock extrahead %}
+    
 
 {% block content %}
 
+
+
+
+
 <h3>{{title}} {{page_title}}</h3>
-{{customers}}
+
+<div class="container bg-secondary p-4">
+    <div id="message"></div>
+    <div class="col-lg-12">
+        <table>
+            <tr>
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick="show_content1();">New Sell</button>
+                </td>
+                <td>
+                    <button class="btn btn-info btn-sm" onclick="show_content2();">Existing Sell With Customer</button>
+                </td>
+            </tr>
+        </table>
+        <h3 id="title"></h3>
+    </div>
+    <!--  -->
+    <form hx-target="#message" hx-confirm="Are you sure?"  hx-post="{% show_path %}/realestate/realestateplot/activate-payment/{{id}}/" method="POST">
+        {% csrf_token %}
+        <section>
+            <div class='row'>
+                <div class='col-md-6'>
+                    <label>Choose Status</label>
+                    {% show_status name='status' classname='form-control' %}
+                </div>
+                <div class='col-md-6'>
+                    Activation Request Code
+                    <input type="text" name="activation_code" class="form-control" readonly value="{% show_code %}" />
+                </div>
+            </div>
+
+        </section>
+
+        <div class="mt-4"  id="first_container1" hidden>
+            <div class='row'>
+                <div class='col-md-6'>
+                    <label>Customer Name</label>
+                    <input type="text" class="form-control" name="customer" placeholder="Customer" />
+                </div>
+                <div class='col-md-6'>
+                    <label>Customer Email</label>
+                    <input type="text" class="form-control" name="customer_email" placeholder="Customer Email" />
+                </div>
+            </div>
+        </div>
+
+        <!-- sells form with customers -->
+        <div class="mt-4"  id="first_container2" hidden>
+            <section>
+                <div class='row'>
+                    <div class='col-md-12'>
+                        <label>Customer Name</label>
+                        {% show_customers name='customer' classname='form-control' %}
+                    </div>
+                </div>                
+            </section>
+        </div>
+
+        <div class='row' id="initial_amount_container">
+            <div class='col-md-6'>
+                <label>Enter Amount</label>
+                <input type="number"  class="form-control" name="initial_amount" />
+            </div>
+
+            <div class='col-md-6'>
+                <label>Limited Date</label>
+                <input type="date"  class="form-control" name="limited_date" />
+            </div>
+            
+        </div>
+        
+        <div class="col-lg-12 mt-4">
+            <button  type="submit">Submit</button>
+        </div>
+
+    </form>
+</div>
+
+
+<script>
     
+
+function show_content1(params) {
+    document.getElementById('first_container1').removeAttribute('hidden')
+    document.getElementById('first_container2').setAttribute("hidden",true)
+    document.querySelectorAll('.initial_amount_container').setAttribute('hidden',true)
+}
+
+
+function show_content2(param) {
+    // alert(param.target.textContent)
+    document.getElementById('first_container1').setAttribute("hidden",true)
+    document.getElementById('first_container2').removeAttribute("hidden")
+}
+
+document.getElementById('initial_amount_container').setAttribute('hidden', true)
+function status_container_select(param) {
+    const targetted_data =  param.target.value;
+    const data =  {
+        "reserve":true,
+    }
+    data[targetted_data]? document.getElementById('initial_amount_container').removeAttribute('hidden'): document.getElementById('initial_amount_container').setAttribute('hidden', true)
+}
+document.getElementById('status_container_select').addEventListener('change', status_container_select, false)
+
+</script>
+
 {% endblock content %}
     

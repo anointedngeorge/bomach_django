@@ -4,7 +4,7 @@ from pathlib import Path
 import os
 from admin.jazzime import *
 from admin.jazzime_ui import *  
-
+from admin.cronJob import *
 
 
 
@@ -21,7 +21,7 @@ ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://superadmin.bgbot.app']
 
 ADMIN_LOGIN_PATH = 'admin/'
-ADMIN_URI = ""
+ADMIN_URI = "/admin"
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'customer',
     'employee',
     'task',
+    'notifier',
+    'channels',
+    'django_crontab',
+    "django_htmx",
     
 ]
 
@@ -54,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'authuser.middleware.CheckUserSiteMiddleware',
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 ROOT_URLCONF = 'admin.urls'
@@ -74,8 +79,20 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'admin.wsgi.application'
 
+
+WSGI_APPLICATION = 'admin.wsgi.application'
+ASGI_APPLICATION = 'admin.asgi.application'
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('redis', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

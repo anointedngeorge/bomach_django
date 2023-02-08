@@ -13,8 +13,7 @@ WORKDIR /customer_app
 RUN pip3 install --upgrade pip
 
 # copy requirements files
-COPY ./requirements.txt /customer_app/requirements.txt
-
+COPY ./requirements.txt /customer_app
 
 # install requirements
 RUN pip3 install -r requirements.txt

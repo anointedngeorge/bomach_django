@@ -13,7 +13,7 @@ urlpatterns = [
     path(f"{settings.ADMIN_LOGIN_PATH}", admin.site.urls),
     path(f"", include('frontend.urls')),
     path(f"", include('realestate.urls')),
-
+    path(f"", include('notifier.urls')),
 
     path(f"api/{VERSION}/", api.urls),
     url(r'^media/(?P<path>.*)$', serve,  {'document_root': settings.MEDIA_ROOT}),

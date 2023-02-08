@@ -5,7 +5,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 # Only update packages
 RUN apt-get update
-
+RUN pip3 install --upgrade setuptools
+# RUN apt-get install -y cron
 # Set working directory
 WORKDIR /admin
 
@@ -13,8 +14,7 @@ WORKDIR /admin
 RUN pip3 install --upgrade pip
 
 # copy requirements files
-COPY ./requirements.txt /admin/requirements.txt
-
+COPY ./requirements.txt /admin
 
 # install requirements
 RUN pip3 install -r requirements.txt
@@ -32,3 +32,4 @@ COPY . /admin/
 
 # Set user to be bomach
 # USER bomach_django
+

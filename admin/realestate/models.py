@@ -71,6 +71,7 @@ class RealEstatePlot(models.Model):
         ('pending', 'Pending'),
         ('sold', 'Sold'),
         ('reserved', 'Reserved'),
+        ('available','Available')
     ]
     # id=models.CharField(primary_key=True,default=uuid.uuid4, editable=False, max_length=36)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name="user_realestate_plot_rel")
@@ -80,7 +81,7 @@ class RealEstatePlot(models.Model):
     price = models.CharField(max_length=500, null=True)
     size = models.CharField(max_length=500, null=True)
     status = models.CharField(max_length=500, null=True, 
-    default='pending', choices=CHOICE)
+    default='available', choices=CHOICE)
     content = models.CharField(max_length=500, null=True)
     timer_date = models.DateField(auto_now=False, null=True)
     timer = models.TimeField(auto_now=False, null=True)
@@ -101,18 +102,49 @@ class RealEstatePlot(models.Model):
     #             args=[])
     #     )
     def action(self):
-        action = {
-            "pending": [{"name":'sell plot', "href":f"sell-plot", "is_button":False, 
-            "query":{'id':self.id, 'status':self.status,'title':f"{self.name} {self.realestate}"}}, 
+        try:
+            action = {
+                "available": [
+                    {"name":'sell plot', "href":f"sell-plot", "is_button":False, 
+                "query":{'id':self.id, 'status':self.status,'title':f"{self.name} {self.realestate}"}}, 
+                ],
 
-            {"name":'reserve', "href":f"", "is_button":False, 
-            "query":{'id':self.id,'status':self.status,'title':f"{self.name} {self.realestate}" }},
-            ],
+                "pending": [
+                    {"name":'Confirm Payment', "href":f"confirm-payment", "is_button":False, 
+                    "query":{'id':self.id, 'status':self.status,'title':f"{self.name} {self.realestate}"}}, 
+                ],
 
-            "sold":    [{"name":'sell', "href":f"", "is_button":False, 
-            "query":{'id':self.id,'status':self.status,'title':f"{self.name} {self.realestate}" } }],
+                "sold": [{"name":'Receipt', "href":f"", "is_button":False, 
+                "query":{'id':self.id,'status':self.status,'title':f"{self.name} {self.realestate}" } },
+                {"name":'Change Ownership', "href":f"change-plot-ownership", "is_button":False, 
+                "query":{'id':self.id,'status':self.status,'title':f"{self.name} {self.realestate}" } }
+                ],
 
-            "reserved":[{"name":'reserved', "href":f"", "is_button":False, 
-            "query":{'id':self.id,'status':self.status,'title':f"{self.name} {self.realestate}" } }],
-        }
-        return dictDropdown(action=action, status=self.status)
+                "reserved":[{"name":'reserved', "href":f"", "is_button":False, 
+                "query":{'id':self.id,'status':self.status,'title':f"{self.name} {self.realestate}" } }],
+            }
+            return dictDropdown(action=action, status=self.status)
+        except:
+            pass
+
+
+
+
+class RealEstatePayment(models.Model):
+    CHOICE = [
+        ('pending', 'Pending'),
+        ('sold', 'Sold'),
+        ('reserve', 'Reserved'),
+    ]
+    # id=models.CharField(primary_key=True,default=uuid.uuid4, editable=False, max_length=36)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name="realestate_payment")
+    plot = models.ForeignKey(RealEstatePlot, null=True, on_delete=models.CASCADE, related_name="realestate_payment_plot")
+    status = models.CharField(max_length=500, null=True, default='pending', choices=CHOICE)
+    activation_code = models.CharField(max_length=500, null=True)
+    customer_email = models.CharField(max_length=500, null=True)
+    customer = models.CharField(max_length=500, null=True)
+    initial_amount = models.CharField(max_length=500, null=True)
+    is_blocked = models.BooleanField(default=False, null=True)
+    limited_date = models.CharField(max_length=200, null=True)
+    created_at = models.DateField(auto_now=True)
+
