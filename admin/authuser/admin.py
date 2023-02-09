@@ -34,20 +34,20 @@ class AuthModelAdmin(admin.ModelAdmin):
     form = userRegistrationForm
     
 
-    def response_post_save_add(self, request, obj):
-        try:
-            current_site = get_current_site(request)
-            # data = { 'user': obj.email, 'domain': current_site.domain, 'uid': urlsafe_base64_encode(force_bytes(obj.id)) }
-            data = { 'user': obj.email, 'domain': current_site.domain}
-            mail_subject = 'Account Creation...'
-            message = render_to_string('email_template/welcome.html', data)
-            to_email = f"{obj.email}"
-            test_email = 'demo@gmail.com'
-            email = EmailMessage(mail_subject, message, to=[to_email], from_email=f'Anointed <{test_email}>')
-            email.send()
-            return super().response_post_save_add(request, obj)
-        except Exception as e:
-             print(e)
+    # def response_post_save_add(self, request, obj):
+    #     try:
+    #         current_site = get_current_site(request)
+    #         # data = { 'user': obj.email, 'domain': current_site.domain, 'uid': urlsafe_base64_encode(force_bytes(obj.id)) }
+    #         data = { 'user': obj.email, 'domain': current_site.domain}
+    #         mail_subject = 'Account Creation...'
+    #         message = render_to_string('email_template/welcome.html', data)
+    #         to_email = f"{obj.email}"
+    #         test_email = 'demo@gmail.com'
+    #         email = EmailMessage(mail_subject, message, to=[to_email], from_email=f'Anointed <{test_email}>')
+    #         email.send()
+    #         return super().response_post_save_add(request, obj)
+    #     except Exception as e:
+    #          print(e)
 
 
     
@@ -59,22 +59,6 @@ class AuthModelAdmin(admin.ModelAdmin):
         obj.is_active = True
         return super().save_model(request, obj, form, change)
     
-
-    
-
-@admin.register(Staff)
-class StaffModel(admin.ModelAdmin):
-    search_fields = ['user__startswith']
-    list_display = ['user']
-    list_filter = ['user']
-
-
-
-@admin.register(Customer)
-class ClientModel(admin.ModelAdmin):
-    search_fields = ['user__startswith']
-    list_display = ['user']
-    list_filter = ['user']
 
 
 

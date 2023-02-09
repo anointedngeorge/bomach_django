@@ -10,6 +10,8 @@ from django.urls import reverse_lazy
 # Create your models here.
 from plugins.dropdown import dictDropdown
 from django.conf import settings
+
+from customer.models import *
 # name = models.CharField(max_length=50)
 #     classes = models.ForeignKey(Classes, verbose_name=_("Class"), null=True, on_delete=models.CASCADE, related_name="section")
 #     date = models.DateField(auto_now=True)
@@ -76,7 +78,9 @@ class RealEstatePlot(models.Model):
     # id=models.CharField(primary_key=True,default=uuid.uuid4, editable=False, max_length=36)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name="user_realestate_plot_rel")
     realestate = models.ForeignKey("Realestate", verbose_name=("Realestate"), null=True, on_delete=models.CASCADE, related_name="realestate_rel")
-    
+    customer = models.ForeignKey(Customer, null=True, 
+    on_delete=models.CASCADE, related_name="customer_realestate_plot_rel")
+
     name = models.CharField(max_length=500, null=True)
     price = models.CharField(max_length=500, null=True)
     size = models.CharField(max_length=500, null=True)
@@ -89,11 +93,12 @@ class RealEstatePlot(models.Model):
     purchase_code = models.CharField(max_length=500, null=True)
     unique_code = models.CharField(max_length=500, null=True)
     resell_code = models.CharField(max_length=500, null=True)
-    payment_id = models.CharField(max_length=500, null=True)
+    payment_id = models.ForeignKey("RealEstatePayment", null=True, on_delete=models.CASCADE, related_name="realestate_payment_id_plot")
     is_blocked = models.BooleanField(default=False, null=True)
     is_featured = models.BooleanField(default=False, null=True)
     is_frontend = models.BooleanField(default=False, null=True)
     is_sold = models.BooleanField(default=False, null=True)
+    has_ownership_changed = models.BooleanField(default=False, null=True)
     created_at = models.DateField(auto_now=True)
 
     
@@ -127,6 +132,8 @@ class RealEstatePlot(models.Model):
         except:
             pass
 
+    def __str__(self) -> str:
+        return self.name
 
 
 
@@ -142,9 +149,20 @@ class RealEstatePayment(models.Model):
     status = models.CharField(max_length=500, null=True, default='pending', choices=CHOICE)
     activation_code = models.CharField(max_length=500, null=True)
     customer_email = models.CharField(max_length=500, null=True)
+    purchase_code = models.CharField(max_length=500, null=True)
     customer = models.CharField(max_length=500, null=True)
+    customer_phone = models.CharField(max_length=500, null=True)
     initial_amount = models.CharField(max_length=500, null=True)
     is_blocked = models.BooleanField(default=False, null=True)
+    is_payment_activated = models.BooleanField(default=False, null=True)
+    is_new_customer = models.BooleanField(default=False, null=True)
+    is_confirmed = models.BooleanField(default=False, null=True)
     limited_date = models.CharField(max_length=200, null=True)
+    total_amount = models.CharField(max_length=200, null=True)
+    proxy = models.CharField(max_length=250, null=True)
+    third_party_name = models.CharField(max_length=250, null=True)
+    third_party_phone = models.CharField(max_length=250, null=True)
+    third_party_email = models.CharField(max_length=250, null=True)
     created_at = models.DateField(auto_now=True)
+    
 

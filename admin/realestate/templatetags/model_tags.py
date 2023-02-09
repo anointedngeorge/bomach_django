@@ -15,10 +15,21 @@ def show_customers(f=None, name='', classname=''):
     html = ""
     html += f"<select name={name} class={classname}>"
     for x in customer:
-        html += f"<option value={x.id}>{x.name}</option>"
+        html += f"<option value={x.user.email}>{x.user.first_name} {x.user.last_name}</option>"
     html += "</select>"
     return format_html(html)
 
+
+
+@register.simple_tag
+def show_customer_with_id(f=None, name='', classname=''):
+    customer = Customer.objects.all()
+    html = ""
+    html += f"<select name={name} class={classname}>"
+    for x in customer:
+        html += f"<option value={x.id}>{x.user.first_name} {x.user.last_name}</option>"
+    html += "</select>"
+    return format_html(html)
 
 
 @register.simple_tag

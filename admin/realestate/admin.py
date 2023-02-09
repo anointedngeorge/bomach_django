@@ -11,7 +11,7 @@ from django.shortcuts import redirect
 
 @admin.register(RealEstate)
 class RealestateAdmin(admin.ModelAdmin):
-    list_display = ['user','branch','name','total_amount','amount_deposited','unit_price','created_at','action']
+    list_display = ['user','branch','name','unit_price', 'survey_plan','legal_fee','development_fee', 'created_at','action']
     # search_fields = ['student__startswith', 'year__startswith']
     list_filter = ['name','created_at']
     # actions = [filter_student]
@@ -21,12 +21,9 @@ class RealestateAdmin(admin.ModelAdmin):
           'fields': ('branch','name')
       }),
       ('Quantity Price', {
-          'fields': ('total_amount', 'amount_deposited', 'unit_price')
+          'fields': ('unit_price','legal_fee', 'survey_plan', 'development_fee')
       }),
 
-      ('Extra Fees', {
-          'fields': ('legal_fee', 'survey_plan', 'development_fee')
-      }),
 
       ('Estate Status', {
           'fields': ('status',)
@@ -60,12 +57,13 @@ class RealestatePlotAdmin(admin.ModelAdmin):
           'fields': ('realestate','name',)
       }),
       ('Quantity Price', {
-          'fields': ('price', 'size',)
+          'fields': ('size','status',)
       }),
-      ('Plot Status', {
-          'fields': ('status',)
-      }),
+
    )
+
+
+
     def get_urls(self):
         urls = super().get_urls()
         # path('sell-plot', for urls with queries ?id=2
@@ -84,21 +82,51 @@ class RealestatePlotAdmin(admin.ModelAdmin):
 
             path('change-plot-ownership', self.admin_site.admin_view(
                 self.change_plot_ownership), name="change-plot-ownership"),
+            
+            path('selling-page/<str:pagename>/<int:id>/<int:amount>/', self.admin_site.admin_view(
+                self.selling_page), name="selling-page"),
                 
         ]
         return new_url + urls
     
+    def selling_page(self, request, pagename=None, id=None, amount=None):
+        context = {}
+        context['id'] = id
+        context['amount'] = amount
+        return TemplateResponse(request, f"templateResponse/{pagename}.html", context=context)
+
     def change_plot_ownership(self, request):
         context = dict(self.admin_site.each_context(request),)
         query = request.GET.dict()
         id = int(query.get('id'))
         context['title'] = 'Change Ownership'
         context['page_title'] = query.get('title')
+
         return TemplateResponse(request, 'templateResponse/change_ownership.html', context=context)
 
     def search_payment_activation_code(self, request):
+        context = {}
         activate_code = request.GET['activation_code']
-        return HttpResponse(activate_code)
+        payment =  RealEstatePayment.objects.all().filter(activation_code=activate_code)
+        if payment:
+            context['plot'] = payment.get()
+            return TemplateResponse(request, 'templateResponse/payment_confirmatin_page.html', context=context)
+        else: 
+            return HttpResponse('Activation code does not exist')
+
+    def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
+        estate_total_amount =  int(obj.realestate.unit_price) * int(obj.size)
+        extra_fees =  int(obj.realestate.survey_plan) + int(obj.realestate.development_fee) + int(obj.realestate.legal_fee)
+        obj.price = int(estate_total_amount) + int(extra_fees)
+        obj.save()
+        return super().response_add(request, obj, post_url_continue)
+
+    def response_change(self, request, obj) -> HttpResponse:
+        estate_total_amount =  int(obj.realestate.unit_price) * int(obj.size)
+        extra_fees =  int(obj.realestate.survey_plan) + int(obj.realestate.development_fee) + int(obj.realestate.legal_fee)
+        obj.price = int(estate_total_amount) + int(extra_fees)
+        obj.save()
+        return super().response_change(request, obj)
 
     def confirm_payment(self, request, id=None):
         context = dict(self.admin_site.each_context(request),)
@@ -107,7 +135,12 @@ class RealestatePlotAdmin(admin.ModelAdmin):
         context['title'] = 'Confirm Payment'
         context['page_title'] = query.get('title')
         context['id'] = id
-        return TemplateResponse(request, 'templateResponse/confirm_payment.html', context=context)
+        plot_payment =  RealEstatePayment.objects.all().filter(plot_id = id)
+        if plot_payment.exists():
+            if plot_payment.get().is_confirmed:
+                return HttpResponse("Plot Already Confirmed")
+            else:
+                return TemplateResponse(request, 'templateResponse/confirm_payment.html', context=context)
 
 
     def sell_plot(self, request):
@@ -119,6 +152,9 @@ class RealestatePlotAdmin(admin.ModelAdmin):
         context['title'] = 'Sell '
         context['page_title'] = query.get('title')
         context['id'] = id
+        plot =  RealEstatePlot.objects.all()
+        if plot.filter(id=id).exists():
+            context['plot'] = plot.filter(id=id).get()
         return TemplateResponse(request, 'templateResponse/sell_plot.html', context=context)
 
 
@@ -126,10 +162,12 @@ class RealestatePlotAdmin(admin.ModelAdmin):
         data =  request.POST.dict()
         data.pop('csrfmiddlewaretoken')
         user_id =  request.user.id
-        data.update({'user_id':user_id, 'plot_id':id})
-        RealEstatePlot.objects.all().filter(id=id).update(status=data.get('status'))
+        
+        
         payment = RealEstatePayment.objects.all()
         if not payment.filter(plot_id=id).exists():
+            RealEstatePlot.objects.all().filter(id=id).update(status=data.get('status'))
+            data.update({'user_id':user_id, 'plot_id':id})
             payment.create(**data)
             messag.success(request, "Payment Activated")
         else:

@@ -1,0 +1,28 @@
+{% load static %}
+
+{% load model_tags %}
+
+{% block extrahead %}
+    <script src="{% static 'htmx.min.js' %}" defer></script>
+{% endblock extrahead %}
+
+
+<div class="container mt-4">
+
+    <div class="row mt-4 mb-4">
+        <div class="col-lg-11 p-3">
+            <ul>
+                <li>Plot Name: {{plot.plot.name}}</li>
+                <li>Customer's name: {{plot.customer}}</li>
+                <li>Customer email: {{plot.customer_email}}</li>
+                <li>Total Amount: {{plot.total_amount}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <button hx-confirm="Are You Sure?" hx-post="/" class="">Send Payment Proof Request</button>
+        </div>
+    </div>
+</div>
