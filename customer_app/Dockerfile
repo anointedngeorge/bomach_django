@@ -6,20 +6,19 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Only update packages
 RUN apt-get update
 
+# copy requirements files
+COPY ./requirements.txt /customer_app/requirements.txt
 # Set working directory
 WORKDIR /customer_app
 
 # upgrade pip to latest
+
 RUN pip3 install --upgrade pip
-
-# copy requirements files
-COPY ./requirements.txt /customer_app
-
 # install requirements
 RUN pip3 install -r requirements.txt
 
 # Copy codebase
-COPY . /customer_app/
+COPY . .
 
 # create a new user
 # RUN adduser --disabled-password --gecos '' bomach_django
@@ -31,3 +30,4 @@ COPY . /customer_app/
 
 # Set user to be bomach
 # USER bomach_django
+

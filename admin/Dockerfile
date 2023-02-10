@@ -5,22 +5,20 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 # Only update packages
 RUN apt-get update
-RUN pip3 install --upgrade setuptools
-# RUN apt-get install -y cron
+
+# copy requirements files
+COPY ./requirements.txt /admin/requirements.txt
 # Set working directory
 WORKDIR /admin
 
 # upgrade pip to latest
+
 RUN pip3 install --upgrade pip
-
-# copy requirements files
-COPY ./requirements.txt /admin
-
 # install requirements
 RUN pip3 install -r requirements.txt
 
 # Copy codebase
-COPY . /admin/
+COPY . .
 
 # create a new user
 # RUN adduser --disabled-password --gecos '' bomach_django
@@ -28,7 +26,7 @@ COPY . /admin/
 # EXPOSE 8000
 
 # Set user as the owner of the main directory
-# RUN chown -R bomach_django:bomach_django /admin
+# RUN chown -R bomach_django:bomach_django /customer_app
 
 # Set user to be bomach
 # USER bomach_django

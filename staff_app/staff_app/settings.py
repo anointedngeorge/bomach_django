@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'frontend',
     'realestate',
-    'customer'
+    'customer',
+    'djmoney',
 ]
 
 AUTH_USER_MODEL = 'authuser.User'

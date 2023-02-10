@@ -21,7 +21,7 @@
         <p>Payment Confirmation Page</p>
         <div class="col-md-12">
             <input 
-            hx-get="{% show_path %}/realestate/realestateplot/search-payment-activation-code/"
+            hx-get="{% show_path %}/realestate/realestateplot/search-payment-activation-code/{{id}}/"
             hx-trigger="keyup delay:100ms changed"
             hx-target="#search-results"
             type="text" 

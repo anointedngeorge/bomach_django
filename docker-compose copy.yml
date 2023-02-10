@@ -81,6 +81,24 @@ services:
       - redis_data:/data
     restart: "always"
 
+  celery:
+    build: 
+      context: ./admin
+      dockerfile: Dockerfile
+    command: celery -A admin worker -l INFO
+    volumes:
+      - ./admin:/admin
+
+    environment:
+        - POSTGRES_DB=bomach2
+        - POSTGRES_user= bomach_user
+        - POSTGRES_PASSWORD= odoo
+
+    depends_on:
+      - db
+      - redis
+      - admin
+    restart: always
 
 volumes:
   postgres_data:

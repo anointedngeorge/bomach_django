@@ -5,6 +5,7 @@ import os
 from admin.jazzime import *
 from admin.jazzime_ui import *  
 from admin.cronJob import *
+# from admin.celery_config import *
 
 
 
@@ -38,11 +39,10 @@ INSTALLED_APPS = [
     'customer',
     'employee',
     'task',
-    'notifier',
+    'notifier', # this contains tasks
     'channels',
-    'django_crontab',
     "django_htmx",
-    
+    'djmoney',
 ]
 
 # specify the new user model for this app
@@ -158,6 +158,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+CELERY_TIMEZONE = "Australia/Tasmania"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
 
 
 # email settings

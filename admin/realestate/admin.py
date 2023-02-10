@@ -7,6 +7,10 @@ from django.contrib import messages as messag
 from customer.models import *
 from django.shortcuts import redirect
 
+from django.conf import settings
+
+PATH_URI = settings.ADMIN_URI
+
 
 
 @admin.register(RealEstate)
@@ -76,7 +80,8 @@ class RealestatePlotAdmin(admin.ModelAdmin):
 
             path('confirm-payment', self.admin_site.admin_view(
                 self.confirm_payment), name="confirm-payment"),
-            path('search-payment-activation-code/', self.admin_site.admin_view(
+
+            path('search-payment-activation-code/<int:id>/', self.admin_site.admin_view(
                 self.search_payment_activation_code), name="search-payment-activation-code"),
             
 
@@ -85,9 +90,62 @@ class RealestatePlotAdmin(admin.ModelAdmin):
             
             path('selling-page/<str:pagename>/<int:id>/<int:amount>/', self.admin_site.admin_view(
                 self.selling_page), name="selling-page"),
+            
+            path('admin-confirm-payment/<str:code>/', self.admin_site.admin_view(
+                self.admin_confirm_payment), name="admin-approve-payment"),
+
+            path('admin-approve-payment/<str:code>/<int:user_id>/', self.admin_site.admin_view(
+                self.admin_approve_payment), name="admin-approve-payment"),
                 
         ]
         return new_url + urls
+
+    def admin_confirm_payment(self, request, code=None):
+        """
+        This will serve as a link to confirmation page.
+        """
+        user =  request.user.id
+        http =  request.META.get('wsgi.url_scheme')
+        host =  request.META.get('HTTP_HOST')
+        data = {'id':code}
+        payment =  RealEstatePayment.objects.all()
+        plot_content  = RealEstatePlot.objects.all()
+        if payment.filter(**data).exists():
+           payment = payment.filter(**data).get()
+           activation_code =  payment.activation_code
+
+           URL =  f"{http}://{host}{PATH_URI}/realestate/realestateplot/admin-approve-payment/{activation_code}/{user}/"
+           URL2 =  f"{http}://{host}{PATH_URI}/realestate/realestateplot/admin-payment-status/{activation_code}/"
+           confirmBox = PaymentConfirmationRequest.objects.all()
+           
+           if not confirmBox.filter(activation_code=activation_code).exists():
+                data3 = {'status':'waiting'}
+                plot =  plot_content.filter(id=payment.plot.id).update(**data3)
+                plot_with_id =  plot_content.filter(id=payment.plot.id).get()
+               
+                # if payment.plot.id == plot_with_id.id:
+                data2 = {
+                    'activation_code':activation_code,
+                    'activation_link':URL,
+                    'payment_id':code,
+                    'user_id':user,
+                    'activation_link_code':URL2,
+                }
+                confirmBox.create(**data2)
+                
+           else:
+               return HttpResponse("Already Confirmed!")
+
+        #    messag.success(request, f"Use this link to check status, {URL2}.")
+           return HttpResponse(f"Check status: {URL2}")
+
+    def admin_approve_payment(self, request, code=None):
+        """
+        This will serve as a confirmation link.
+        """
+        URL =  f"{PATH_URI}"
+        return HttpResponse(URL)
+
     
     def selling_page(self, request, pagename=None, id=None, amount=None):
         context = {}
@@ -104,15 +162,15 @@ class RealestatePlotAdmin(admin.ModelAdmin):
 
         return TemplateResponse(request, 'templateResponse/change_ownership.html', context=context)
 
-    def search_payment_activation_code(self, request):
+    def search_payment_activation_code(self, request, id=None):
         context = {}
         activate_code = request.GET['activation_code']
-        payment =  RealEstatePayment.objects.all().filter(activation_code=activate_code)
+        payment =  RealEstatePayment.objects.all().filter(activation_code=activate_code, plot_id=id)
         if payment:
-            context['plot'] = payment.get()
-            return TemplateResponse(request, 'templateResponse/payment_confirmatin_page.html', context=context)
+            context['payment'] = payment.get()
+            return TemplateResponse(request, 'templateResponse/payment_confirmation_page.html', context=context)
         else: 
-            return HttpResponse('Activation code does not exist')
+            return HttpResponse('Activation code does not exist or you put a wrong activation code.')
 
     def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
         estate_total_amount =  int(obj.realestate.unit_price) * int(obj.size)
@@ -155,7 +213,9 @@ class RealestatePlotAdmin(admin.ModelAdmin):
         plot =  RealEstatePlot.objects.all()
         if plot.filter(id=id).exists():
             context['plot'] = plot.filter(id=id).get()
-        return TemplateResponse(request, 'templateResponse/sell_plot.html', context=context)
+            return TemplateResponse(request, 'templateResponse/sell_plot.html', 
+            context=context)
+        return HttpResponse("Failed to load pages")
 
 
     def activate_payment(self, request, id=None):
@@ -195,7 +255,7 @@ class RealestatePlotAdmin(admin.ModelAdmin):
 @admin.register(RealEstatePayment)
 class RealesteatePaymentAdmin(admin.ModelAdmin):
    
-    list_display = ['created_at','plot','user','status','activation_code','customer_email','customer','initial_amount','limited_date']
+    list_display = ['created_at','plot','user','status','activation_code','customer_email','purchase_code','customer','initial_amount','limited_date']
     # search_fields = ['student__startswith', 'year__startswith']
     list_filter = ['customer_email','customer','created_at']
     
@@ -205,4 +265,8 @@ class RealesteatePaymentAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None) -> bool:
         return False
 
-    
+
+
+@admin.register(PaymentConfirmationRequest)
+class PaymentConfirmation(admin.ModelAdmin):
+    list_display = ['created_at','payment','user','activation_code','activation_link','activation_link_code']
