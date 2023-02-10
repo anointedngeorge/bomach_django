@@ -1,0 +1,39 @@
+{% extends 'admin/base_site.html' %}
+{% load static %}
+
+{% load model_tags %}
+
+{% block extrahead %}
+    <script src="{% static 'htmx.min.js' %}" defer></script>
+    <style>
+        input#input-search{
+            padding: 35px;
+            margin: 100px 5px 0px 0px;
+            width:950px;
+            box-shadow: 0 6px 15px #000;
+        }
+    </style>
+{% endblock extrahead %}
+    
+{% block content %}
+    <div class="container">
+        <h1>{{page_title}}</h1>
+        <p>Payment Confirmation Page</p>
+        <div class="col-md-12">
+            <input 
+            hx-get="{% show_path %}/realestate/realestateplot/search-payment-activation-code/{{id}}/"
+            hx-trigger="keyup delay:100ms changed"
+            hx-target="#search-results"
+            type="text" 
+            name="activation_code" 
+            placeholder="Enter Activation Code" 
+            id="input-search"
+            />
+            <div id="search-results">...</div>
+        </div>
+
+        <div></div>
+
+    </div>
+{% endblock content %}
+    

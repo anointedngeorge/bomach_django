@@ -4,7 +4,7 @@ import os
 from decouple import config
 from customer_app.jazzime import *
 from customer_app.jazzime_ui import * 
-
+# import customer_app.installAPPS as installAPPS 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,22 +23,28 @@ CSRF_TRUSTED_ORIGINS = ['https://client.bgbot.app']
 
 
 ADMIN_LOGIN_PATH = 'customer/'
-ADMIN_URI = ""
+ADMIN_URI = "/customer"
 # Application definition
 
 # Application definition
 
 INSTALLED_APPS = [
     'jazzmin',
-    'authuser',
     'django.contrib.admin',
+    'authuser',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'frontend',
+    'realestate',
     'customer',
+    'employee',
+    'task',
+    'notifier', # this contains tasks
+    'channels',
+    "django_htmx",
     'djmoney',
 ]
 

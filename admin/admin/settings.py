@@ -6,7 +6,7 @@ from admin.jazzime import *
 from admin.jazzime_ui import *  
 from admin.cronJob import *
 # from admin.celery_config import *
-
+# import admin.installAPPS as installAPPS
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

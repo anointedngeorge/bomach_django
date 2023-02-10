@@ -23,9 +23,9 @@ def dictDropdown(action=[], status=''):
         for x in get_status:
             query = queryFormat(x.get('query'))
             if x.get('is_button'):
-                html += f"<td><button data-url='{x.get('href')}' value='{query}'>{x.get('name')}</button></td>"
+                html += f"<td><button type='button' data-url='{x.get('href')}' value='{query}'>{str(x.get('name')).title()}</button></td>"
             else:
-                html += f"<td><a href='{x.get('href')}?{query}'>{x.get('name')}</a></td>"
+                html += f"<td><a  href='{x.get('href')}?{query}'>{str(x.get('name')).title()}</a></td>"
         html += "</tr>"
         html += "</table>"
         html += "</div>"

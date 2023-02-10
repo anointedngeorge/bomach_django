@@ -1,10 +1,13 @@
 from django.db import models
 import uuid
+from django.conf import settings
+from django.urls import reverse
 
 # Create your models here.
 
 class Employee(models.Model):
-    # id=models.CharField(primary_key=True,default=uuid.uuid4, editable=False, max_length=36)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True,
+     related_name="employee_relationship")
     name = models.CharField(("name"), max_length=50)
     year = models.DateField(("Year"),auto_now_add=True)
 

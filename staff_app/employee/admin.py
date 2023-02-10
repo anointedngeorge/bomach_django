@@ -5,4 +5,4 @@ from employee.models import *
 
 @admin.register(Employee)
 class employeeAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['user']

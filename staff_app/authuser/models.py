@@ -46,7 +46,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     code = models.CharField(max_length=300, blank=True, null=True)
     first_name = models.CharField(max_length=300, blank=True, null=True)
     last_name = models.CharField(max_length=300, blank=True, null=True)
-    email = models.EmailField(('email address'), unique=True)
+    email = models.EmailField(('email address'), unique=True, error_messages="Email Already Taken")
     username = models.CharField(max_length=300, unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -79,8 +79,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     def get_short_name(self):
         return f"{self.first_name} {self.last_name}" or self.email.split('@')[0]
-
-    
 
     def natural_key(self):
         return f"{self.first_name} {self.last_name}"
