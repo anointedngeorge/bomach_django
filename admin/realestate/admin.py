@@ -197,8 +197,8 @@ class RealestatePlotAdmin(admin.ModelAdmin):
         if plot_payment.exists():
             if plot_payment.get().is_confirmed:
                 return HttpResponse("Plot Already Confirmed")
-            else:
-                return TemplateResponse(request, 'templateResponse/confirm_payment.html', context=context)
+            
+        return TemplateResponse(request, 'templateResponse/confirm_payment.html', context=context)
 
 
     def sell_plot(self, request):

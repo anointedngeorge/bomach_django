@@ -115,7 +115,7 @@ class RealEstatePlot(models.Model):
                 ],
 
                 "pending": [
-                    {"name":'Confirm Payment', "href":f"/admin/realestate/realestateplot/confirm-payment", "is_button":False, 
+                    {"name":'Confirm Payment', "href":f"confirm-payment", "is_button":False, 
                     "query":{'id':self.id, 'status':self.status,'title':f"{self.name} {self.realestate}"}}, 
                 ],
 
