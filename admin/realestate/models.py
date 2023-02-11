@@ -117,6 +117,9 @@ class RealEstatePlot(models.Model):
                 "pending": [
                     {"name":'Confirm Payment', "href":f"confirm-payment", "is_button":False, 
                     "query":{'id':self.id, 'status':self.status,'title':f"{self.name} {self.realestate}"}}, 
+
+                    {"name":'Invoice', "href":f"invoice/{self.id}/", "is_button":False, 
+                    "query":{'id':self.id, 'status':self.status,'title':f"{self.name} {self.realestate}"}},
                 ],
 
                 "sold": [{"name":'Receipt', "href":f"", "is_button":False, 

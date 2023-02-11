@@ -71,6 +71,9 @@ class RealestatePlotAdmin(admin.ModelAdmin):
         urls = super().get_urls()
         # path('sell-plot', for urls with queries ?id=2
         new_url = [
+            path('invoice/<int:id>/', self.admin_site.admin_view(
+                self.invoice), name="invoice"),
+
             path('sell-plot', self.admin_site.admin_view(
                 self.sell_plot), name="sell-plot"),
 
@@ -98,6 +101,14 @@ class RealestatePlotAdmin(admin.ModelAdmin):
                 
         ]
         return new_url + urls
+
+    def invoice(self, request, id=None):
+        context = dict(self.admin_site.each_context(request),)
+        context['id'] = id
+        context['site_title'] = 'Invoice'
+        context['title'] =  'Invoice'
+        
+        return TemplateResponse(request, f"templateResponse/invoice.html", context=context)
 
     def admin_confirm_payment(self, request, code=None):
         """
