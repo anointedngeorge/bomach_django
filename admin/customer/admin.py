@@ -6,3 +6,7 @@ from customer.models import *
 @admin.register(Customer)
 class customerAdmin(admin.ModelAdmin):
     list_display = ['user']
+    exclude = ['user']
+
+    def has_add_permission(self, request) -> bool:
+        return False

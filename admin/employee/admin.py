@@ -6,3 +6,7 @@ from employee.models import *
 @admin.register(Employee)
 class employeeAdmin(admin.ModelAdmin):
     list_display = ['user']
+    exclude = ['user']
+
+    def has_add_permission(self, request) -> bool:
+        return False

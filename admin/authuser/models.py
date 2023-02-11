@@ -17,6 +17,17 @@ GROUP_ROLES = [
     ('customer','Customer')
 ]
 
+# Salutation - Mr, Mrs, Mr and Mrs, miss, Dr, Sir, Madam
+SALUTATION = [
+    ('---','Choose'),
+    ('mr','Mr'),
+    ('Mrs','Mrs'),
+    ('miss','Miss'),
+    ('dr','Dr'),
+    ('sir','Sir'),
+    ('madam','Madam')
+]
+
 class CustomUserManager(UserManager):
     
     def _create_user(self, email, password, **extra_fields):
@@ -43,6 +54,7 @@ class CustomUserManager(UserManager):
         
 
 class User(AbstractBaseUser, PermissionsMixin):
+    salutation = models.CharField(max_length=300, choices=SALUTATION, default='---')
     code = models.CharField(max_length=300, blank=True, null=True)
     first_name = models.CharField(max_length=300, blank=True, null=True)
     last_name = models.CharField(max_length=300, blank=True, null=True)

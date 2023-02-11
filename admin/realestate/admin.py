@@ -6,7 +6,6 @@ from django.template.response import TemplateResponse
 from django.contrib import messages as messag
 from customer.models import *
 from django.shortcuts import redirect
-
 from django.conf import settings
 
 PATH_URI = settings.ADMIN_URI
