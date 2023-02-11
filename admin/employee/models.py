@@ -67,7 +67,7 @@ class Employee(models.Model):
     local_government = models.CharField(max_length=250, default='---')
     town = models.CharField(max_length=250, null=True, default='---')
     about = models.TextField(default='---')
-    Skills = models.CharField(max_length=50, null=True, default='---')
+    skills = models.CharField(max_length=50, null=True, default='---')
     salary = models.CharField(max_length=50, null=True, default='---')
     start_date = models.DateField(auto_now=True)
     probation_start_date  = models.DateField(auto_now=True)
