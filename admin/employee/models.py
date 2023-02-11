@@ -63,7 +63,7 @@ class Employee(models.Model):
         ('others','Others')
     ]
     gender =  models.CharField(max_length=250, choices=GENDER, default='---')
-    country = CountryField(blank_label="(select country)", default='---', )
+    country = CountryField(blank_label="(select country)", default='---', max_length=250)
     local_government = models.CharField(max_length=250, default='---')
     town = models.CharField(max_length=250, null=True, default='---')
     about = models.TextField(default='---')
