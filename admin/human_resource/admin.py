@@ -42,9 +42,10 @@ class HrEmployeeDesignationAdmin(admin.ModelAdmin):
 
 @admin.register(Skill)
 class HrSkillAdmin(admin.ModelAdmin):
-
     list_display = ['name','employee','department','created_at']
 
+    def has_add_permission(self, request) -> bool:
+        return False
 
 @admin.register(Jobs)
 class HrJobsAdmin(admin.ModelAdmin):
@@ -52,13 +53,19 @@ class HrJobsAdmin(admin.ModelAdmin):
 
 @admin.register(Job_history)
 class HrJobsHistoryAdmin(admin.ModelAdmin):
-
     list_display = ['jobs','employee','department','start_date','end_date']
+
+    def has_add_permission(self, request) -> bool:
+        return False
 
 
 @admin.register(Salary)
 class HrSalaryAdmin(admin.ModelAdmin):
     list_display = ['employee','amount','reduction','paid_date','created_at']
+
+    def has_add_permission(self, request) -> bool:
+        return False
+
 
 @admin.register(Department)
 class HrDepartmentAdmin(admin.ModelAdmin):

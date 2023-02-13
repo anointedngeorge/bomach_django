@@ -13,6 +13,8 @@ class Jobs(models.Model):
     min_salary = models.CharField(max_length = 150)
     max_salary = models.CharField(max_length = 150)
 
+    
+
     class Meta:
         verbose_name = 'Job'
         verbose_name_plural = 'Jobs'
@@ -31,10 +33,14 @@ class Job_history(models.Model):
     start_date = models.DateField(auto_now=True)
     end_date = models.DateField(auto_now=True)
 
+    
+
     class Meta:
         verbose_name = 'Job History'
         verbose_name_plural = 'Job Histories'
 
     def __str__(self) -> str:
         return self.jobs
+
+    
     
