@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'realestate',
     'customer',
-    # 'employee',
+    'employee',
     'task',
     'notifier', # this contains tasks
     'channels',
