@@ -12,6 +12,9 @@ class EmployeeType(models.Model):
     name = models.CharField(max_length = 150)
     description = models.TextField()
 
+    def __str__(self) -> str:
+        return self.name
+
     class Meta:
         verbose_name = 'Employement Type'
         verbose_name_plural = 'Employment Type'
@@ -24,6 +27,9 @@ class Designation(models.Model):
     class Meta:
         verbose_name = 'Designation'
         verbose_name_plural = 'Designation'
+    
+    def __str__(self) -> str:
+        return self.name
 
 
 class Employee(models.Model):

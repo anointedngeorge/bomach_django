@@ -13,10 +13,12 @@ class Salary(models.Model):
      related_name="hr_jobs_salary_relationship")
     amount = models.CharField(max_length = 150)
     reduction = models.CharField(max_length = 150)
-    paid_date = models.DateField(auto_now=False)
+    paid_date = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now=True)
 
     class Meta:
         verbose_name = 'Salaries'
         verbose_name_plural = 'Salary'
     
+    def __str__(self) -> str:
+        return self.amount

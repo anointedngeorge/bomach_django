@@ -16,6 +16,9 @@ class Jobs(models.Model):
     class Meta:
         verbose_name = 'Job'
         verbose_name_plural = 'Jobs'
+    
+    def __str__(self) -> str:
+        return self.job_title
 
 
 class Job_history(models.Model):
@@ -31,4 +34,7 @@ class Job_history(models.Model):
     class Meta:
         verbose_name = 'Job History'
         verbose_name_plural = 'Job Histories'
+
+    def __str__(self) -> str:
+        return self.jobs
     

@@ -15,3 +15,6 @@ class Skill(models.Model):
      related_name="hr_skills_department_relationship")
     created_at = models.DateField(auto_now=True)
     
+
+    def __str__(self) -> str:
+        return self.name
