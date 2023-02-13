@@ -55,3 +55,4 @@ celery == 5.2.7
 django-countries== 7.5.1
 django-ckeditor-5 == 0.2.3
 django-imagekit  == 4.1.0
+python-escpos    == 2.2.0

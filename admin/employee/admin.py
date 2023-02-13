@@ -18,10 +18,9 @@ class employeeAdmin(admin.ModelAdmin):
       }),
       
       ('Location History', {
-          'fields': ('country','local_government','town',)
+          'fields': ('country','state','local_government','town',)
       }),
-
-
+      
       ('Short Description', {
           'fields': ('about',)
       }),

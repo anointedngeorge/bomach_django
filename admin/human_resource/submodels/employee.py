@@ -5,52 +5,43 @@ from django.urls import reverse
 from django.utils import timezone
 from django_countries.fields import CountryField
 # Create your models here.
+from human_resource.models import *
+from plugins.dropdown import singleDropdown, dictDropdown
+
+class EmployeeType(models.Model):
+    name = models.CharField(max_length = 150)
+    description = models.TextField()
+
+    class Meta:
+        verbose_name = 'Employement Type'
+        verbose_name_plural = 'Employment Type'
+
+
+class Designation(models.Model):
+    name = models.CharField(max_length = 150)
+    description = models.TextField()
+
+    class Meta:
+        verbose_name = 'Designation'
+        verbose_name_plural = 'Designation'
+
 
 class Employee(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True,
-     related_name="employee_relationship")
+     related_name="hr_employee_relationship")
     #  personal information
     address = models.CharField(max_length=500, null=True, default='---')
     phone_number = models.CharField(max_length=500, null=True, default='---')
     date_of_birth = models.DateField(auto_now=True)
-    DESIGNATION = [
-        ('trainee','Trainee'),
-        ('senior','Senior'),
-        ('junior','Junior'),
-        ('teamlead','Team lead'),
-        ('adhoc','Adhoc'),
-    ]
-    designation =  models.CharField(max_length=250, choices=DESIGNATION, default='---')
-    TITLE = [
-        ('civilengineer','Civil Engineer'),
-        ('landsurveyor','Land Surveyor'),
-        ('marketer','Marketer'),
-        ('developer','Developer'),
-        ('secretary','Secretary'),
-        ('consultants','Consultants'),
-        ('chiefsecurityofficer','Chief Security Officer'),
-        ('securityofficer','Security Officer'),
-        ('technician','Technician')
-    ]
-    title =  models.CharField(max_length=250, choices=TITLE, default='---')
-    DEPARTMENT = [
-        ('marketing','Marketing'),
-        ('sales','Sales'),
-        ('humanresources','Human Resources'),
-        ('publicrelations','Public Relations'),
-        ('research','Research'),
-        ('financeandAccounts','finance and Accounts'),
-        ('operations','Operations')
-    ]
-    department =  models.CharField(max_length=250, choices=DEPARTMENT, default='---')
-    EMPLOYMENT_TYPE = [
-        ('fulltime','Full Time'),
-        ('parttime','Part Time'),
-        ('oncontract','On Contract'),
-        ('internship','Internship'),
-        ('trainee','Trainee'),
-    ]
-    employment_type =  models.CharField(max_length=250, choices=DEPARTMENT, default='---')
+
+    designation =  models.ForeignKey(Designation, on_delete=models.CASCADE, null=True, blank=True,
+     related_name="employee_designation_relationship", default=None)
+    title =  models.ForeignKey("Jobs", on_delete=models.CASCADE, null=True, blank=True,
+     related_name="employee_job_relationship")
+    department =  models.ForeignKey("Department", on_delete=models.CASCADE, null=True, blank=True,
+     related_name="employee_department_relationship")
+    employment_type =  models.ForeignKey("Department", on_delete=models.CASCADE, null=True, blank=True,
+     related_name="employee_department_type_relationship")
     MARITAL_STATUS = [
         ('single','Single'),
         ('married','Married'),
@@ -68,8 +59,6 @@ class Employee(models.Model):
     local_government = models.CharField(max_length=250, default='---')
     town = models.CharField(max_length=250, null=True, default='---')
     about = models.TextField(default='---')
-    skills = models.CharField(max_length=50, null=True, default='---')
-    salary = models.CharField(max_length=50, null=True, default='---')
     start_date = models.DateField(auto_now=True)
     probation_start_date  = models.DateField(auto_now=True)
     probation_end_date  = models.DateField(auto_now=True)
@@ -81,3 +70,13 @@ class Employee(models.Model):
         
     def __str__(self) -> str:
         return f"{self.user}"
+
+
+    def action(self):
+        action = [
+                {"name":'Profile', "href":f"", "is_button":False, 
+                "query":{'id':self.id}},
+                ]
+        return singleDropdown(action=action)
+
+    

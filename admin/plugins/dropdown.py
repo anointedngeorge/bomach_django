@@ -18,7 +18,7 @@ def dictDropdown(action=[], status=''):
         # get the status that match in the action object
         get_status =  action.get(status)
         html += "<div class='table table-responsive'>"
-        html += "<table>"
+        html += "<table class='table table-sm table-condensed'>"
         html += "<tr>"
         for x in get_status:
             query = queryFormat(x.get('query'))
@@ -37,12 +37,12 @@ def singleDropdown(action=[]):
         html = ""
         # get the status that match in the action object
         html += "<div class='table table-responsive'>"
-        html += "<table>"
+        html += "<table class='table table-sm table-condensed'>"
         html += "<tr>"
         for x in action:
             query = queryFormat(x.get('query'))
             if x.get('is_button'):
-                html += f"<td><button data-url='{x.get('href')}' value='{query}'>{x.get('name')}</button></td>"
+                html += f"<td><button  data-url='{x.get('href')}' value='{query}'>{x.get('name')}</button></td>"
             else:
                 html += f"<td><a href='{x.get('href')}?{query}'>{x.get('name')}</a></td>"
         html += "</tr>"

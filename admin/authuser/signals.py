@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from customer.models import *
-from employee.models import *
+from human_resource.models import *
 
 
 
