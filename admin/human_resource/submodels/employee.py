@@ -68,6 +68,12 @@ class Employee(models.Model):
     start_date = models.DateField(auto_now=True)
     probation_start_date  = models.DateField(auto_now=True)
     probation_end_date  = models.DateField(auto_now=True)
+    JOBSTATUS =[
+        ('proposed','Proposed'),
+        ('retired','Retired'),
+        ('probation','On Probation'),
+    ]
+    status =  models.CharField(max_length=250, choices=JOBSTATUS, default='proposed')
     create_at = models.DateField(auto_now=True)
 
     class Meta:
@@ -80,7 +86,7 @@ class Employee(models.Model):
 
     def action(self):
         action = [
-                {"name":'Profile', "href":f"", "is_button":False, 
+                {"name":'Profile', "href":f"employee-profile", "is_button":False, 
                 "query":{'id':self.id}},
                 ]
         return singleDropdown(action=action)
