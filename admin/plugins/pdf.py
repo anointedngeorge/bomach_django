@@ -6,7 +6,7 @@ from io import BytesIO
 # from xhtml2pdf import pisa
 from django.http import HttpResponse
 
-def convert_to_file_to_pdf(request, file_format='pdf', template='', context={}):
+def convert_to_file_to_pdf(file_format='pdf', template='', context={}):
     pass
     # try:
     #     context = context
