@@ -14,7 +14,9 @@ class HrJobsAdmin(admin.ModelAdmin):
 
 @admin.register(Job_history)
 class HrJobsHistoryAdmin(admin.ModelAdmin):
-    list_display = ['jobs','employee','department','start_date','end_date']
+    list_display = ['employee','jobs','department','start_date','end_date']
+    list_filter = ['employee','jobs', 'department','start_date','end_date']
+    
 
     def has_add_permission(self, request) -> bool:
         return False
