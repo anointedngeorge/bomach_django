@@ -8,6 +8,7 @@ from django.http import HttpResponse
 
 def convert_to_file_to_pdf(file_format='pdf', template='', context={}):
     pass
+    return HttpResponse('Pdf Loading...')
     # try:
     #     context = context
     #     file_format = str(file_format).lower()
