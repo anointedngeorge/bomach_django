@@ -10,7 +10,7 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Bomach",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "books/img/logo.png",
+    "site_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKtQJFrTSBNT9-bKa-nKEeyL6F494xzjyPcg&usqp=CAU",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
     "login_logo": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKtQJFrTSBNT9-bKa-nKEeyL6F494xzjyPcg&usqp=CAU',

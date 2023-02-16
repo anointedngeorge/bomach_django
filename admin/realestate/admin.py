@@ -183,9 +183,9 @@ class RealestatePlotAdmin(admin.ModelAdmin):
             return HttpResponse('Activation code does not exist or you put a wrong activation code.')
 
     def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
-        estate_total_amount =  int(obj.realestate.unit_price) * int(obj.size)
-        extra_fees =  int(obj.realestate.survey_plan) + int(obj.realestate.development_fee) + int(obj.realestate.legal_fee)
-        obj.price = int(estate_total_amount) + int(extra_fees)
+        estate_total_amount =  float(obj.realestate.unit_price) * float(obj.size)
+        extra_fees =  float(obj.realestate.survey_plan) + float(obj.realestate.development_fee) + float(obj.realestate.legal_fee)
+        obj.price = float(estate_total_amount) + float(extra_fees)
         obj.save()
         return super().response_add(request, obj, post_url_continue)
 
