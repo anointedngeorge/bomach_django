@@ -5,16 +5,16 @@ from django.urls import reverse
 from django.utils import timezone
 from django_countries.fields import CountryField
 # Create your models here.
-from human_resource.models import *
-from settings.models import *
+# from human_resource.models import *
+from settings.submodels.model_service import ServiceCategory
 
 
 class Task(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
      related_name="hr_task_user_relationship")
     name = models.CharField(max_length = 150)
-    # category = models.ForeignKey("ServiceCategory", on_delete=models.CASCADE,
-    #  related_name="task_service_category_relationship")
+    category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE,
+     related_name="task_service_category_relationship", null=True)
     start_date = models.DateField(auto_now=False)
     end_date = models.DateField(auto_now=False)
     is_done = models.BooleanField(default=False)
