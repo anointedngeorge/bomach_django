@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'realestate',
     'customer',
     'settings',
-    'task',
     'notifier', # this contains tasks
     'channels',
     "django_htmx",

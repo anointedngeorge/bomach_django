@@ -2,6 +2,7 @@ from django.contrib import admin
 from human_resource.models import *
 from django.urls import path
 from django.http import HttpResponse
+
 # Register your models here.
 # from fpdf import FPDF
 
@@ -14,11 +15,11 @@ class HrEmployeeAdmin(admin.ModelAdmin):
 
     fieldsets = (
       ('Personal Information', {
-          'fields': ('address','phone_number','gender','marital_status',)
+          'fields': ('address','phone_number','gender','marital_status','status',)
       }),
       
       ('Employment History', {
-          'fields': ('designation','title','employment_type','department')
+          'fields': ('skills','designation','title','employment_type','department')
       }),
       
       ('Location History', {
@@ -26,7 +27,7 @@ class HrEmployeeAdmin(admin.ModelAdmin):
       }),
       
       ('Short Description', {
-          'fields': ('status','about',)
+          'fields': ('about',)
       }),
    )
 

@@ -9,10 +9,12 @@ from human_resource.models import *
 
 class Skill(models.Model):
     name = models.CharField(max_length = 150)
-    employee = models.ForeignKey('Employee', on_delete=models.CASCADE, null=True, blank=True,
-     related_name="hr_skills_employee_relationship")
-    department = models.ForeignKey('Department', on_delete=models.CASCADE, null=True, blank=True,
-     related_name="hr_skills_department_relationship")
+    description = models.TextField(default='----')
+    
+    # employee = models.ForeignKey('Employee', on_delete=models.CASCADE, null=True, blank=True,
+    #  related_name="hr_skills_employee_relationship")
+    # department = models.ForeignKey('Department', on_delete=models.CASCADE, null=True, blank=True,
+    #  related_name="hr_skills_department_relationship")
     created_at = models.DateField(auto_now=True)
     
 

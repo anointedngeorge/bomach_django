@@ -40,7 +40,8 @@ class Job_history(models.Model):
         verbose_name_plural = 'Job Histories'
 
     def __str__(self) -> str:
-        return self.jobs
+        res = self.jobs if self.jobs is not None else 'Job histories created.'
+        return res
 
     
     

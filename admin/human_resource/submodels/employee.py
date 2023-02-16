@@ -46,7 +46,7 @@ class Employee(models.Model):
      related_name="employee_job_relationship")
     department =  models.ForeignKey("Department", on_delete=models.CASCADE, null=True, blank=True,
      related_name="employee_department_relationship")
-    employment_type =  models.ForeignKey("Department", on_delete=models.CASCADE, null=True, blank=True,
+    employment_type =  models.ForeignKey("EmployeeType", on_delete=models.CASCADE, null=True, blank=True,
      related_name="employee_department_type_relationship")
     MARITAL_STATUS = [
         ('single','Single'),
@@ -74,6 +74,8 @@ class Employee(models.Model):
         ('probation','On Probation'),
     ]
     status =  models.CharField(max_length=250, choices=JOBSTATUS, default='proposed')
+    skills = models.ManyToManyField('Skill', blank=True, null=True)
+    
     create_at = models.DateField(auto_now=True)
 
     class Meta:

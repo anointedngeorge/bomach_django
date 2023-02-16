@@ -13,9 +13,11 @@ class Gallery(models.Model):
     name = models.CharField(max_length = 150)
     size = models.CharField(max_length = 150)
     url = models.CharField(max_length=250, null=True)
-    filesize = models.CharField(max_length=250, null=True)
-    filename = models.CharField(max_length=250, null=True)
-    object_name = models.CharField(max_length=250, null=True)
+    data = models.TextField(default='')
+    filename  = models.CharField(max_length = 150, default='')
+    type  = models.CharField(max_length = 150, default='')
+    created_at = models.DateField(auto_now=True)
+    
 
 
 
