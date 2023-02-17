@@ -15,7 +15,7 @@ class HrEmployeeAdmin(admin.ModelAdmin):
 
     fieldsets = (
       ('Personal Information', {
-          'fields': ('address','phone_number','gender','marital_status','status',)
+          'fields': ('address','phone_number','gender','marital_status','date_of_birth','status',)
       }),
       
       ('Employment History', {
