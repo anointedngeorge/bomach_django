@@ -38,7 +38,7 @@ class Employee(models.Model):
     #  personal information
     address = models.CharField(max_length=500, null=True, default='---')
     phone_number = models.CharField(max_length=500, null=True, default='---')
-    date_of_birth = models.DateField(auto_now=True)
+    date_of_birth = models.DateField(auto_now=False)
 
     designation =  models.ForeignKey(Designation, on_delete=models.CASCADE, null=True, blank=True,
      related_name="employee_designation_relationship", default=None)
