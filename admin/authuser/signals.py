@@ -18,6 +18,6 @@ def post_save_create_staff(sender, instance, created, *args, **kwargs):
             if filtered.exists():
                 Job_history.objects.all().create(employee_id=filtered.get().id)
                 Salary.objects.all().create(employee_id=filtered.get().id)
-                Skill.objects.all().create(employee_id=filtered.get().id)
+                # Skill.objects.all().create(employee_id=filtered.get().id)
             else:
                 print('No employee id found')
