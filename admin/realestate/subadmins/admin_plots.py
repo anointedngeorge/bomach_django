@@ -122,7 +122,9 @@ class RealestatePlotAdmin(admin.ModelAdmin):
         context = {}
         context['id'] = id
         context['amount'] = amount
-        return TemplateResponse(request, f"templateResponse/realestate/{pagename}.html", context=context)
+        # return TemplateResponse(request, f"templateResponse/realestate/{pagename}.html", context=context)
+        return HttpResponse('yes')
+
 
     def change_plot_ownership(self, request):
         context = dict(self.admin_site.each_context(request),)
