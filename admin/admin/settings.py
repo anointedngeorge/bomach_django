@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'channels',
     "django_htmx",
     'djmoney',
-    'human_resource'
+    'human_resource',
+    'django_bootstrap_icons'
+
 ]
 
 # specify the new user model for this app
@@ -66,7 +68,10 @@ ROOT_URLCONF = 'admin.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'), 
+            os.path.join(BASE_DIR, 'icons'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

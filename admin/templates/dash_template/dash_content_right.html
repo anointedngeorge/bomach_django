@@ -1,3 +1,70 @@
-<div class="content">
-    <h3>Important Links</h3>
+{% load bootstrap_icons %}
+
+
+
+<div class="container">
+
+    <div class="col-lg-12">
+        <caption><h3>Operations</h3></caption>
+        <table class="table">
+            <tr>
+                <td>
+                    <a href="">
+                        <div class="card bg-info">
+                            <div class="card-body">
+                                <h5 class="card-title h5">
+                                    {% bs_icon 'pencil-square' size='1.3em' %}
+                                    Create Task
+                                </h5>
+                            </div>
+                        </div>
+                    </a>
+                </td>
+        
+                <td>
+                    <a href="">
+                        <div class="card bg-primary">
+                            <div class="card-body">
+                                
+                                <h5 class="card-title h5">
+                                    {% bs_icon 'server' size='1.3em' %}
+                                    Create Site
+                                </h5>
+                            </div>
+                        </div>
+                    </a>
+                </td>
+
+                <td>
+                    <a href="">
+                        <div class="card bg-warning">
+                            <div class="card-body">
+                                
+                                <h5 class="card-title h5">
+                                    {% bs_icon 'box-arrow-in-right' size='1.3em' %}
+                                    Create Projects
+                                </h5>
+                            </div>
+                        </div>
+                    </a>
+                </td>
+
+                <td>
+                    <a href="">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 class="card-title h5">
+                                    {% bs_icon 'list-task' size='1.3em' %}
+                                    Create Contracts
+                                </h5>
+                            </div>
+                        </div>
+                    </a>
+                </td>
+                
+            </tr>
+        </table>
+    </div>
+
+
 </div>
