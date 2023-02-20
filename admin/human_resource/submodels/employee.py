@@ -7,6 +7,10 @@ from django_countries.fields import CountryField
 # Create your models here.
 from human_resource.models import *
 from plugins.dropdown import singleDropdown, dictDropdown
+from authuser.models import Branch
+
+
+
 
 class EmployeeType(models.Model):
     name = models.CharField(max_length = 150)
@@ -33,12 +37,14 @@ class Designation(models.Model):
 
 
 class Employee(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True,
+    branch = models.ForeignKey(Branch,verbose_name='branch', on_delete=models.CASCADE, null=True, blank=True,
+     related_name="hr_branch_employee_relationship")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='employee',  on_delete=models.CASCADE, null=True, blank=True,
      related_name="hr_employee_relationship")
     #  personal information
     address = models.CharField(max_length=500, null=True, default='---')
     phone_number = models.CharField(max_length=500, null=True, default='---')
-    dob = models.DateField(auto_now=True, )
+    dob = models.DateField(auto_now=False, default='2023-04-01')
 
     designation =  models.ForeignKey(Designation, on_delete=models.CASCADE, null=True, blank=True,
      related_name="employee_designation_relationship", default=None)
@@ -64,6 +70,7 @@ class Employee(models.Model):
     state = models.CharField(max_length=50, null=True, default='---')
     local_government = models.CharField(max_length=250, default='---')
     town = models.CharField(max_length=250, null=True, default='---')
+    salary = models.CharField(max_length=250, null=True, default='---')
     about = models.TextField(default='---')
     start_date = models.DateField(auto_now=True)
     probation_start_date  = models.DateField(auto_now=True)

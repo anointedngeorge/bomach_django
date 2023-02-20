@@ -6,18 +6,18 @@ from django.utils import timezone
 from django_countries.fields import CountryField
 # Create your models here.
 from human_resource.models import *
-
+# from human_resource.submodels.employee import Employee
 class Jobs(models.Model):
-    job_title = models.CharField(max_length = 150)
+    employee = models.ForeignKey("Employee", on_delete=models.CASCADE, null=True, blank=True,
+     related_name="hr_employee_relationship")
     description = models.TextField()
-    min_salary = models.CharField(max_length = 150)
-    max_salary = models.CharField(max_length = 150)
+   
 
     
 
     class Meta:
-        verbose_name = 'Job'
-        verbose_name_plural = 'Jobs'
+        verbose_name = 'Roles'
+        verbose_name_plural = 'Roles'
     
     def __str__(self) -> str:
         return self.job_title

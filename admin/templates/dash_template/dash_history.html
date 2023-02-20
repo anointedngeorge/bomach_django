@@ -1,0 +1,10 @@
+{% if user.is_authenticated %}
+<div id="large_box">
+    <h5>Activities</h5>
+        {% for h in hist %}
+        <ul>
+            <li>{{ h.history_type }} {{ h.history_object }} on/at {{ h.history_date }}</li>
+        </ul>
+        {% endfor %}
+
+{% endif %}

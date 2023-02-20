@@ -10,23 +10,23 @@ from plugins.pdf import convert_to_file_to_pdf
 
 @admin.register(Employee)
 class HrEmployeeAdmin(admin.ModelAdmin):
-    list_display = ['user','phone_number','gender','marital_status','designation','title','action']
+    list_display = ['user','branch','phone_number','gender','marital_status','designation','action']
     exclude = ['user']
 
     fieldsets = (
-      ('Personal Information', {
-          'fields': ('address','phone_number','gender','marital_status','status',)
+      ('Personal', {
+          'fields': ('address','phone_number','gender','marital_status','dob','status',)
       }),
       
-      ('Employment History', {
-          'fields': ('skills','designation','title','employment_type','department')
+      ('Others', {
+          'fields': ('skills','designation','employment_type','salary','department')
       }),
       
-      ('Location History', {
-          'fields': ('country','state','local_government','town',)
+      ('Location', {
+          'fields': ('branch','country','state','local_government','town',)
       }),
       
-      ('Short Description', {
+      ('Description', {
           'fields': ('about',)
       }),
    )
