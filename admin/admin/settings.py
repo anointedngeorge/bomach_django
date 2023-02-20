@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django_htmx",
     'djmoney',
     'human_resource',
+    'operations',
     'django_bootstrap_icons'
 
 ]

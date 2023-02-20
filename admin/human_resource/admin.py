@@ -7,7 +7,7 @@ from human_resource.subadmins.admin_designation import *
 from human_resource.subadmins.admin_jobs import *
 from human_resource.subadmins.admin_salary import *
 from human_resource.subadmins.admin_skills import *
-from human_resource.subadmins.admin_task import *
+# from human_resource.subadmins.admin_task import *
 
 
 

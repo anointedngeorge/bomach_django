@@ -2,7 +2,7 @@ from django.contrib import admin
 from human_resource.models import *
 from django.urls import path
 from django.http import HttpResponse
-
+from django.template.response import TemplateResponse
 # Register your models here.
 # from fpdf import FPDF
 
@@ -36,7 +36,8 @@ class HrEmployeeAdmin(admin.ModelAdmin):
             
             new_url = [
                 path('employee-profile/', self.admin_site.admin_view(self.employee_profile) , 
-                name="employee-profile"),        
+                name="employee-profile"),
+        
                 ]
             urls = new_url + urls
             return urls

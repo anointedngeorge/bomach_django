@@ -66,6 +66,8 @@ class RealestatePlotAdmin(admin.ModelAdmin):
         ]
         return new_url + urls
 
+    
+    
     def invoice(self, request, id=None):
         context = dict(self.admin_site.each_context(request),)
         context['id'] = id
