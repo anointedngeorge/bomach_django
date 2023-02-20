@@ -51,7 +51,7 @@ class RealestatePlotAdmin(admin.ModelAdmin):
             path('change-plot-ownership', self.admin_site.admin_view(
                 self.change_plot_ownership), name="change-plot-ownership"),
             
-            path('selling-page/<str:pagename>/<int:id>/<int:amount>', self.admin_site.admin_view(
+            path('selling-page/<str:pagename>/<int:id>/<int:amount>/', self.admin_site.admin_view(
                 self.selling_page), name="selling-page"),
             
             path('admin-confirm-payment/<str:code>/', self.admin_site.admin_view(
@@ -122,7 +122,8 @@ class RealestatePlotAdmin(admin.ModelAdmin):
         context = {}
         context['id'] = id
         context['amount'] = amount
-        return TemplateResponse(request, f"templateResponse/realestate/{pagename}.html", context=context)
+        # return TemplateResponse(request, f"templateResponse/realestate/{pagename}.html", context=context)
+        return HttpResponse('Yes')
 
     def change_plot_ownership(self, request):
         context = dict(self.admin_site.each_context(request),)
