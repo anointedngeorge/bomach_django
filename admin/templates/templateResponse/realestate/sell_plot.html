@@ -46,14 +46,14 @@
 
   
     <div class="col-lg-12">
-        <a href="{% show_path %}/realestate/realestateplot/selling-page/sell_plot_with_new_customer/{{id}}/{{plot.price}}/">
+        <a href="/{% show_path %}/realestate/realestateplot/selling-page/sell_plot_with_new_customer/{{id}}/{{plot.price}}/">
             Show link
         </a>
         <table>
             <tr>
                 <td>
                     <button type="button" 
-                    hx-get="{% show_path %}/realestate/realestateplot/selling-page/sell_plot_with_new_customer/{{id}}/{{plot.price}}/"
+                    hx-get="{% show_path %}/realestate/realestateplot/selling-page/sell_plot_with_new_customer/{{id}}/{{plot.price}}"
                     hx-target="#container"
                     hx-swap="innerHTML"
                     class="btn btn-primary btn-sm" >New Sell</button>
@@ -61,7 +61,7 @@
                 <td>
                     <button type="button"
                     hx-swap="innerHTML"
-                    hx-get="{% show_path %}/realestate/realestateplot/selling-page/sell_plot_with_old_customer/{{id}}/{{plot.price}}/"
+                    hx-get="{% show_path %}/realestate/realestateplot/selling-page/sell_plot_with_old_customer/{{id}}/{{plot.price}}"
                     hx-target="#container"
                     class="btn btn-info btn-sm">Existing Sell With Customer</button>
                 </td>
