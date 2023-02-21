@@ -8,4 +8,5 @@ from settings.submodels.model_gallery import *
 
 @admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['model_name','model_id','name','url']
+

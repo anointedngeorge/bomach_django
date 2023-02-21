@@ -10,20 +10,18 @@ from django_countries.fields import CountryField
 
 
 class Gallery(models.Model):
+    model_name = models.CharField(max_length = 250, null=True)
+    model_id = models.CharField(max_length = 250, null=True)
     name = models.CharField(max_length = 150)
-    size = models.CharField(max_length = 150)
     url = models.CharField(max_length=250, null=True)
-    data = models.TextField(default='')
-    filename  = models.CharField(max_length = 150, default='')
-    type  = models.CharField(max_length = 150, default='')
     created_at = models.DateField(auto_now=True)
     
-
-
-
     class Meta:
         verbose_name = 'Gallery'
         verbose_name_plural = 'Gallery'
     
     def __str__(self) -> str:
         return self.name
+
+
+   

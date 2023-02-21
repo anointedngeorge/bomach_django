@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'djmoney',
     'human_resource',
     'operations',
-    'django_bootstrap_icons'
+    'django_bootstrap_icons',
+    'reports'
 
 ]
 

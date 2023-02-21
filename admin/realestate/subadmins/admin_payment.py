@@ -14,14 +14,14 @@ PATH_URI = settings.ADMIN_URI
 @admin.register(RealEstatePayment)
 class RealesteatePaymentAdmin(admin.ModelAdmin):
    
-    list_display = ['created_at','plot','user','status','activation_code','customer_email','purchase_code','customer','initial_amount','limited_date']
+    list_display = ['created_at','plot','status','activation_code','customer_email','purchase_code','customer','initial_amount','limited_date']
     # search_fields = ['student__startswith', 'year__startswith']
     list_filter = ['customer_email','customer','created_at']
     
-    def has_add_permission(self, request) -> bool:
-        return False
+    # def has_add_permission(self, request) -> bool:
+    #     return False
 
-    def has_change_permission(self, request, obj=None) -> bool:
-        return False
+    # def has_change_permission(self, request, obj=None) -> bool:
+    #     return False
 
 
