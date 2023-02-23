@@ -9,6 +9,7 @@ from django_countries.fields import CountryField
 from human_resource.models import *
 from human_resource.submodels.departments import Department
 from customer.models import Customer
+from human_resource.submodels.employee import Employee
 
 
 class OperationProject(models.Model):
@@ -18,6 +19,7 @@ class OperationProject(models.Model):
     expected_end_date = models.DateField(verbose_name='end date(deadline)', auto_now=False, default='2023-03-02')
     department = models.ForeignKey(Department, on_delete=models.CASCADE, 
     null=True, related_name='project_department')
+    project_members = models.ManyToManyField(Employee, null=True)
     project_category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE, null=True)
     client = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
     budget = models.CharField(max_length = 150, null=True, verbose_name="budget(N)")
