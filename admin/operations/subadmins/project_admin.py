@@ -11,27 +11,25 @@ from operations.models import *
 
 @admin.register(OperationProject)
 class OperationProjectAdmin(admin.ModelAdmin):
-    pass
-    # list_display = ['user','branch','phone_number','gender','marital_status','designation','action']
+    
+    list_display = ['project_id','project_name','start_date','expected_end_date','client',
+    'budget','hour_estimated']
     # exclude = ['user']
 
-#     fieldsets = (
-#       ('Personal', {
-#           'fields': ('address','phone_number','gender','marital_status','dob','status',)
-#       }),
-      
-#       ('Others', {
-#           'fields': ('skills','designation','employment_type','salary','department')
-#       }),
-      
-#       ('Location', {
-#           'fields': ('branch','country','state','local_government','town',)
-#       }),
-      
-#       ('Description', {
-#           'fields': ('about',)
-#       }),
-#    )
+    fieldsets = (
+      ('Projects', {
+          'fields': ('project_id','project_name','start_date','expected_end_date',)
+      }),
+
+     ('Extra', {
+          'fields': ('project_category','client','budget','hour_estimated',)
+      }),
+
+    ('description', {
+          'fields': ('project_owner','project_desciption',)
+      }),
+    
+   )
 
 
 

@@ -16,9 +16,17 @@ class ReportPayment(models.Model):
         ('reserve', 'Reserved'),
     ]
 
+    code = models.CharField(max_length = 150, null=True)
     status = models.CharField(max_length=500, null=True, default='pending', choices=CHOICE)
     created_at = models.DateField(auto_now=True)
+
     class Meta:
         verbose_name = 'Payment'
         verbose_name_plural = 'Payments'
+
+    def __str__(self) -> str:
+        return f"{self.client} - {self.code}"
+
+
+
     
