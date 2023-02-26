@@ -7,9 +7,38 @@ from django_countries.fields import CountryField
 # Create your models here.
 
 from human_resource.models import *
+from customer.models import Customer
+from settings.submodels.model_service import ServiceCategory
+from operations.submodels.project_model import OperationProject
+from operations.submodels.site_model import OperationSite
+from django_countries.fields import CountryField
+
+
 
 class OperationContract(models.Model):
-    name = models.CharField(max_length = 150, null=True, blank=True)
+    contract_title = models.CharField(max_length = 150, null=True, blank=True)
+    start_date = models.DateField(auto_now=False, default='2023-03-02')
+    expected_end_date = models.DateField(verbose_name='end date(deadline)', 
+    auto_now=False, default='2023-03-02')
+    project  = models.ForeignKey(OperationProject, on_delete=models.CASCADE, null=True, blank=True)
+    site  = models.ForeignKey(OperationSite, on_delete=models.CASCADE, null=True, blank=True)
+    project_description = models.TextField(verbose_name='Project Scope Description', null=True)
+    project_type = models.CharField(max_length = 150, null=True)
+    
+    project_value =  models.CharField(max_length=120, null=True)
+    fullname = models.CharField(max_length = 150, null=True, verbose_name='fullname or cooperate name')
+    contractor_phone = models.CharField(max_length = 150, null=True)
+    address = models.CharField(max_length = 150, null=True)
+    alternative_address = models.CharField(max_length = 150, null=True)
+    country = CountryField(blank_label="(select country)", default='---',max_length=250)
+    city = models.CharField(max_length=200, null=True)
+    state = models.CharField(max_length=200, null=True)
+    status = models.CharField(max_length = 150, choices=[
+        ('completed','Completed'),
+        ('rejected','Rejected'),
+        ('pending','Pending')
+        ], null=True)
+  
     created_at = models.DateField(auto_now=True)
     
     class Meta:

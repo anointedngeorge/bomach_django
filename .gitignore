@@ -17,3 +17,5 @@
 /admin/employee/frontend/__pycache__
 /admin/task/frontend/__pycache__
 /admin/realestate/frontend/__pycache__
+
+/operations/migrations/__pycache__

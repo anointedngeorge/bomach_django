@@ -11,27 +11,23 @@ from operations.models import *
 
 @admin.register(OperationContract)
 class OperationsContractAdmin(admin.ModelAdmin):
-    pass
-    # list_display = ['user','branch','phone_number','gender','marital_status','designation','action']
+
+    list_display = ['contract_title','start_date','expected_end_date','project','site',
+          'project_type','project_value']
     # exclude = ['user']
 
-#     fieldsets = (
-#       ('Personal', {
-#           'fields': ('address','phone_number','gender','marital_status','dob','status',)
-#       }),
+    fieldsets = (
+      ('Contract', {
+          'fields': ('contract_title','start_date','expected_end_date','project','site',
+          'project_type','project_value',)
+      }),
       
-#       ('Others', {
-#           'fields': ('skills','designation','employment_type','salary','department')
-#       }),
-      
-#       ('Location', {
-#           'fields': ('branch','country','state','local_government','town',)
-#       }),
-      
-#       ('Description', {
-#           'fields': ('about',)
-#       }),
-#    )
+      ('Contractor', {
+          'fields': ('fullname','contractor_phone','alternative_address','country','city',
+          'state','status',
+          )
+      }),
+   )
 
 
 

@@ -11,27 +11,31 @@ from operations.models import *
 
 @admin.register(OperationSite)
 class OperationSiteAdmin(admin.ModelAdmin):
-    pass
-    # list_display = ['user','branch','phone_number','gender','marital_status','designation','action']
+    """
+    site_country = CountryField(blank_label="(select country)", default='---',max_length=250)
+    site_lga = models.CharField(max_length=200, null=True)
+    site_state = models.CharField(max_length=200, null=True)
+    site_map_location = models.CharField(max_length = 150, null=True)
+    scope_of_work = models.CharField(max_length = 150, null=True)
+    project = models.ForeignKey(OperationProject, on_delete=models.CASCADE, 
+    related_name='project_site_related')
+    created_at = models.DateField(auto_now=True)
+    
+    """
+    list_display = ['site_name','date_creation','service_category','site_client']
     # exclude = ['user']
 
-#     fieldsets = (
-#       ('Personal', {
-#           'fields': ('address','phone_number','gender','marital_status','dob','status',)
-#       }),
+    fieldsets = (
+      ('Site Details', {
+          'fields': ('site_name','date_creation','service_category','status','site_client','site_country',
+          'site_lga',)
+      }),
       
-#       ('Others', {
-#           'fields': ('skills','designation','employment_type','salary','department')
-#       }),
+      ('Other', {
+          'fields': ('site_state','site_map_location','scope_of_work','project',)
+      }),
       
-#       ('Location', {
-#           'fields': ('branch','country','state','local_government','town',)
-#       }),
-      
-#       ('Description', {
-#           'fields': ('about',)
-#       }),
-#    )
+   )
 
 
 

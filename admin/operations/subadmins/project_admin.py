@@ -12,7 +12,7 @@ from operations.forms import ProjectForm
 @admin.register(OperationProject)
 class OperationProjectAdmin(admin.ModelAdmin):
     
-    list_display = ['project_name','start_date','expected_end_date','client',
+    list_display = ['status','project_name','start_date','expected_end_date','client',
     'budget','hour_estimated']
     exclude = ['project_id']
     # form = ProjectForm

@@ -28,6 +28,11 @@ class OperationProject(models.Model):
     project_owner = models.CharField(
         max_length = 150, null=True, help_text='Please Enter Unique Id.'
         )
+    status = models.CharField(max_length = 150, choices=[
+        ('completed','Completed'),
+        ('rejected','Rejected'),
+        ('pending','Pending')
+        ], null=True)
     created_at = models.DateField(auto_now=True)
     
     class Meta:
