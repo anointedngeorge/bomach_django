@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 from django.conf import settings
 import uuid
 from plugins.generator import generator
-
+from actions.generator import codeGenerator
 
 
 PATH_URI = settings.ADMIN_URI
@@ -21,6 +21,7 @@ class RealestateAdmin(admin.ModelAdmin):
     # search_fields = ['student__startswith', 'year__startswith']
     list_filter = ['name','created_at']
     exclude = ['code']
+    actions = [codeGenerator]
     # actions = [filter_student]
  
     fieldsets = (

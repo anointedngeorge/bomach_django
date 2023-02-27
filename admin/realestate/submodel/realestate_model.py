@@ -66,8 +66,7 @@ class RealEstate(models.Model):
                 "query":{'id':self.id,'status':self.status,'title':self.name }}
             ],
             
-            "avaliable": [{"name":f"Upload Files", "href":f"{local_file_url_image(self.code)}", "is_button":False, 
-                "query":{'id':self.id, 'model':modelname}}],
+            "avaliable": [],
         }
         return dictDropdown(action=action, status=self.status, modelname=modelname, code=self.code)
 
