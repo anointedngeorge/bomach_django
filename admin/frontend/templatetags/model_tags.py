@@ -11,3 +11,9 @@ def show_customers(f=None):
     customer = Customer.objects.all()
     return customer
 
+
+
+@register.simple_tag
+def show_file_url(code=None):
+    url = f"settings/gallery/"
+    return url

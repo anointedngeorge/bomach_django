@@ -12,7 +12,10 @@ from plugins.dropdown import dictDropdown
 from django.conf import settings
 
 from customer.models import *
-
+from plugins.url import (
+    local_file_url_image,
+    api_fetch_image
+)
 
 
 class RealEstatePlot(models.Model):
@@ -22,6 +25,8 @@ class RealEstatePlot(models.Model):
         ('reserved', 'Reserved'),
         ('available','Available')
     ]
+    code = models.CharField(max_length = 150, null=True)
+    
     # id=models.CharField(primary_key=True,default=uuid.uuid4, editable=False, max_length=36)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name="user_realestate_plot_rel")
     realestate = models.ForeignKey("Realestate", verbose_name=("Realestate"), null=True, on_delete=models.CASCADE, related_name="realestate_rel")
@@ -55,10 +60,14 @@ class RealEstatePlot(models.Model):
     #     )
     def action(self):
         try:
+            modelname = self._meta.model.__name__
             action = {
                 "available": [
                     {"name":'sell plot', "href":f"sell-plot", "is_button":False, 
                 "query":{'id':self.id, 'status':self.status,'title':f"{self.name} {self.realestate}"}}, 
+                
+                {"name":f"Upload Files", "href":f"{local_file_url_image(self.code)}", "is_button":False, 
+                "query":{'id':self.id, 'model':modelname}}
                 ],
 
                 "pending": [
@@ -78,7 +87,7 @@ class RealEstatePlot(models.Model):
                 "reserved":[{"name":'reserved', "href":f"", "is_button":False, 
                 "query":{'id':self.id,'status':self.status,'title':f"{self.name} {self.realestate}" } }],
             }
-            return dictDropdown(action=action, status=self.status)
+            return dictDropdown(action=action, status=self.status, modelname=modelname, code=self.code)
         except:
             pass
 

@@ -7,11 +7,17 @@ from django.template.response import TemplateResponse
 # from fpdf import FPDF
 
 from plugins.pdf import convert_to_file_to_pdf
+import uuid
+from plugins.generator import generator
+
+
+
 
 @admin.register(Employee)
 class HrEmployeeAdmin(admin.ModelAdmin):
     list_display = ['user','branch','phone_number','gender','marital_status','designation','action']
-    exclude = ['user']
+    exclude = ['user', 'code']
+    
 
     fieldsets = (
       ('Personal', {
@@ -30,7 +36,12 @@ class HrEmployeeAdmin(admin.ModelAdmin):
           'fields': ('about',)
       }),
    )
+    def response_add(self, request, obj, post_url_continue=None):
+        obj.code = generator()
+        obj.save()
+        return super().response_add(request, obj, post_url_continue)
 
+        
     def get_urls(self):
             urls = super().get_urls()
             

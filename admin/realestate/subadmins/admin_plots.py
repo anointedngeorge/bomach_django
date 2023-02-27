@@ -7,7 +7,7 @@ from django.contrib import messages as messag
 from customer.models import *
 from django.shortcuts import redirect
 from django.conf import settings
-
+import uuid
 PATH_URI = settings.ADMIN_URI
 
 
@@ -157,7 +157,9 @@ class RealestatePlotAdmin(admin.ModelAdmin):
         estate_total_amount =  float(obj.realestate.unit_price) * float(obj.size)
         extra_fees =  float(obj.realestate.survey_plan) + float(obj.realestate.development_fee) + float(obj.realestate.legal_fee)
         obj.price = float(estate_total_amount) + float(extra_fees)
+        obj.code = str(uuid.UUID.hex)
         obj.save()
+    
         return super().response_add(request, obj, post_url_continue)
 
     def response_change(self, request, obj) -> HttpResponse:

@@ -1,0 +1,85 @@
+{% extends "admin/base_site.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container p-4">
+    <div class="col-lg-12 mt-4">
+        <span id="status"></span> <br>
+        <progress id="progressBar" value="0" max="100"> 0% </progress><br>
+        <span id="loaded_n_total"></span>
+    </div>
+
+    <section class="col-lg-12 p-4">
+        <h3 class="h3">Upload File(s) for {{model}}</h3>
+        <form 
+        id="fileuploader"
+        action="https://bomachgroup.com/apiadmin/api/v1/media/register-gallery/{{code}}/"
+        method="POST"
+        enctype="multipart/form-data"
+        >
+        <label class="label">
+            Choose File (PDF, PNG, JPG, Docs, PPTX) 
+        </label>
+
+        <div class="col-lg-12">
+            <input type="file" name="file" id="file1" required>
+            <input type="submit" value="Upload File">
+        </div>
+    </form>
+
+   
+    </section>
+
+<script>
+    
+function _(el) {
+  return document.getElementById(el);
+}
+
+function uploadFile(param) {
+    param.preventDefault();
+  let url = param.target.action;
+  var file = _("file1").files[0];
+  // alert(file.name+" | "+file.size+" | "+file.type);
+  var formdata = new FormData();
+  formdata.append("file", file);
+  var ajax = new XMLHttpRequest();
+  ajax.upload.addEventListener("progress", progressHandler, false);
+  ajax.addEventListener("load", completeHandler, false);
+  ajax.addEventListener("error", errorHandler, false);
+  ajax.addEventListener("abort", abortHandler, false);
+  ajax.open("POST", url);
+  ajax.send(formdata);
+}
+
+function progressHandler(event) {
+  _("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
+  var percent = (event.loaded / event.total) * 100;
+  _("progressBar").value = Math.round(percent);
+  _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
+}
+
+function completeHandler(event) {
+  _("status").innerHTML = event.target.responseText;
+  _("progressBar").value = 0; //wil clear progress bar after successful upload
+}
+
+function errorHandler(event) {
+  _("status").innerHTML = "Upload Failed";
+}
+
+function abortHandler(event) {
+  _("status").innerHTML = "Upload Aborted";
+}
+
+
+document.getElementById('fileuploader').addEventListener('submit', uploadFile, false)
+
+
+</script>
+
+</div>
+
+
+{% endblock content %}

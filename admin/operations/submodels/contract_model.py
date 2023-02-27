@@ -16,6 +16,8 @@ from django_countries.fields import CountryField
 
 
 class OperationContract(models.Model):
+    code = models.CharField(max_length = 150, null=True)
+    
     contract_title = models.CharField(max_length = 150, null=True, blank=True)
     start_date = models.DateField(auto_now=False, default='2023-03-02')
     expected_end_date = models.DateField(verbose_name='end date(deadline)', 
@@ -49,6 +51,6 @@ class OperationContract(models.Model):
     
     
     def __str__(self) -> str:
-        return self.name
+        return f"{self.contract_title} - {self.code}"
     
     

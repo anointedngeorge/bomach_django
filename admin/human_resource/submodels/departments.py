@@ -9,6 +9,7 @@ from django_countries.fields import CountryField
 from human_resource.models import *
 
 class Department(models.Model):
+    code = models.CharField(max_length = 150, null=True)
     name = models.CharField(max_length = 150)
     description = models.TextField()
     

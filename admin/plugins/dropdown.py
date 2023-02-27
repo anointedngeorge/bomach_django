@@ -1,16 +1,24 @@
 from django.utils.html import format_html
 from django.urls import reverse_lazy
 
+from plugins.url import (
+    local_file_url_image,
+    api_fetch_image
+)
+
 
 
 def queryFormat(param={}):
+    if len(param) > 0:
         str =  ""
         for x in param:
             str += f"{x}={param.get(x)}&"
             filtered =  str.rstrip('&')
         return filtered
+    else:
+        return ''
 
-def dictDropdown(action=[], status=''):
+def dictDropdown(action=[], status='', modelname='', code=''):
         """
         This is a dropdown menue
         """
@@ -23,8 +31,14 @@ def dictDropdown(action=[], status=''):
         for x in get_status:
             query = queryFormat(x.get('query'))
             if x.get('is_button'):
+                html += f"<td><a  href='{local_file_url_image(code)}'>Upload File(s)</a></td>"
+                html += f"<td><a  href='{api_fetch_image(code)}' target='_blank'>Get Files</a></td>"
                 html += f"<td><button type='button' data-url='{x.get('href')}' value='{query}'>{str(x.get('name')).title()}</button></td>"
             else:
+                # {"name":f"Upload Files", "href":f"{local_file_url_image(self.code)}", "is_button":False, 
+                # "query":{'id':self.id, 'model':modelname}}
+                html += f"<td><a  href='{local_file_url_image(code)}'>Upload File(s)</a></td>"
+                html += f"<td><a  href='{api_fetch_image(code)}' target='_blank'>Get Files</a></td>"
                 html += f"<td><a  href='{x.get('href')}?{query}'>{str(x.get('name')).title()}</a></td>"
         html += "</tr>"
         html += "</table>"
@@ -33,7 +47,7 @@ def dictDropdown(action=[], status=''):
         return format_html(html)
 
 
-def singleDropdown(action=[]):
+def singleDropdown(action=[], modelname='', code=''):
         html = ""
         # get the status that match in the action object
         html += "<div class='table table-responsive'>"
@@ -42,8 +56,12 @@ def singleDropdown(action=[]):
         for x in action:
             query = queryFormat(x.get('query'))
             if x.get('is_button'):
+                html += f"<td><a  href='{local_file_url_image(code)}'>Upload File(s)</a></td>"
+                html += f"<td><a  href='{api_fetch_image(code)}' target='_blank'>Get Files</a></td>"
                 html += f"<td><button  data-url='{x.get('href')}' value='{query}'>{x.get('name')}</button></td>"
             else:
+                html += f"<td><a  href='{local_file_url_image(code)}'>Upload File(s)</a></td>"
+                html += f"<td><a  href='{api_fetch_image(code)}' target='_blank'>Get Files</a></td>"
                 html += f"<td><a href='{x.get('href')}?{query}'>{x.get('name')}</a></td>"
         html += "</tr>"
         html += "</table>"

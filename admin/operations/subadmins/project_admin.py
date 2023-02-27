@@ -8,13 +8,17 @@ from django.template.response import TemplateResponse
 from plugins.pdf import convert_to_file_to_pdf
 from operations.models import *
 from operations.forms import ProjectForm
+import uuid
+from plugins.generator import generator
+
+
 
 @admin.register(OperationProject)
 class OperationProjectAdmin(admin.ModelAdmin):
     
     list_display = ['status','project_name','start_date','expected_end_date','client',
     'budget','hour_estimated']
-    exclude = ['project_id']
+    exclude = ['project_id','code']
     # form = ProjectForm
 
     fieldsets = (
@@ -31,6 +35,10 @@ class OperationProjectAdmin(admin.ModelAdmin):
       }),
     
    )
+    def response_add(self, request, obj, post_url_continue=None):
+        obj.code = generator()
+        obj.save()
+        return super().response_add(request, obj, post_url_continue)
 
 
 

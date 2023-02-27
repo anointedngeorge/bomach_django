@@ -8,6 +8,7 @@ from django_countries.fields import CountryField
 from human_resource.models import *
 
 class Advert(models.Model):
+    code = models.CharField(max_length = 150, null=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True,
      related_name="hr_advert_user_relationship")
     name = models.CharField(max_length = 150)

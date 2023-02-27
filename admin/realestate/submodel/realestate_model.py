@@ -11,7 +11,10 @@ from django.urls import reverse_lazy
 from plugins.dropdown import dictDropdown
 from django.conf import settings
 from customer.models import *
-
+from plugins.url import (
+    local_file_url_image,
+    api_fetch_image
+)
 
 
 
@@ -20,6 +23,8 @@ class RealEstate(models.Model):
         ('soldout', 'Completedly Soldout'),
         ('avaliable', 'Can Still Sell Plots'),
     ]
+    code = models.CharField(max_length = 150, null=True)
+    
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name="user_rel")
     branch = models.ForeignKey(Branch, verbose_name=("Choose Branch"), null=True, on_delete=models.CASCADE, related_name="branch_rel")
 
@@ -48,8 +53,10 @@ class RealEstate(models.Model):
         return f"{self.name}"
 
     def action(self):
+        modelname = self._meta.model.__name__
+       
         action = {
-            "soldout": [{"name":'sell', "href":f"", "is_button":False, 
+            "soldout": [{"name":f"{self.code}", "href":f"", "is_button":False, 
                 "query":{'id':self.id,'status':self.status,'title':self.name}},
 
             {"name":'sell', "href":f"", "is_button":False, 
@@ -59,10 +66,10 @@ class RealEstate(models.Model):
                 "query":{'id':self.id,'status':self.status,'title':self.name }}
             ],
             
-            "avaliable": [{"name":'sell', "href":'', "is_button":False, 
-                "query":{'id':self.id,'status':self.status,'title':self.name }}],
+            "avaliable": [{"name":f"Upload Files", "href":f"{local_file_url_image(self.code)}", "is_button":False, 
+                "query":{'id':self.id, 'model':modelname}}],
         }
-        return dictDropdown(action=action, status=self.status)
+        return dictDropdown(action=action, status=self.status, modelname=modelname, code=self.code)
 
 
 

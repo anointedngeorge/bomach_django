@@ -9,6 +9,7 @@ from human_resource.models import *
 
 
 class Salary(models.Model):
+    code = models.CharField(max_length = 150, null=True)
     employee = models.ForeignKey('Employee', on_delete=models.CASCADE,
      related_name="hr_jobs_salary_relationship")
     amount = models.CharField(max_length = 150)

@@ -6,8 +6,9 @@ from django.urls import reverse
 from django.utils import timezone
 from django_countries.fields import CountryField
 
-class Customer(models.Model):
 
+class Customer(models.Model):
+    code = models.CharField(max_length = 150, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True,
      related_name="customer_relationship")
     country = CountryField(blank_label="(select country)", default='---',max_length=250)

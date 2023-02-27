@@ -8,8 +8,8 @@ from customer.models import *
 from django.shortcuts import redirect
 from django.conf import settings
 
-PATH_URI = settings.ADMIN_URI
 
+PATH_URI = settings.ADMIN_URI
 
 @admin.register(RealEstatePayment)
 class RealesteatePaymentAdmin(admin.ModelAdmin):

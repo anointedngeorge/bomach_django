@@ -10,6 +10,8 @@ from settings.submodels.model_service import ServiceCategory
 
 
 class Task(models.Model):
+    code = models.CharField(max_length = 150, null=True)
+    
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
      related_name="hr_task_user_relationship")
     name = models.CharField(max_length = 150)

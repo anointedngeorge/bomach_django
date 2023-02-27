@@ -8,10 +8,18 @@ from django.template.response import TemplateResponse
 from plugins.pdf import convert_to_file_to_pdf
 
 from operations.models import *
+import uuid
+from plugins.generator import generator
+
 
 @admin.register(OperationTask)
 class OperationsTaskAdmin(admin.ModelAdmin):
-    pass
+    exclude =['code']
+
+    def response_add(self, request, obj, post_url_continue=None):
+        obj.code = generator()
+        obj.save()
+        return super().response_add(request, obj, post_url_continue)
     # list_display = ['user','branch','phone_number','gender','marital_status','designation','action']
     # exclude = ['user']
 

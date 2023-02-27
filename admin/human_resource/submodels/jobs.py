@@ -8,13 +8,11 @@ from django_countries.fields import CountryField
 from human_resource.models import *
 # from human_resource.submodels.employee import Employee
 class Jobs(models.Model):
+    code = models.CharField(max_length = 150, null=True)
     employee = models.ForeignKey("Employee", on_delete=models.CASCADE, null=True, blank=True,
      related_name="hr_employee_relationship")
     description = models.TextField()
    
-
-    
-
     class Meta:
         verbose_name = 'Roles'
         verbose_name_plural = 'Roles'
@@ -24,6 +22,7 @@ class Jobs(models.Model):
 
 
 class Job_history(models.Model):
+    code = models.CharField(max_length = 150, null=True)
     jobs = models.ForeignKey(Jobs, on_delete=models.CASCADE, null=True, blank=True,
      related_name="hr_jobs_relationship")
     employee = models.ForeignKey('Employee', on_delete=models.CASCADE, null=True, blank=True,

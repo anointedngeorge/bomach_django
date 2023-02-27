@@ -11,6 +11,7 @@ from operations.submodels.project_model import OperationProject
 from settings.models import ServiceCategory
 
 class OperationTask(models.Model):
+    code = models.CharField(max_length = 150, null=True)
     task_category = models.ForeignKey(ServiceCategory,
     null=True,
     on_delete=models.CASCADE, 

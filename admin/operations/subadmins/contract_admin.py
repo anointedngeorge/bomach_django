@@ -8,13 +8,18 @@ from django.template.response import TemplateResponse
 from plugins.pdf import convert_to_file_to_pdf
 
 from operations.models import *
+import uuid
+from plugins.generator import generator
+
+
+
 
 @admin.register(OperationContract)
 class OperationsContractAdmin(admin.ModelAdmin):
 
     list_display = ['contract_title','start_date','expected_end_date','project','site',
           'project_type','project_value']
-    # exclude = ['user']
+    exclude = ['code']
 
     fieldsets = (
       ('Contract', {
@@ -28,7 +33,10 @@ class OperationsContractAdmin(admin.ModelAdmin):
           )
       }),
    )
-
+    def response_add(self, request, obj, post_url_continue=None):
+        obj.code = generator()
+        obj.save()
+        return super().response_add(request, obj, post_url_continue)
 
 
 
