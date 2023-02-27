@@ -16,4 +16,4 @@ def codeGenerator(modeladmin, request, queryset):
         if x.code == None:
             x.code = generator()
             x.save()
-codeGenerator.short_description = "Generate Code"
+codeGenerator.short_description = "Assign Code"

@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="col-lg-12">
+        <form action="">
+            <table class="table">
+            {% for x in setting_items %}    
+                    <tr>
+                        <td>
+                            <input type="text" value={{x.0}}>
+                        </td>
+                        <td>
+                            <input type="text" value={{x.1}}>
+                        </td>
+                    </tr>
+            {% endfor %}
+        </table>
+        </form>
+    </div>
+
+
+</div>

@@ -9,16 +9,17 @@ from django.shortcuts import redirect
 from django.conf import settings
 import uuid
 PATH_URI = settings.ADMIN_URI
+from actions.generator import codeGenerator
 
 
 
 @admin.register(RealEstatePlot)
 class RealestatePlotAdmin(admin.ModelAdmin):
-    ated_at = models.DateField(auto_now=True)
-   
     list_display = ['created_at','user','realestate','name','price','size','purchase_code','status','action']
     # search_fields = ['student__startswith', 'year__startswith']
     list_filter = ['realestate','name','created_at','purchase_code']
+    actions = [codeGenerator]
+    
     fieldsets = (
       ('Plot Form', {
           'fields': ('realestate','name',)
