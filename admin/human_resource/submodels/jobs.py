@@ -18,7 +18,7 @@ class Jobs(models.Model):
         verbose_name_plural = 'Roles'
     
     def __str__(self) -> str:
-        return self.job_title
+        return self.employee
 
 
 class Job_history(models.Model):

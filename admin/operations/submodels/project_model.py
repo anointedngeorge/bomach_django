@@ -14,7 +14,8 @@ from human_resource.submodels.employee import Employee
 
 class OperationProject(models.Model):
     code = models.CharField(max_length = 150, null=True)
-    
+    project_dependency = models.ForeignKey('OperationProject', 
+    on_delete=models.CASCADE, related_name='project_dependencys',blank=True, null=True)
     project_id = models.CharField(max_length = 150, null=True, blank=True)
     project_name = models.CharField(max_length = 150, null=True, blank=True)
     start_date = models.DateField(auto_now=False, default='2023-03-02')

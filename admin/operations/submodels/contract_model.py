@@ -17,17 +17,17 @@ from django_countries.fields import CountryField
 
 class OperationContract(models.Model):
     code = models.CharField(max_length = 150, null=True)
-    
     contract_title = models.CharField(max_length = 150, null=True, blank=True)
+    contract_dependency = models.ForeignKey('OperationContract',blank=True, null=True, 
+    on_delete=models.CASCADE)
     start_date = models.DateField(auto_now=False, default='2023-03-02')
     expected_end_date = models.DateField(verbose_name='end date(deadline)', 
     auto_now=False, default='2023-03-02')
-    project  = models.ForeignKey(OperationProject, on_delete=models.CASCADE, null=True, blank=True)
-    site  = models.ForeignKey(OperationSite, on_delete=models.CASCADE, null=True, blank=True)
-    project_description = models.TextField(verbose_name='Project Scope Description', null=True)
-    project_type = models.CharField(max_length = 150, null=True)
-    
-    project_value =  models.CharField(max_length=120, null=True)
+    contract_project  = models.ForeignKey(OperationProject, on_delete=models.CASCADE, null=True, blank=True)
+    contract_site  = models.ForeignKey(OperationSite, on_delete=models.CASCADE, null=True, blank=True)
+    contract_description = models.TextField(verbose_name='Project Scope Description', null=True)
+    contract_type = models.CharField(max_length = 150, null=True)
+    contract_value = models.IntegerField(blank=True, null=True)
     fullname = models.CharField(max_length = 150, null=True, verbose_name='fullname or cooperate name')
     contractor_phone = models.CharField(max_length = 150, null=True)
     address = models.CharField(max_length = 150, null=True)
@@ -40,15 +40,13 @@ class OperationContract(models.Model):
         ('rejected','Rejected'),
         ('pending','Pending')
         ], null=True)
-  
+
+    priority = models.CharField(max_length = 150,blank=True, null=True)
     created_at = models.DateField(auto_now=True)
     
     class Meta:
-    
         verbose_name = 'Contract'
         verbose_name_plural = 'Contracts'
-    
-    
     
     def __str__(self) -> str:
         return f"{self.contract_title} - {self.code}"

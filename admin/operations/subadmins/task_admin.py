@@ -14,7 +14,8 @@ from plugins.generator import generator
 
 @admin.register(OperationTask)
 class OperationsTaskAdmin(admin.ModelAdmin):
-    exclude =['code']
+    # list_display = []
+    exclude =['code','is_done']
 
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()

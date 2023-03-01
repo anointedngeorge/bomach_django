@@ -31,7 +31,7 @@ class OperationProjectAdmin(admin.ModelAdmin):
       }),
 
     ('description', {
-          'fields': ('project_owner','project_desciption',)
+          'fields': ('project_dependency','project_owner','project_desciption',)
       }),
     
    )

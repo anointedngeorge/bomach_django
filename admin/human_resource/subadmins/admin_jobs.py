@@ -18,7 +18,7 @@ class HrJobsAdmin(admin.ModelAdmin):
 class HrJobsHistoryAdmin(admin.ModelAdmin):
     list_display = ['employee','jobs','department','start_date','end_date']
     list_filter = ['employee','jobs', 'department','start_date','end_date']
-    exclude = ['code']
+    exclude = ['code','code']
 
     def has_add_permission(self, request) -> bool:
         return False

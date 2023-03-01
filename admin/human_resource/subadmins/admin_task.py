@@ -12,7 +12,7 @@ from plugins.generator import generator
 @admin.register(Task)
 class HrTaskAdmin(admin.ModelAdmin):
     list_display = ['author','name','start_date','end_date']
-    exclude = ['code']
+    exclude = ['code','is_done']
 
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()

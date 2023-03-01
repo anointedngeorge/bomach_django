@@ -17,14 +17,14 @@ from plugins.generator import generator
 @admin.register(OperationContract)
 class OperationsContractAdmin(admin.ModelAdmin):
 
-    list_display = ['contract_title','start_date','expected_end_date','project','site',
-          'project_type','project_value']
+    list_display = ['contract_title','contract_dependency','start_date','expected_end_date','contract_site',
+          'contract_type','contract_value','priority',]
     exclude = ['code']
 
     fieldsets = (
       ('Contract', {
-          'fields': ('contract_title','start_date','expected_end_date','project','site',
-          'project_type','project_value',)
+          'fields': ('contract_title','contract_dependency','start_date','expected_end_date','contract_site',
+          'contract_type','contract_value','priority',)
       }),
       
       ('Contractor', {
