@@ -20,6 +20,7 @@ from django.utils.safestring import mark_safe
 from django.http import HttpResponseRedirect
 from django import template
 from plugins.generator import generator
+from actions.generator import codeGenerator
 # from django.utils.translation import ugettext as _
 
 
@@ -30,6 +31,7 @@ class BranchModel(admin.ModelAdmin):
     list_display = ['name','country','state','office_address','no_of_staff','branch_date']
     list_filter = ['name']
     exclude = ['code']
+    actions = [codeGenerator]
 
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()
@@ -44,6 +46,7 @@ class BranchAccessoriesModel(admin.ModelAdmin):
     list_display = ['name','serial_number','date_of_purchase','action']
     list_filter = ['name']
     exclude = ['code']
+    actions = [codeGenerator]
 
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()
