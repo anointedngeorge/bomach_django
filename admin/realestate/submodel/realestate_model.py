@@ -15,7 +15,8 @@ from plugins.url import (
     local_file_url_image,
     api_fetch_image
 )
-
+from django.contrib.contenttypes.models import ContentType
+from django.urls import reverse
 
 
 class RealEstate(models.Model):
@@ -51,6 +52,11 @@ class RealEstate(models.Model):
         
     def __str__(self) -> str:
         return f"{self.name}"
+
+
+    def get_admin_url(self):
+        content_type = ContentType.objects.get_for_model(self.__class__)
+        return reverse("admin:%s_%s_change" % (content_type.app_label, content_type.model), args=(self.id,))
 
     def action(self):
         modelname = self._meta.model.__name__

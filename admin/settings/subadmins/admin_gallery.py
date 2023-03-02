@@ -40,16 +40,24 @@ class GalleryAdmin(admin.ModelAdmin):
 
     def get_files(self, request, code=None):
         context = dict(self.admin_site.each_context(request),)
-        dictobj =  request.GET.dict()
-        context['site_title'] = 'Get files'
-        context['title'] = 'Get files'
-        context['code'] = code
-        context['model'] = dictobj.get('model')
-        url = "https://bomachgroup.com/apiadmin/api/v1/media/get-gallery-image/{code}/"
-        files =  req.get(url)
-        result =  files.json()
-        context["files"] = result
-        
-        return TemplateResponse(request, 
-        "templateResponse/setting/files.html", context=context)
+        try:
+            dictobj =  request.GET.dict()
+            context['site_title'] = 'Get files'
+            context['title'] = 'Get files'
+            context['code'] = code
+            context['model'] = dictobj.get('model')
+            url = f"https://bomachgroup.com/apiadmin/api/v1/media/get-gallery-image/{code}/"
+            files =  req.get(url)
+            result =  files.json()
+            
+            context["files"] = result
+            context['icons'] = {
+                'jpg':'📁',
+                'pdf':'🗃',
+                'vid':'📹'
+            }
+            return TemplateResponse(request, 
+            "templateResponse/setting/files.html", context=context)
+        except Exception as e:
+            return e
 
