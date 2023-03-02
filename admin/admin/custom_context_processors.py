@@ -1,5 +1,8 @@
 import datetime
 import os
+from operations.models import *
+
+
 
 def get_system_settings_json(request):
     # /home/eit/DjangoProjects/bomach_django/system.json
@@ -13,3 +16,11 @@ def get_system_settings_json(request):
     else:
         print('No')
         return {}
+
+def gettotal():
+    return {
+        'task': OperationTask.objects.all().count(),
+        'contract':OperationContract.all().count(),
+        'site':  OperationSite.objects.all().count(),
+        'project':OperationProject.objects.all().count(),
+    }

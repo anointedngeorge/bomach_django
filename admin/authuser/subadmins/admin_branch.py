@@ -19,6 +19,7 @@ from django.utils.safestring import mark_safe
 
 from django.http import HttpResponseRedirect
 from django import template
+from plugins.generator import generator
 # from django.utils.translation import ugettext as _
 
 
@@ -28,10 +29,23 @@ class BranchModel(admin.ModelAdmin):
     search_fields = ['name__startswith']
     list_display = ['name','country','state','office_address','no_of_staff','branch_date']
     list_filter = ['name']
+    exclude = ['code']
+
+    def response_add(self, request, obj, post_url_continue=None):
+        obj.code = generator()
+        obj.save()
+        return super().response_add(request, obj, post_url_continue)
+
 
 
 @admin.register(BranchAccessories)
 class BranchAccessoriesModel(admin.ModelAdmin):
     search_fields = ['name__startswith']
-    list_display = ['name','image','serial_number']
+    list_display = ['name','serial_number','date_of_purchase','code']
     list_filter = ['name']
+    exclude = ['code']
+
+    def response_add(self, request, obj, post_url_continue=None):
+        obj.code = generator()
+        obj.save()
+        return super().response_add(request, obj, post_url_continue)

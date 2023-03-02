@@ -5,8 +5,7 @@ import os
 from admin.jazzime import *
 from admin.jazzime_ui import *  
 from admin.cronJob import *
-# from admin.celery_config import *
-# import admin.installAPPS as installAPPS
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -16,7 +15,6 @@ SECRET_KEY = 'django-insecure-=af--evn#t-51+v#xb9@iefqh8kze0@ihe$_(%z0otqb@v#p!$
 DEBUG = True
 
 SITE_ID = 1
-
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://superadmin.bgbot.app']
@@ -46,7 +44,6 @@ INSTALLED_APPS = [
     'operations',
     'django_bootstrap_icons',
     'reports'
-
 ]
 
 # specify the new user model for this app
