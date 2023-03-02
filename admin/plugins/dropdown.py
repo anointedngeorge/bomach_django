@@ -24,7 +24,12 @@ def dictDropdown(action=[], status='', modelname='', code=''):
         """
         html = ""
         # get the status that match in the action object
-        get_status =  action.get(status)
+        get_status =  None
+        if not action.get(status) == None:
+            get_status =  action.get(status)
+        else:
+            get_status = []
+            
         html += "<div class='table table-responsive'>"
         html += "<table class='table table-sm table-condensed'>"
         html += "<tr>"
