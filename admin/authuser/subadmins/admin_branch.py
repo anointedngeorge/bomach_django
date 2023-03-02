@@ -41,7 +41,7 @@ class BranchModel(admin.ModelAdmin):
 @admin.register(BranchAccessories)
 class BranchAccessoriesModel(admin.ModelAdmin):
     search_fields = ['name__startswith']
-    list_display = ['name','serial_number','date_of_purchase','code']
+    list_display = ['name','serial_number','date_of_purchase','action']
     list_filter = ['name']
     exclude = ['code']
 
