@@ -43,7 +43,7 @@ class BranchAccessories(models.Model):
     name = models.CharField(max_length = 150)
     assets_type  = models.CharField(max_length = 150, blank=True, null=True, 
     choices=TypeFilter('assets'))
-    value_of_asset = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency=None)
+    value_of_asset = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     status = models.CharField(max_length = 150,blank=True, null=True,
     choices=[
         ('functioning','Functioning'),

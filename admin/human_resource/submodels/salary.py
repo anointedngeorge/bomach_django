@@ -15,8 +15,8 @@ class Salary(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True, blank=True)
     employee = models.ForeignKey('Employee', on_delete=models.CASCADE,
      related_name="hr_jobs_salary_relationship")
-    amount = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency=None)
-    reduction = models.CharField(max_length = 150)
+    amount = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
+    reduction = models.CharField(max_length = 150, default=0, blank=True, null=True)
     paid_date = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now=True)
 
@@ -25,4 +25,4 @@ class Salary(models.Model):
         verbose_name_plural = 'Salary'
     
     def __str__(self) -> str:
-        return self.amount
+        return f"{self.amount}"

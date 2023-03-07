@@ -32,7 +32,7 @@ class OperationContract(models.Model):
     contract_site  = models.ForeignKey(OperationSite, on_delete=models.CASCADE, null=True, blank=True)
     contract_description = models.TextField(verbose_name='Project Scope Description', null=True)
     contract_type = models.CharField(max_length = 150, null=True)
-    contract_value = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency=None)
+    contract_value = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     fullname = models.CharField(max_length = 150, null=True, verbose_name='fullname or cooperate name')
     contractor_phone = models.CharField(max_length = 150, null=True)
     address = models.CharField(max_length = 150, null=True, blank=True)
