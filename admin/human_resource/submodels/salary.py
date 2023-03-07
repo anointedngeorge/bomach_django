@@ -7,7 +7,7 @@ from django_countries.fields import CountryField
 # Create your models here.
 from human_resource.models import *
 from authuser.submodels.branch_model import Branch
-
+from djmoney.models.fields import MoneyField
 
 class Salary(models.Model):
     code = models.CharField(max_length = 150, null=True)
@@ -15,7 +15,7 @@ class Salary(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True, blank=True)
     employee = models.ForeignKey('Employee', on_delete=models.CASCADE,
      related_name="hr_jobs_salary_relationship")
-    amount = models.CharField(max_length = 150)
+    amount = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency=None)
     reduction = models.CharField(max_length = 150)
     paid_date = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now=True)
