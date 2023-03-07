@@ -19,3 +19,11 @@
 /admin/realestate/frontend/__pycache__
 
 /operations/migrations/__pycache__
+
+
+/admin/admin/__pycache__/
+/authuser/__pycache__/
+/admin/customer/__pycache__/
+/admin/notifier/__pycache__/
+/admin/settings/__pycache__/
+admin/realestate/__pycache__/
