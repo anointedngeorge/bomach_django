@@ -17,7 +17,7 @@ from plugins.url import (
 )
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
-
+from djmoney.models.fields import MoneyField
 
 class RealEstate(models.Model):
     CHOICE = [
@@ -33,15 +33,15 @@ class RealEstate(models.Model):
     name = models.CharField(max_length=500, null=True)
     total_amount = models.CharField(max_length=500, null=True)
     amount_deposited = models.CharField(max_length=500, null=True)
-    unit_price = models.CharField(max_length=500, null=True)
+    unit_price = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency=None)
     content = models.CharField(max_length=500, null=True)
     unique_code = models.CharField(max_length=500, null=True)
     is_blocked = models.BooleanField(default=False, null=True)
     is_featured = models.BooleanField(default=False, null=True)
     is_frontend = models.BooleanField(default=False, null=True)
-    legal_fee = models.CharField(max_length=500, null=True)
+    legal_fee = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency=None)
     survey_plan = models.CharField(max_length=500, null=True)
-    development_fee = models.CharField(max_length=500, null=True)
+    development_fee = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency=None)
     status = models.CharField(max_length=500, null=True, choices=CHOICE, default='avaliable')
     created_at = models.DateField(auto_now=True)
     

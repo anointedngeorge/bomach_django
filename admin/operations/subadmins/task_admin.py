@@ -15,32 +15,15 @@ from plugins.generator import generator
 class OperationsTaskAdmin(admin.ModelAdmin):
     # list_display = []
     exclude =['user','code','is_done']
+    list_display = ['user','task_category','task_title','task_project']
+   
 
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()
         obj.user = request.user
         obj.save()
         return super().response_add(request, obj, post_url_continue)
-    # list_display = ['user','branch','phone_number','gender','marital_status','designation','action']
-    # exclude = ['user']
-
-#     fieldsets = (
-#       ('Personal', {
-#           'fields': ('address','phone_number','gender','marital_status','dob','status',)
-#       }),
-      
-#       ('Others', {
-#           'fields': ('skills','designation','employment_type','salary','department')
-#       }),
-      
-#       ('Location', {
-#           'fields': ('branch','country','state','local_government','town',)
-#       }),
-      
-#       ('Description', {
-#           'fields': ('about',)
-#       }),
-#    )
+    
 
 
 

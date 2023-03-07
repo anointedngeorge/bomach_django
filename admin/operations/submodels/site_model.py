@@ -24,7 +24,7 @@ class OperationSite(models.Model):
     site_country = CountryField(blank_label="(select country)", default='---',max_length=250)
     site_lga = models.CharField(max_length=200, null=True, verbose_name='Site Local Government')
     site_state = models.CharField(max_length=200, null=True)
-    site_map_location = models.CharField(max_length = 150, null=True)
+    site_map_location = models.TextField(null=True)
     scope_of_work = models.CharField(max_length = 150, null=True)
     project = models.ForeignKey(OperationProject, on_delete=models.CASCADE, 
     related_name='project_site_related', null=True)

@@ -23,7 +23,8 @@ class OperationTask(models.Model):
     task_title = models.CharField(max_length = 150)
     task_project = models.ForeignKey(OperationProject,
     default='---',
-    on_delete=models.CASCADE, 
+    on_delete=models.CASCADE,
+    blank=True, null=True,
     related_name='operations_task_project')
     task_time = models.TimeField(auto_now=False, default='00:00:00')
     
@@ -37,11 +38,6 @@ class OperationTask(models.Model):
     assign_to = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='operations_task_employee')
     task_priority = models.CharField(max_length = 150, choices=[('high','High'),
     ('medium','Medium'), ('low','Low')])
-    country = CountryField(max_length = 150,blank=True, null=True)
-    state = models.CharField(max_length = 150,blank=True, null=True)
-    lga = models.CharField(max_length = 150,blank=True, null=True)
-    site_map_location = models.TextField(blank=True, null=True)
-    scope_of_work = models.TextField(blank=True, null=True)
     task_description = models.TextField(blank=True, null=True)
     is_done = models.BooleanField(default=False)
     created_at = models.DateField(auto_now=True)

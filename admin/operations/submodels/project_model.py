@@ -10,7 +10,7 @@ from human_resource.models import *
 from human_resource.submodels.departments import Department
 from customer.models import Customer
 from human_resource.submodels.employee import Employee
-
+from djmoney.models.fields import MoneyField
 
 class OperationProject(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, 
@@ -27,7 +27,7 @@ class OperationProject(models.Model):
     project_members = models.ManyToManyField(Employee, null=True)
     project_category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE, null=True)
     client = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
-    budget = models.CharField(max_length = 150, null=True, verbose_name="budget(N)")
+    budget = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency=None)
     hour_estimated = models.TimeField(auto_now=False, default='00:00:00', null=True)
     project_desciption = models.TextField(null=True)
     project_owner = models.CharField(

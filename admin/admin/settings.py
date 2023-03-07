@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'human_resource',
     'operations',
     'django_bootstrap_icons',
-    'reports'
+    'reports',
 ]
 
 # specify the new user model for this app

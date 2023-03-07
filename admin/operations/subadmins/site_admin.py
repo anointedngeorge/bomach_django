@@ -23,11 +23,11 @@ class OperationSiteAdmin(admin.ModelAdmin):
     fieldsets = (
       ('Site Details', {
           'fields': ('site_name','date_creation','service_category','status','site_client','site_country',
-          'site_lga',)
+          'site_state', 'site_lga',)
       }),
       
       ('Other', {
-          'fields': ('site_state','site_map_location','scope_of_work','project',)
+          'fields': ('site_map_location','scope_of_work','project',)
       }),
       
    )

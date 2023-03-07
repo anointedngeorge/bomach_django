@@ -13,7 +13,7 @@ from django.utils import timezone
 from django_countries.fields import CountryField
 from plugins.dropdown import *
 from authuser.fields import TypeFilter
-
+from djmoney.models.fields import MoneyField
 
 
 class Branch(models.Model):
@@ -43,7 +43,7 @@ class BranchAccessories(models.Model):
     name = models.CharField(max_length = 150)
     assets_type  = models.CharField(max_length = 150, blank=True, null=True, 
     choices=TypeFilter('assets'))
-    value_of_asset = models.CharField(max_length = 150,blank=True, null=True)
+    value_of_asset = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency=None)
     status = models.CharField(max_length = 150,blank=True, null=True,
     choices=[
         ('functioning','Functioning'),
@@ -55,7 +55,7 @@ class BranchAccessories(models.Model):
     
     def action(self):
         modelname = self._meta.model.__name__
-       
+
         action = {
             "soldout": [{"name":f"{self.code}", "href":f"", "is_button":False, 
                 "query":{'id':self.id,'status':self.status,'title':self.name}},
