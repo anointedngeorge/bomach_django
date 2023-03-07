@@ -12,6 +12,8 @@ from django.urls import reverse
 from django.utils import timezone
 from django_countries.fields import CountryField
 from plugins.dropdown import *
+from authuser.fields import TypeFilter
+
 
 
 class Branch(models.Model):
@@ -36,10 +38,11 @@ class Branch(models.Model):
 
 class BranchAccessories(models.Model):
     code = models.CharField(max_length = 150,blank=True, null=True)
-    branch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True, blank=True,
+    branch = models.ForeignKey('Branch', on_delete=models.CASCADE, null=True, blank=True,
      related_name="related_branch")
     name = models.CharField(max_length = 150)
-    assets_type  = models.CharField(max_length = 150,blank=True, null=True)
+    assets_type  = models.CharField(max_length = 150, blank=True, null=True, 
+    choices=TypeFilter('assets'))
     value_of_asset = models.CharField(max_length = 150,blank=True, null=True)
     status = models.CharField(max_length = 150,blank=True, null=True,
     choices=[

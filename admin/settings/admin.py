@@ -4,3 +4,4 @@ from django.contrib import admin
 
 from settings.subadmins.admin_gallery import *
 from settings.subadmins.admin_service import *
+from settings.subadmins.admin_types import *

@@ -43,6 +43,6 @@ class OperationSite(models.Model):
         verbose_name_plural = 'Sites'
     
     def __str__(self) -> str:
-        return self.name
+        return f"{self.site_name}"
     
     

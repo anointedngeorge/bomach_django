@@ -23,6 +23,10 @@ from plugins.generator import generator
 from actions.generator import codeGenerator
 # from django.utils.translation import ugettext as _
 
+# register forms
+
+from authuser.subforms.branch_accessories_form import BranchAccessoriesForm
+
 
 
 @admin.register(Branch)
@@ -47,6 +51,7 @@ class BranchAccessoriesModel(admin.ModelAdmin):
     list_filter = ['name']
     exclude = ['code']
     actions = [codeGenerator]
+    # form = BranchAccessoriesForm
 
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()
