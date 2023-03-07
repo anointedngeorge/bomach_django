@@ -1,4 +1,9 @@
 from admin.jazzime_custom_links import *
+from django.conf import settings
+
+# ADMIN_LOGIN_PATH = 'admin/'
+# ADMIN_URI = "/admin"
+
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "SuperAdmin - Bomach Group",
@@ -25,7 +30,7 @@ JAZZMIN_SETTINGS = {
     "site_icon": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKtQJFrTSBNT9-bKa-nKEeyL6F494xzjyPcg&usqp=CAU',
 
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to the library",
+    "welcome_sign": "Welcome to Bomach Group Of Company",
 
     # Copyright on the footer
     "copyright": "Bomach Group Of Company",
@@ -64,7 +69,9 @@ JAZZMIN_SETTINGS = {
 
     # Additional links to include in the user menu on the top right ("app" url type is not allowed)
     "usermenu_links": [
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+        {"name": "Support", 
+            "url": "https://github.com/farridav/django-jazzmin/issues",
+        "new_window": True},
         {"model": "authuser.user"}
     ],
 

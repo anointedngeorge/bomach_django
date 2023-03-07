@@ -16,7 +16,7 @@ from plugins.generator import generator
 @admin.register(OperationProject)
 class OperationProjectAdmin(admin.ModelAdmin):
     
-    list_display = ['status','project_name','start_date','expected_end_date','client',
+    list_display = ['user','status','project_name','start_date','expected_end_date','client',
     'budget','hour_estimated']
     exclude = ['project_id','code']
     # form = ProjectForm
@@ -37,6 +37,7 @@ class OperationProjectAdmin(admin.ModelAdmin):
    )
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()
+        obj.user = request.user
         obj.save()
         return super().response_add(request, obj, post_url_continue)
 

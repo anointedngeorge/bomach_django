@@ -13,6 +13,8 @@ from human_resource.submodels.employee import Employee
 
 
 class OperationProject(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, 
+    related_name="operation_project_rel")
     code = models.CharField(max_length = 150, null=True)
     project_dependency = models.ForeignKey('OperationProject', 
     on_delete=models.CASCADE, related_name='project_dependencys',blank=True, null=True)

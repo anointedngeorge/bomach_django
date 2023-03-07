@@ -6,7 +6,6 @@ from django.template.response import TemplateResponse
 # Register your models here.
 # from fpdf import FPDF
 from plugins.pdf import convert_to_file_to_pdf
-
 from operations.models import *
 import uuid
 from plugins.generator import generator
@@ -15,10 +14,11 @@ from plugins.generator import generator
 @admin.register(OperationTask)
 class OperationsTaskAdmin(admin.ModelAdmin):
     # list_display = []
-    exclude =['code','is_done']
+    exclude =['user','code','is_done']
 
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()
+        obj.user = request.user
         obj.save()
         return super().response_add(request, obj, post_url_continue)
     # list_display = ['user','branch','phone_number','gender','marital_status','designation','action']

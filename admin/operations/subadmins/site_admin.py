@@ -17,7 +17,7 @@ from plugins.generator import generator
 @admin.register(OperationSite)
 class OperationSiteAdmin(admin.ModelAdmin):
    
-    list_display = ['site_name','date_creation','service_category','site_client']
+    list_display = ['user','site_name','date_creation','service_category','site_client']
     exclude = ['code']
 
     fieldsets = (
@@ -33,6 +33,7 @@ class OperationSiteAdmin(admin.ModelAdmin):
    )
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()
+        obj.user = request.user
         obj.save()
         return super().response_add(request, obj, post_url_continue)
 

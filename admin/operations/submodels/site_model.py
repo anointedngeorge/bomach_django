@@ -14,6 +14,8 @@ from operations.submodels.project_model import OperationProject
 
 
 class OperationSite(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, 
+    related_name="operation_site_rel")
     code = models.CharField(max_length = 150, null=True)
     site_name = models.CharField(max_length = 150, null=True, blank=True)
     date_creation = models.DateField(auto_now=False, default='2023-03-02')

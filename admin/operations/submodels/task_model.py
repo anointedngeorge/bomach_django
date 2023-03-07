@@ -11,7 +11,10 @@ from operations.submodels.project_model import OperationProject
 from settings.models import ServiceCategory
 from operations.submodels.site_model import OperationSite
 
+
 class OperationTask(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, 
+    related_name="operation_rel")
     code = models.CharField(max_length = 150, null=True)
     task_category = models.ForeignKey(ServiceCategory,
     null=True,
@@ -45,7 +48,6 @@ class OperationTask(models.Model):
     
     
     class Meta:
-    
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'
     

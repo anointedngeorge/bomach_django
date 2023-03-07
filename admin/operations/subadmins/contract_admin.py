@@ -17,7 +17,7 @@ from plugins.generator import generator
 @admin.register(OperationContract)
 class OperationsContractAdmin(admin.ModelAdmin):
 
-    list_display = ['contract_title','contract_dependency','start_date','expected_end_date','contract_site',
+    list_display = ['user','contract_title','contract_dependency','start_date','expected_end_date','contract_site',
           'contract_type','contract_value','priority',]
     exclude = ['code']
 
@@ -35,6 +35,7 @@ class OperationsContractAdmin(admin.ModelAdmin):
    )
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()
+        obj.user = request.user
         obj.save()
         return super().response_add(request, obj, post_url_continue)
 
