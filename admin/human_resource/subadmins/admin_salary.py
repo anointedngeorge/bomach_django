@@ -12,6 +12,7 @@ from plugins.generator import generator
 @admin.register(Salary)
 class HrSalaryAdmin(admin.ModelAdmin):
     list_display = ['user','employee','amount','reduction','paid_date','branch','created_at']
+    list_filter = ['branch']
     exclude = ['code']
 
     def has_add_permission(self, request) -> bool:
