@@ -15,7 +15,7 @@ CUSTOMLINKS = {
 
         "customer": [{
             "name": "Create Client", 
-            "url": f"{settings.ADMIN_URI}/authuser/user/add/", 
+            "url": f"authuser/user/add/", 
             "icon": "fas fa-add",
             # "permissions": ["books.view_book"]
         }],
