@@ -6,10 +6,13 @@ from django.utils import timezone
 from django_countries.fields import CountryField
 # Create your models here.
 from human_resource.models import *
+from authuser.submodels.branch_model import Branch
 
 
 class Salary(models.Model):
     code = models.CharField(max_length = 150, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='employee',  on_delete=models.CASCADE, null=True, blank=True)
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True, blank=True)
     employee = models.ForeignKey('Employee', on_delete=models.CASCADE,
      related_name="hr_jobs_salary_relationship")
     amount = models.CharField(max_length = 150)

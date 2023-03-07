@@ -16,8 +16,8 @@ class Jobs(models.Model):
     description = models.TextField()
    
     class Meta:
-        verbose_name = 'Job Roles'
-        verbose_name_plural = 'Roles'
+        verbose_name = 'Job Role'
+        verbose_name_plural = 'Job Roles'
     
     def __str__(self) -> str:
         return self.employee
