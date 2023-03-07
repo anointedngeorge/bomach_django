@@ -25,9 +25,9 @@ from django import template
 
 @admin.register(User)
 class AuthModelAdmin(admin.ModelAdmin):
-    search_fields = ['username__startswith', 'code__startswith']
+    # search_fields = ['username__startswith', 'code__startswith']
     list_display = ['username','code', 'first_name','last_name', 'email','roles','roles_name','is_active','is_staff','is_superuser']
-    list_filter = ['first_name','roles_name',]
+    list_filter = ['first_name','roles_name','roles']
     # actions = ['']
     exclude = ['code','last_login','is_superuser','user_permissions',]
     # actions = [send_bulk_message, approve_bulk, reject_bulk]

@@ -9,16 +9,16 @@ JAZZMIN_SETTINGS = {
     "site_title": "SuperAdmin - Bomach Group",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "SuperAdmin interface Bomach Group",
+    "site_header": "Bomach Group Portal",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_brand": "Bomach",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKtQJFrTSBNT9-bKa-nKEeyL6F494xzjyPcg&usqp=CAU",
+    "site_logo": "logo3.png",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKtQJFrTSBNT9-bKa-nKEeyL6F494xzjyPcg&usqp=CAU',
+    "login_logo": "logo3.png",
 
     # Logo to use for login form in dark themes (defaults to login_logo)
     "login_logo_dark": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKtQJFrTSBNT9-bKa-nKEeyL6F494xzjyPcg&usqp=CAU',
