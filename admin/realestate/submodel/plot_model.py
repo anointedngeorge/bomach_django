@@ -34,7 +34,7 @@ class RealEstatePlot(models.Model):
     on_delete=models.CASCADE, related_name="customer_realestate_plot_rel")
 
     name = models.CharField(max_length=500, null=True)
-    price = MoneyField(max_digits=10, decimal_places=2, default=0.01, default_currency='NGN')
+    price = models.CharField(max_length=500, default=0.01)
     size = models.CharField(max_length=500, null=True)
     status = models.CharField(max_length=500, null=True, 
     default='available', choices=CHOICE)
