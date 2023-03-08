@@ -27,7 +27,7 @@ class OperationProject(models.Model):
     project_members = models.ManyToManyField(Employee, null=True)
     project_category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE, null=True)
     client = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
-    budget = MoneyField(max_digits=10, decimal_places=2, default=0.01, default_currency='NGN')
+    budget = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     hour_estimated = models.TimeField(auto_now=False, default='00:00:00', null=True)
     project_desciption = models.TextField(null=True)
     project_owner = models.CharField(
