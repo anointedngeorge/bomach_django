@@ -24,7 +24,7 @@ class EmployeeType(models.Model):
 
 
 class Designation(models.Model):
-    roles  = models.ManyToManyField(to="human_resource.Jobs", related_name='designation_roles', blank=True)
+    roles  = models.ManyToManyField(to="human_resource.Jobs", blank=True)
     name = models.CharField(max_length = 150)
     description = models.TextField()
 
@@ -38,7 +38,7 @@ class Designation(models.Model):
 
 class Employee(models.Model):
     code = models.CharField(max_length = 150, null=True)
-    special_roles  = models.ManyToManyField(to="human_resource.Jobs", related_name='employee_roles', blank=True)
+    special_roles  = models.ManyToManyField(to="human_resource.Jobs", blank=True)
     branch = models.ForeignKey(Branch,verbose_name='branch', on_delete=models.CASCADE, null=True, blank=True,
      related_name="hr_branch_employee_relationship")
     user = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='employee',  on_delete=models.CASCADE, null=True, blank=True,
