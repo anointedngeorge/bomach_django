@@ -17,7 +17,7 @@ from ckeditor.fields import RichTextField
 class Jobs(models.Model):
     code = models.CharField(max_length = 150, null=True)
     # branch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True, blank=True)
-    name  = models.CharField(max_length = 150, null=True)
+    name  = models.CharField(max_length = 150, null=True, verbose_name='Title')
     description = RichTextField()
    
     class Meta:

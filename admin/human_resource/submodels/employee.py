@@ -95,13 +95,13 @@ class Employee(models.Model):
     def __str__(self) -> str:
         return f"{self.user}"
 
-
     def action(self):
         modalname = self._meta.model.__name__
         action = [
                 {"name":'Profile', "href":f"employee-profile", "is_button":False, 
                 "query":{'id':self.id}},
                 ]
+                
         return singleDropdown(
             action=action, 
             modelname=modalname,

@@ -11,7 +11,7 @@ from plugins.generator import generator
 
 @admin.register(Skill)
 class HrSkillAdmin(admin.ModelAdmin):
-    list_display = ['name','created_at']
+    list_display = ['name','designation','created_at']
     exclude = ['code']
 
     # def has_add_permission(self, request) -> bool:
