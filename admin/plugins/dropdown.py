@@ -7,6 +7,10 @@ from plugins.url import (
 )
 
 
+REPORT_LINK = '/admin/reports/get-reports'
+
+
+
 
 def queryFormat(param={}):
     if len(param) > 0:
@@ -18,7 +22,7 @@ def queryFormat(param={}):
     else:
         return ''
 
-def dictDropdown(action=[], status='', modelname='', code=''):
+def dictDropdown(action=[], link='', status='', modelname='', code='', report_title='',  report_template_name='', is_report=False):
         """
         This is a dropdown menue
         """
@@ -41,6 +45,9 @@ def dictDropdown(action=[], status='', modelname='', code=''):
                 html += f"<td><a  href='{x.get('href')}?{query}'>{str(x.get('name')).title()}</a></td>"
         html += f"<td><a  href='{local_file_url_image(code)}?model={modelname}'>Upload File(s)</a></td>"
         html += f"<td><a  href='{api_fetch_image(code)}?model={modelname}' target='_blank'>Get Files</a></td>"
+        if is_report:
+            html += f"<td><a  href='{link}/{report_template_name}/{modelname}?{query}'>{report_title.title()}</a></td>"
+
         html += "</tr>"
         html += "</table>"
         html += "</div>"
@@ -48,7 +55,7 @@ def dictDropdown(action=[], status='', modelname='', code=''):
         return format_html(html)
 
 
-def singleDropdown(action=[], modelname='', code=''):
+def singleDropdown(action=[], modelname='', link='', code='', report_title='', report_template_name='task', is_report=False):
         html = ""
         # get the status that match in the action object
         html += "<div class='table table-responsive'>"
@@ -62,6 +69,10 @@ def singleDropdown(action=[], modelname='', code=''):
                 html += f"<td><a href='{x.get('href')}?{query}'>{x.get('name')}</a></td>"
         html += f"<td><a  href='{local_file_url_image(code)}?model={modelname}'>Upload File(s)</a></td>"
         html += f"<td><a  href='{api_fetch_image(code)}?model={modelname}' target='_blank'>Get Files</a></td>"
+        
+        if is_report:
+            html += f"<td><a  href='{link}/{report_template_name}/{modelname}?{query}'>{report_title.title()}</a></td>"
+        
         html += "</tr>"
         html += "</table>"
         html += "</div>"

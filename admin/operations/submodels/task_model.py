@@ -10,6 +10,7 @@ from human_resource.models import Employee
 from operations.submodels.project_model import OperationProject
 from settings.models import ServiceCategory
 from operations.submodels.site_model import OperationSite
+from plugins.dropdown import (dictDropdown, singleDropdown)
 
 
 class OperationTask(models.Model):
@@ -50,4 +51,31 @@ class OperationTask(models.Model):
     def __str__(self) -> str:
         return self.task_title
     
+
+    def action(self):
+        modelname = self._meta.model.__name__
+
+        action = {
+            "pending": [{"name":f"{self.code}", "href":f"", "is_button":False, 
+                "query":{'id':self.id,'status':self.status,'title':self.name}},
+
+            {"name":'sell', "href":f"", "is_button":False, 
+                "query":{'id':self.id,'status':self.status,'title':self.name }},
+
+            {"name":'sell', "href":f"", "is_button":False, 
+                "query":{'id':self.id,'status':self.status,'title':self.name }}
+            ],
+            
+            "avaliable": [],
+        }
+        return dictDropdown(
+            action=action, 
+            status=self.status, 
+            modelname=modelname, 
+            code=self.code,
+            report_template_name='tasks',
+            report_title='Task Report',
+            is_report=True,
+            link='/admin/reports/get-report',
+        )
     

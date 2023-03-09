@@ -97,10 +97,18 @@ class Employee(models.Model):
 
 
     def action(self):
+        modalname = self._meta.model.__name__
         action = [
                 {"name":'Profile', "href":f"employee-profile", "is_button":False, 
                 "query":{'id':self.id}},
                 ]
-        return singleDropdown(action=action)
+        return singleDropdown(
+            action=action, 
+            modelname=modalname,
+            report_template_name='tasks',
+            is_report=True, 
+            report_title='Employee',
+            link='/admin/reports/get-report'
+        )
 
     
