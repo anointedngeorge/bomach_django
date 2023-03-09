@@ -11,7 +11,7 @@ from plugins.generator import generator
 
 @admin.register(Designation)
 class HrEmployeeDesignationAdmin(admin.ModelAdmin):
-    list_display = ['roles','name']
+    list_display = ['name','description']
     exclude = ['code']
 
     def response_add(self, request, obj, post_url_continue=None):
