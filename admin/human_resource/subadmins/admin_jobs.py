@@ -12,7 +12,7 @@ from plugins.generator import generator
 
 @admin.register(Jobs)
 class HrJobsAdmin(admin.ModelAdmin):
-    list_display = ['employee','description']
+    list_display = ['name','description']
     exclude = ['code',]
 
 # @admin.register(Job_history)

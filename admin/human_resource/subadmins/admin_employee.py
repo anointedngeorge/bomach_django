@@ -31,6 +31,10 @@ class HrEmployeeAdmin(admin.ModelAdmin):
       ('Location', {
           'fields': ('branch','country','state','local_government','town',)
       }),
+
+      ('Add Special Roles (If ANY?)', {
+          'fields': ('special_roles',)
+      }),
       
       ('Description', {
           'fields': ('about',)

@@ -8,14 +8,16 @@ from django_countries.fields import CountryField
 from human_resource.models import *
 from authuser.submodels.branch_model import Branch
 from human_resource.submodels.employee import Employee
+import uuid
+
 
 
 
 class Jobs(models.Model):
     code = models.CharField(max_length = 150, null=True)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True, blank=True)
-    employee = models.ForeignKey(Employee, on_delete=models.CASCADE, null=True,
-     related_name="hr_employee_relationship")
+    name  = models.CharField(max_length = 150, null=True)
+    
     description = models.TextField()
    
     class Meta:
