@@ -9,7 +9,7 @@ from human_resource.models import *
 
 class Skill(models.Model):
     code = models.CharField(max_length = 150, null=True)
-    name = models.CharField(max_length = 150)
+    name = models.CharField(max_length = 150, verbose_name='Title')
     description = models.TextField(default='----')
     designation = models.ForeignKey(to='human_resource.Designation', on_delete=models.CASCADE, null=True)
     

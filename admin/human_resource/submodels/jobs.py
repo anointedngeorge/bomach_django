@@ -26,7 +26,7 @@ class Jobs(models.Model):
 
 
     def __str__(self) -> str:
-        return f"{self.description}"
+        return f"{self.name}"
 
 
 class Job_history(models.Model):
