@@ -24,9 +24,9 @@ class Jobs(models.Model):
         verbose_name = 'Job Role'
         verbose_name_plural = 'Job Roles'
 
-        
+
     def __str__(self) -> str:
-        return f"{self.branch} - {self.name}"
+        return f"{self.description}"
 
 
 class Job_history(models.Model):
