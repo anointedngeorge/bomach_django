@@ -71,7 +71,7 @@ class OperationContract(models.Model):
             "avaliable": [],
         }
         return dictDropdown(
-              action=action, 
+            action=action, 
             status=self.status, 
             modelname=modelname, 
             code=self.code,

@@ -53,22 +53,24 @@ class OperationTask(models.Model):
     
 
     def action(self):
-        modelname = self._meta.model.__name__
-
-        action = {
-            "pending": [{"name":f"{self.code}", "href":f"", "is_button":False, 
-                "query":{'id':self.id}},
-            ],
-            "avaliable": [],
-        }
-        return dictDropdown(
-            action=action, 
-            status=self.status, 
-            modelname=modelname, 
-            code=self.code,
-            report_template_name='tasks',
-            report_title='Task Report',
-            is_report=True,
-            link='/admin/reports/get-report',
-        )
+        try:
+            modelname = self._meta.model.__name__
+            action = {
+                "pending": [{"name":f"{self.code}", "href":f"", "is_button":False, 
+                    "query":{'id':self.id}},
+                ],
+                "avaliable": [],
+            }
+            return dictDropdown(
+                action=action, 
+                status=self.status, 
+                modelname=modelname, 
+                code=self.code,
+                report_template_name='tasks',
+                report_title='Task Report',
+                is_report=True,
+                link='/admin/reports/get-report',
+            )
+        except:
+            pass
     
