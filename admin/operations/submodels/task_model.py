@@ -57,15 +57,8 @@ class OperationTask(models.Model):
 
         action = {
             "pending": [{"name":f"{self.code}", "href":f"", "is_button":False, 
-                "query":{'id':self.id,'status':self.status,'title':self.name}},
-
-            {"name":'sell', "href":f"", "is_button":False, 
-                "query":{'id':self.id,'status':self.status,'title':self.name }},
-
-            {"name":'sell', "href":f"", "is_button":False, 
-                "query":{'id':self.id,'status':self.status,'title':self.name }}
+                "query":{'id':self.id}},
             ],
-            
             "avaliable": [],
         }
         return dictDropdown(

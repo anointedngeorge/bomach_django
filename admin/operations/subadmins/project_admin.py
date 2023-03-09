@@ -10,7 +10,7 @@ from operations.models import *
 from operations.forms import ProjectForm
 import uuid
 from plugins.generator import generator
-
+from plugins.dropdown import dictDropdown
 
 
 @admin.register(OperationProject)
@@ -40,6 +40,8 @@ class OperationProjectAdmin(admin.ModelAdmin):
         obj.user = request.user
         obj.save()
         return super().response_add(request, obj, post_url_continue)
+
+    
 
 
 

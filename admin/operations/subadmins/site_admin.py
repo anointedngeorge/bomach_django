@@ -10,6 +10,7 @@ from plugins.pdf import convert_to_file_to_pdf
 from operations.models import *
 import uuid
 from plugins.generator import generator
+from plugins.dropdown import dictDropdown
 
 
 
@@ -36,6 +37,9 @@ class OperationSiteAdmin(admin.ModelAdmin):
         obj.user = request.user
         obj.save()
         return super().response_add(request, obj, post_url_continue)
+
+
+    
 
 
 

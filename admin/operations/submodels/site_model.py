@@ -11,7 +11,7 @@ from settings.models import ServiceCategory
 from customer.models import Customer
 from django_countries.fields import CountryField
 from operations.submodels.project_model import OperationProject
-
+from plugins.dropdown import dictDropdown
 
 class OperationSite(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, 
@@ -44,5 +44,27 @@ class OperationSite(models.Model):
     
     def __str__(self) -> str:
         return f"{self.site_name}"
+
+    
+    def action(self):
+        modelname = self._meta.model.__name__
+
+        action = {
+            "pending": [{"name":f"{self.code}", "href":f"", "is_button":False, 
+                "query":{'id':self.id}},
+            ],
+            "avaliable": [],
+        }
+        return dictDropdown(
+            action=action, 
+            status=self.status, 
+            modelname=modelname, 
+            code=self.code,
+            report_template_name='site',
+            report_title='Site Report',
+            is_report=True,
+            link='/admin/reports/get-report',
+        )
+    
     
     

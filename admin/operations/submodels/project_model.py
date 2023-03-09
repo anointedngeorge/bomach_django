@@ -11,6 +11,10 @@ from human_resource.submodels.departments import Department
 from customer.models import Customer
 from human_resource.submodels.employee import Employee
 from djmoney.models.fields import MoneyField
+from plugins.dropdown import *
+
+
+
 
 class OperationProject(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, 
@@ -47,5 +51,27 @@ class OperationProject(models.Model):
     
     def __str__(self) -> str:
         return self.project_name
+    
+
+    def action(self):
+        modelname = self._meta.model.__name__
+
+        action = {
+            "pending": [{"name":f"{self.code}", "href":f"", "is_button":False, 
+                "query":{'id':self.id}},
+            ],
+            
+            "avaliable": [],
+        }
+        return dictDropdown(
+            action=action, 
+            status=self.status, 
+            modelname=modelname, 
+            code=self.code,
+            report_template_name='project',
+            report_title='Project Report',
+            is_report=True,
+            link='/admin/reports/get-report',
+        )
     
     

@@ -15,6 +15,8 @@ from django_countries.fields import CountryField
 from plugins.dropdown import dictDropdown
 from authuser.submodels.branch_model import Branch
 from djmoney.models.fields import MoneyField
+from plugins.dropdown import *
+
 
 
 class OperationContract(models.Model):
@@ -68,7 +70,19 @@ class OperationContract(models.Model):
             "soldout": [],
             "avaliable": [],
         }
-        return dictDropdown(action=action, status=self.status, modelname=modelname, code=self.code)
+        return dictDropdown(
+              action=action, 
+            status=self.status, 
+            modelname=modelname, 
+            code=self.code,
+            report_template_name='contract',
+            report_title='Contract Report',
+            is_report=True,
+            link='/get-report',
+        )
+
+
+    
 
 
 

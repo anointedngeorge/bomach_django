@@ -37,8 +37,9 @@ def dictDropdown(action=[], link='', status='', modelname='', code='', report_ti
         html += "<div class='table table-responsive'>"
         html += "<table class='table table-sm table-condensed'>"
         html += "<tr>"
+        query = ''
         for x in get_status:
-            query = queryFormat(x.get('query'))
+            query = queryFormat(x.get('query')) if x.get('query') != None else ''
             if x.get('is_button'):
                 html += f"<td><button type='button' data-url='{x.get('href')}' value='{query}'>{str(x.get('name')).title()}</button></td>"
             else:
@@ -46,7 +47,7 @@ def dictDropdown(action=[], link='', status='', modelname='', code='', report_ti
         html += f"<td><a  href='{local_file_url_image(code)}?model={modelname}'>Upload File(s)</a></td>"
         html += f"<td><a  href='{api_fetch_image(code)}?model={modelname}' target='_blank'>Get Files</a></td>"
         if is_report:
-            html += f"<td><a  href='{link}/{report_template_name}/{modelname}?{query}'>{report_title.title()}</a></td>"
+            html += f"<td><a  href='{link}/{report_template_name}/{modelname}/?{query}'>{report_title.title()}</a></td>"
 
         html += "</tr>"
         html += "</table>"
@@ -61,8 +62,9 @@ def singleDropdown(action=[], modelname='', link='', code='', report_title='', r
         html += "<div class='table table-responsive'>"
         html += "<table class='table table-sm table-condensed'>"
         html += "<tr>"
+        query = ''
         for x in action:
-            query = queryFormat(x.get('query'))
+            query = queryFormat(x.get('query')) if x.get('query') != None else ''
             if x.get('is_button'):
                 html += f"<td><button  data-url='{x.get('href')}' value='{query}'>{x.get('name')}</button></td>"
             else:
@@ -71,7 +73,7 @@ def singleDropdown(action=[], modelname='', link='', code='', report_title='', r
         html += f"<td><a  href='{api_fetch_image(code)}?model={modelname}' target='_blank'>Get Files</a></td>"
         
         if is_report:
-            html += f"<td><a  href='{link}/{report_template_name}/{modelname}?{query}'>{report_title.title()}</a></td>"
+            html += f"<td><a  href='{link}/{report_template_name}/{modelname}/?{query}'>{report_title.title()}</a></td>"
         
         html += "</tr>"
         html += "</table>"
