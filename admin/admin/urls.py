@@ -1,6 +1,7 @@
 
 from django.urls import re_path as url
 from django.views.static import serve
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
@@ -16,6 +17,7 @@ urlpatterns = [
     path(f"", include('notifier.urls')),
     path(f"", include('reports.urls')),
     path(f"api/{VERSION}/", api.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 
     
     url(r'^media/(?P<path>.*)$', serve,  {'document_root': settings.MEDIA_ROOT}),

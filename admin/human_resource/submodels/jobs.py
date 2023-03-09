@@ -9,16 +9,16 @@ from human_resource.models import *
 from authuser.submodels.branch_model import Branch
 from human_resource.submodels.employee import Employee
 import uuid
-
+from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
 
 
 
 class Jobs(models.Model):
     code = models.CharField(max_length = 150, null=True)
-    branch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True, blank=True)
+    # branch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True, blank=True)
     name  = models.CharField(max_length = 150, null=True)
-    
-    description = models.TextField()
+    description = RichTextField()
    
     class Meta:
         verbose_name = 'Job Role'

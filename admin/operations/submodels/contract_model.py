@@ -76,6 +76,7 @@ class OperationContract(models.Model):
             modelname=modelname, 
             code=self.code,
             report_template_name='contract',
+            report_filename='contract_report',
             report_title='Contract Report',
             is_report=True,
             link='/get-report',

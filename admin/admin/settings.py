@@ -4,6 +4,7 @@ from pathlib import Path
 import os
 from admin.jazzime import *
 from admin.jazzime_ui import *  
+from admin.ckeditor import *
 from admin.cronJob import *
 
 
@@ -44,11 +45,13 @@ INSTALLED_APPS = [
     'operations',
     'django_bootstrap_icons',
     'reports',
+    'ckeditor',
 ]
 
 # specify the new user model for this app
 AUTH_USER_MODEL = 'authuser.User'
 
+CKEDITOR_UPLOAD_PATH="uploads/"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
