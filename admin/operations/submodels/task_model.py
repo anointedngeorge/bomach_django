@@ -14,6 +14,7 @@ from plugins.dropdown import (dictDropdown, singleDropdown)
 
 
 class OperationTask(models.Model):
+    
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, 
     related_name="operation_rel")
     code = models.CharField(max_length = 150, null=True)
