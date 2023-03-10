@@ -7,7 +7,7 @@ from django_countries.fields import CountryField
 # Create your models here.
 from plugins.dropdown import singleDropdown, dictDropdown
 from authuser.models import Branch
-
+# from phonenumber_field.modelfields import PhoneNumberField
 
 
 
@@ -83,7 +83,7 @@ class Employee(models.Model):
         ('probation','On Probation'),
     ]
     status =  models.CharField(max_length=250, choices=JOBSTATUS, default='proposed')
-    skills = models.ManyToManyField('Skill', blank=True, null=True)
+    skills = models.ManyToManyField('Skill', blank=True)
     
     create_at = models.DateField(auto_now=True)
     last_created = models.DateField(auto_now=True)

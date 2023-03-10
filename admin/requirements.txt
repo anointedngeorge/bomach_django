@@ -58,3 +58,4 @@ django-imagekit  == 4.1.0
 python-escpos    == 2.2.0
 django-bootstrap-icons == 0.8.2
 django-money  == 3.0.0
+django-phonenumber-field == 7.0.2

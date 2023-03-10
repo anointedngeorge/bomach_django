@@ -15,7 +15,7 @@ urlpatterns = [
     path(f"", include('frontend.urls')),
     path(f"", include('realestate.urls')),
     path(f"", include('notifier.urls')),
-    path(f"", include('reports.urls')),
+    # path(f"", include('reports.urls')),
     path(f"api/{VERSION}/", api.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 

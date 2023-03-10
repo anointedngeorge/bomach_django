@@ -16,6 +16,9 @@ from plugins.dropdown import dictDropdown
 from authuser.submodels.branch_model import Branch
 from djmoney.models.fields import MoneyField
 from plugins.dropdown import *
+from reports.submodel.report_model import ReportingSheet
+from datetime import datetime
+
 
 
 
@@ -76,13 +79,17 @@ class OperationContract(models.Model):
             modelname=modelname, 
             code=self.code,
             report_template_name='contract',
-            report_filename='contract_report',
             report_title='Contract Report',
             is_report=True,
             link='/get-report',
         )
 
 
+
+
+
+
+    
     
 
 

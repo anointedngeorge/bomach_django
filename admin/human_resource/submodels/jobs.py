@@ -19,6 +19,7 @@ class Jobs(models.Model):
     # branch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True, blank=True)
     name  = models.CharField(max_length = 150, null=True, verbose_name='Title')
     description = RichTextField()
+
    
     class Meta:
         verbose_name = 'Job Role'

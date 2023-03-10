@@ -28,7 +28,7 @@ class OperationProject(models.Model):
     expected_end_date = models.DateField(verbose_name='end date(deadline)', auto_now=False, default='2023-03-02')
     department = models.ForeignKey(Department, on_delete=models.CASCADE, 
     null=True, related_name='project_department')
-    project_members = models.ManyToManyField(Employee, null=True)
+    project_members = models.ManyToManyField(Employee)
     project_category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE, null=True)
     client = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
     budget = MoneyField(max_digits=10, decimal_places=2, default=0.01, default_currency='NGN')
