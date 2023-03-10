@@ -23,7 +23,7 @@ from django.utils import timezone
 
 class GeneralReport(ReportingSheet):
     # OperationSite,OperationProject
-    task_title = models.CharField(max_length = 150, null=True)
+    report_tasks = models.ManyToManyField(to="operations.OperationTask", related_name='general_report_rel')
     status = models.CharField(max_length = 150, choices=[
         ('incomplete', 'Incomplete'),
         ('to_do','To Do'),
@@ -31,9 +31,8 @@ class GeneralReport(ReportingSheet):
         ('done', 'Done'),
         ('completed','Completed')
     ], null=True, blank=True)
-    due_date = models.DateField(auto_now=False, default=timezone.now)
-    task_start_date = models.DateField(auto_now=False, default=timezone.now)
-    comment  = models.TextField()
+    report_date = models.DateField(auto_now=False, default=timezone.now)
+    report_comment  = models.TextField()
     
     
     

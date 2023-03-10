@@ -23,12 +23,8 @@ from django.utils import timezone
 
 class EngineeringReport(ReportingSheet):
     # OperationSite,OperationProject
-    site_date = models.DateField(auto_now=False, default=timezone.now)
-    site_location = models.CharField(max_length = 150)
-    project_title = models.CharField(max_length = 150)
-    client = models.CharField(max_length = 150)
-    state_of_site = models.CharField(max_length = 150)
-    site_activities = RichTextField(null=True)
+    report_sites = models.ManyToManyField(to="operations.OperationSite", related_name='engeering_site_rel')
+    
     labor_and_bill = models.ForeignKey(to='settings.LaborBillQuotation', related_name='eng_bill_rel', on_delete=models.CASCADE, null=True)
     material_received = models.ForeignKey(related_name='eng_material_needed',
         verbose_name='material received and time',to='settings.Quotation', on_delete=models.CASCADE, null=True)
