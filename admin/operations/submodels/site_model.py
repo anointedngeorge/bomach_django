@@ -13,6 +13,9 @@ from django_countries.fields import CountryField
 from operations.submodels.project_model import OperationProject
 from plugins.dropdown import dictDropdown
 
+
+
+
 class OperationSite(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, 
     related_name="operation_site_rel")

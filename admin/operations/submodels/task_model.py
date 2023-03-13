@@ -18,7 +18,7 @@ class OperationTask(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, 
     related_name="operation_rel")
     code = models.CharField(max_length = 150, null=True)
-    task_category = models.ForeignKey(ServiceCategory,
+    task_category = models.ForeignKey(to='settings.Service',
     null=True,
     on_delete=models.CASCADE, 
     related_name='operations_task_service_category')

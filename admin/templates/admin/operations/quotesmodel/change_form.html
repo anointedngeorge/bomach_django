@@ -1,0 +1,22 @@
+{% extends "admin/change_form.html" %}
+
+
+
+{% block content %}
+
+{{ block.super }}
+  
+
+<script >
+    function _(e) {
+        return document.getElementById(e);
+    }
+
+
+    function formChanger(params) {
+         alert('Yes');
+    }
+
+_('id_service').addEventListener('change', formChanger, false)
+</script>
+{% endblock content %}

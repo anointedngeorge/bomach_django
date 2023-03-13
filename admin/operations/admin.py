@@ -5,7 +5,7 @@ from operations.subadmins.contract_admin import *
 from operations.subadmins.project_admin import *
 from operations.subadmins.site_admin import *
 from operations.subadmins.task_admin import *
-
+from operations.subadmins.quote_admin import *
 
 # reporting
 from operations.subadmins.reportadmin.general_report_admin import *

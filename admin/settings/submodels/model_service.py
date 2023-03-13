@@ -12,6 +12,7 @@ class Service(models.Model):
     name = models.CharField(max_length = 150)
     description  = models.TextField()
     
+    
     class Meta:
         verbose_name = 'Services'
         verbose_name_plural = 'Service'

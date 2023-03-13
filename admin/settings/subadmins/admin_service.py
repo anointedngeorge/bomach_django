@@ -14,4 +14,4 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(ServiceCategory)
 class ServiceCategoryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name','service','description']
