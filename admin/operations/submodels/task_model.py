@@ -45,7 +45,6 @@ class OperationTask(models.Model):
     is_done = models.BooleanField(default=False)
     created_at = models.DateField(auto_now=True)
     
-    
     class Meta:
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'
