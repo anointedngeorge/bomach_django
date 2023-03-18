@@ -30,9 +30,9 @@ class OperationTask(models.Model):
     related_name='operations_task_project')
     task_time = models.TimeField(auto_now=False, default='00:00:00')
     
-    task_site  = models.ForeignKey(OperationSite, on_delete=models.CASCADE, null=True, blank=True,
+    task_site  = models.ForeignKey(to='operations.OperationSite', on_delete=models.CASCADE, null=True, blank=True,
     related_name='task_site_rel')
-    task_dependency  = models.ForeignKey("OperationTask", on_delete=models.CASCADE, null=True, 
+    task_dependency  = models.ForeignKey(to="operations.OperationTask", on_delete=models.CASCADE, null=True, 
     blank=True, related_name='task_dependency_rel')
 
     start_date = models.DateField(auto_now=False, default='2023-05-01')

@@ -95,11 +95,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     def natural_key(self):
         return f"{self.first_name} {self.last_name}"
 
-    def save(self, *args, **kwargs):
-        coded = str(uuid.uuid4()).replace("-", "")[:4]
-        code = f"bom{coded}"
-        self.code = code
-        return super(User, self).save(*args, **kwargs)
+ 
 
 
 

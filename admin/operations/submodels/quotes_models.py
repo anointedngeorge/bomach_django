@@ -11,8 +11,8 @@ class QuotesModel(models.Model):
     phone_number = models.CharField(max_length = 150, null=True)
     service = models.ForeignKey(to="settings.Service", 
     on_delete=models.CASCADE, related_name='service_rel', null=True)
-    service_category = models.ForeignKey(to="settings.ServiceCategory", 
-    on_delete=models.CASCADE, related_name='service_category_rel', null=True)
+    # service_category = models.ForeignKey(to="settings.Service", 
+    # on_delete=models.CASCADE, related_name='service_category_rel', null=True)
     message = RichTextField()
 
 

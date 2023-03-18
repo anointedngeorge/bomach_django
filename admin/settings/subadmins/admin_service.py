@@ -9,9 +9,9 @@ from settings.submodels.model_service import *
 
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name', 'parent_to','is_child_to']
 
 
-@admin.register(ServiceCategory)
-class ServiceCategoryAdmin(admin.ModelAdmin):
-    list_display = ['name','service','description']
+@admin.register(ServiceCalculator)
+class ServiceCalculatorAdmin(admin.ModelAdmin):
+    list_display = ['service','up','ebb','efb','nb','mncb','mncf']

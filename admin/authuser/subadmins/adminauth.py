@@ -20,7 +20,7 @@ from django.utils.safestring import mark_safe
 from django.http import HttpResponseRedirect
 from django import template
 # from django.utils.translation import ugettext as _
-
+import uuid
 
 
 @admin.register(User)
@@ -32,30 +32,10 @@ class AuthModelAdmin(admin.ModelAdmin):
     exclude = ['code','last_login','is_superuser','user_permissions',]
     # actions = [send_bulk_message, approve_bulk, reject_bulk]
     form = userRegistrationForm
-    
-
-    # def response_post_save_add(self, request, obj):
-    #     try:
-    #         current_site = get_current_site(request)
-    #         # data = { 'user': obj.email, 'domain': current_site.domain, 'uid': urlsafe_base64_encode(force_bytes(obj.id)) }
-    #         data = { 'user': obj.email, 'domain': current_site.domain}
-    #         mail_subject = 'Account Creation...'
-    #         message = render_to_string('email_template/welcome.html', data)
-    #         to_email = f"{obj.email}"
-    #         test_email = 'demo@gmail.com'
-    #         email = EmailMessage(mail_subject, message, to=[to_email], from_email=f'Anointed <{test_email}>')
-    #         email.send()
-    #         return super().response_post_save_add(request, obj)
-    #     except Exception as e:
-    #          print(e)
-
 
     
-    def save_model(self, request, obj, form, change) -> None:
-        if len(obj.password) > 70:
-            pass
-        else:
-            obj.set_password(obj.password)
-        obj.is_active = True
-        return super().save_model(request, obj, form, change)
-    
+    def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
+        coded = str(uuid.uuid4()).replace("-", "")[:4]
+        code = f"bom{coded}"
+        self.code = code
+        return super().response_add(request, obj, post_url_continue)

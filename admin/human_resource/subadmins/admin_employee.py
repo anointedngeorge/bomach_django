@@ -47,15 +47,15 @@ class HrEmployeeAdmin(admin.ModelAdmin):
 
         
     def get_urls(self):
-            urls = super().get_urls()
-            
-            new_url = [
-                path('employee-profile/', self.admin_site.admin_view(self.employee_profile) , 
-                name="employee-profile"),
+        urls = super().get_urls()
         
-                ]
-            urls = new_url + urls
-            return urls
+        new_url = [
+            path('employee-profile/', self.admin_site.admin_view(self.employee_profile) , 
+            name="employee-profile"),
+    
+            ]
+        urls = new_url + urls
+        return urls
 
     def has_add_permission(self, request) -> bool:
         return False

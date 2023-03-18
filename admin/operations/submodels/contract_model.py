@@ -28,12 +28,12 @@ class OperationContract(models.Model):
     related_name="operation_contract_rel")
     code = models.CharField(max_length = 150, null=True)
     contract_title = models.CharField(max_length = 150, null=True, blank=True)
-    contract_dependency = models.ForeignKey('OperationContract',blank=True, null=True, 
+    contract_dependency = models.ForeignKey(to='operations.OperationContract',blank=True, null=True, 
     on_delete=models.CASCADE)
     start_date = models.DateField(auto_now=False, default='2023-03-02')
     expected_end_date = models.DateField(verbose_name='end date(deadline)', 
     auto_now=False, default='2023-03-02')
-    contract_project  = models.ForeignKey(OperationProject, on_delete=models.CASCADE, null=True, blank=True)
+    contract_project  = models.ForeignKey(to="operations.OperationProject", on_delete=models.CASCADE, null=True, blank=True)
     contract_site  = models.ForeignKey(OperationSite, on_delete=models.CASCADE, null=True, blank=True)
     contract_description = models.TextField(verbose_name='Project Scope Description', null=True)
     contract_type = models.CharField(max_length = 150, null=True)

@@ -22,7 +22,7 @@ class OperationSite(models.Model):
     code = models.CharField(max_length = 150, null=True)
     site_name = models.CharField(max_length = 150, null=True, blank=True)
     date_creation = models.DateField(auto_now=False, default='2023-03-02')
-    service_category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE, null=True)
+    service_category = models.ForeignKey(to="settings.Service", on_delete=models.CASCADE, null=True)
     site_client = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
     site_country = CountryField(blank_label="(select country)", default='---',max_length=250)
     site_lga = models.CharField(max_length=200, null=True, verbose_name='Site Local Government')
