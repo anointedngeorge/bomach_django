@@ -49,7 +49,9 @@ class OperationTask(models.Model):
     class Meta:
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'
-    
+        permissions = (
+            ("can_view_table_actions", "Can View Table Actions"),
+        )
     def __str__(self) -> str:
         return self.task_title
     
