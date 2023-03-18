@@ -16,7 +16,12 @@ class OperationsTaskAdmin(admin.ModelAdmin):
     # list_display = []
     exclude =['user','code','is_done']
     list_display = ['user','task_category','task_title','task_project','action']
-   
+
+    def get_queryset(self, request):
+        if request.user.is_superuser:
+            return super().get_queryset(request)
+        rq = self.model.objects.all().filter(user_id=request.user.id)
+        return rq
 
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()
