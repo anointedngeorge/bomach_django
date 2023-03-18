@@ -15,7 +15,8 @@ from plugins.generator import generator
 class OperationsTaskAdmin(admin.ModelAdmin):
     # list_display = []
     exclude =['user','code','is_done']
-    list_display = ['user','task_category','task_title','task_project','action']
+    list_display = ['branch','user','task_category','task_title','task_project','action']
+    list_filter = ['branch']
 
     def get_queryset(self, request):
         if request.user.is_superuser:
