@@ -156,11 +156,12 @@ class RealestatePlotAdmin(admin.ModelAdmin):
 
     def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
         estate_total_amount =  float(obj.realestate.unit_price) * float(obj.size)
-        extra_fees =  float(obj.realestate.survey_plan) + float(obj.realestate.development_fee) + float(obj.realestate.legal_fee)
+        extra_fees =  float(obj.realestate.survey_plan.amount) + float(obj.realestate.development_fee) + float(obj.realestate.legal_fee.amount)
         obj.price = float(estate_total_amount) + float(extra_fees)
         obj.code = str(uuid.UUID.hex)
         obj.save()
-    
+        # print(obj.realestate.survey_plan.amount
+        # )
         return super().response_add(request, obj, post_url_continue)
 
     def response_change(self, request, obj) -> HttpResponse:
