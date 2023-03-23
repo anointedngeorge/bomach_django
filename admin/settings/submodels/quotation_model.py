@@ -9,9 +9,9 @@ from djmoney.models.fields import MoneyField
 
 
 class Quotation(models.Model):
-    name = models.CharField(max_length = 150)
-    qty = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
+    name = models.CharField(max_length = 150, null=True)
     unity_price = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
+    qty  = models.IntegerField(verbose_name='Quantity', null=True)
     amount = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     created_at = models.DateField(auto_now=True)
     
@@ -20,16 +20,16 @@ class Quotation(models.Model):
         verbose_name_plural = 'Quotations'
     
     def __str__(self) -> str:
-        return self.name
+        return f"{self.name} {self.unity_price} {self.qty} {self.amount}"
 
 
 
 
 class LaborBillQuotation(models.Model):
-    name = models.CharField(max_length = 150)
-    activity = models.CharField(max_length = 150)
-    qty = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
+    name = models.CharField(max_length = 150, null=True)
+    activity = models.CharField(max_length = 150, verbose_name='Activity/Descriptions', null=True)
     unity_price = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
+    qty  = models.IntegerField(verbose_name='Quantity', null=True)
     amount = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     created_at = models.DateField(auto_now=True)
     
@@ -38,4 +38,4 @@ class LaborBillQuotation(models.Model):
         verbose_name_plural = 'Labor Bill Quotation'
     
     def __str__(self) -> str:
-        return self.name
+        return f"{self.name} {self.unity_price} {self.qty} {self.amount}"

@@ -21,15 +21,19 @@ from datetime import datetime
 from ckeditor.fields import RichTextField
 from django.utils import timezone
 
+
+
 class EngineeringReport(ReportingSheet):
     # OperationSite,OperationProject
-    report_sites = models.ManyToManyField(to="operations.OperationSite", related_name='engeering_site_rel')
-    
-    labor_and_bill = models.ForeignKey(to='settings.LaborBillQuotation', related_name='eng_bill_rel', on_delete=models.CASCADE, null=True)
-    material_received = models.ForeignKey(related_name='eng_material_needed',
-        verbose_name='material received and time',to='settings.Quotation', on_delete=models.CASCADE, null=True)
+    report_date = models.DateField(auto_now=False, default=timezone.now, null=True)
+    site_activities = RichTextField(null=True)
+    report_sites = models.ManyToManyField(to="operations.OperationSite")
+    labor_and_bill = models.ManyToManyField(to='settings.LaborBillQuotation')
+    material_received = models.ManyToManyField(to='operations.Stores', verbose_name='material received and time')
+    material_used = models.ManyToManyField(to='operations.StoreExpenditure')
+
     proposed_activity = RichTextField(null=True)
-    materials_needed = models.ForeignKey(to='settings.Quotation', related_name='eng_material_rel', on_delete=models.CASCADE, null=True)
+    materials_needed  = models.ManyToManyField(to='operations.stores', related_name='eng_material_rel')
     expenditure = MoneyField(verbose_name="Expenditure Of Labor", 
     max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     description = RichTextField(null=True)

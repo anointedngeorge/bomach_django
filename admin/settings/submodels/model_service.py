@@ -15,10 +15,10 @@ class Service(models.Model):
     ]
     status  = models.CharField(max_length = 150, null=True, blank=True, choices=CHOICE, default='parent')
     name = models.CharField(max_length = 150)
-    parent_to  = models.ForeignKey(to='settings.Service', on_delete=models.CASCADE, 
+    parent_to  = models.ForeignKey(verbose_name='Parent', to='settings.Service', on_delete=models.CASCADE, 
     related_name='service_parent_rel', null=True, blank=True, default=None
     )
-    is_child_to = models.ForeignKey(to='settings.Service', on_delete=models.CASCADE, blank=True, null=True,
+    is_child_to = models.ForeignKey(verbose_name='Child', to='settings.Service', on_delete=models.CASCADE, blank=True, null=True,
     related_name='child_service_model'
     )
     description  = models.TextField(blank=True)
