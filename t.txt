@@ -1,3 +1,6 @@
 https://adminlte.io/docs/3.0/components/main-header.html
 https://github.com/fseesink/django-adminlte3-tutorial/tree/master/TestAdminLTE3/TestApp/templates/adminlte/lib
 https://github.com/d-demirci/django-adminlte3/tree/master/adminlte3/templates/adminlte
+
+celery
+https://testdriven.io/blog/django-celery-periodic-tasks/

@@ -17,3 +17,4 @@ from operations.submodels.reportmodel.land_survey import *
 from operations.submodels.payroll import *
 from operations.submodels.store_model import *
 from operations.submodels.payroll import *
+from operations.submodels.drawing_bank import *

@@ -17,7 +17,7 @@ from plugins.dropdown import dictDropdown
 class OperationProjectAdmin(admin.ModelAdmin):
     
     list_display = ['user','status','project_name','start_date','expected_end_date','client',
-    'budget','hour_estimated']
+    'budget',]
     exclude = ['project_id','code']
     # form = ProjectForm
 
@@ -27,11 +27,11 @@ class OperationProjectAdmin(admin.ModelAdmin):
       }),
 
      ('Project Information', {
-          'fields': ('start_date','budget','hour_estimated','expected_end_date','client',)
+          'fields': ('start_date','budget','expected_end_date','client',)
       }),
 
     ('description', {
-          'fields': ('project_dependency','project_owner','project_desciption',)
+          'fields': ('project_dependency','project_desciption',)
       }),
     
    )

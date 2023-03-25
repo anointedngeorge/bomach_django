@@ -6,6 +6,7 @@ from admin.jazzime import *
 from admin.jazzime_ui import *  
 from admin.ckeditor import *
 from admin.cronJob import *
+from admin.celery_config import *
 
 
 
@@ -117,6 +118,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
@@ -184,3 +186,15 @@ EMAIL_HOST_USER = "support@logisticsnumber1.com"
 EMAIL_HOST_PASSWORD = "YO27S4ncx10UGJBo"
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+
+
+CELERY_BROKER_URL = "redis://redis:6379"
+CELERY_RESULT_BACKEND = "redis://redis:6379"
+
+# CELERY_BEAT_SCHEDULE = {
+#     "sample_task": {
+#         "task": "core.tasks.sample_task",
+#         "schedule": crontab(minute="*/1"),
+#     },
+# }

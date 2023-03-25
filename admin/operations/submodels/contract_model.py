@@ -70,7 +70,13 @@ class OperationContract(models.Model):
         modelname = self._meta.model.__name__
 
         action = {
-            "soldout": [],
+            "pending": [
+                {"name":f"Accept", "href":f"", "is_button":False, 
+                "query":{'id':self.id}},
+
+                {"name":f"Reject", "href":f"", "is_button":False, 
+                "query":{'id':self.id}}
+            ],
             "avaliable": [],
         }
         return dictDropdown(
@@ -78,10 +84,7 @@ class OperationContract(models.Model):
             status=self.status, 
             modelname=modelname, 
             code=self.code,
-            report_template_name='contract',
-            report_title='Contract Report',
-            is_report=True,
-            link='/get-report',
+            show_media=True,
         )
 
 

@@ -22,11 +22,12 @@ def queryFormat(param={}):
     else:
         return ''
 
-def dictDropdown(action=[], link='', status='', modelname='', code='', report_title='',  report_template_name='', is_report=False):
+def dictDropdown(action=[], link='', status='', modelname='', code='', report_title='',  report_template_name='', is_report=False, show_media=False):
         """
         This is a dropdown menue
         """
         html = ""
+    
         try:
             # get the status that match in the action object
             get_status =  None
@@ -45,8 +46,9 @@ def dictDropdown(action=[], link='', status='', modelname='', code='', report_ti
                     html += f"<td><button type='button' data-url='{x.get('href')}' value='{query}'>{str(x.get('name')).title()}</button></td>"
                 else:
                     html += f"<td><a  href='{x.get('href')}?{query}'>{str(x.get('name')).title()}</a></td>"
-            html += f"<td><a  href='{local_file_url_image(code)}?model={modelname}'>Upload File(s)</a></td>"
-            html += f"<td><a  href='{api_fetch_image(code)}?model={modelname}' target='_blank'>Get Files</a></td>"
+            if show_media:
+                html += f"<td><a  href='{local_file_url_image(code)}?model={modelname}'>Upload File(s)</a></td>"
+                html += f"<td><a  href='{api_fetch_image(code)}?model={modelname}' target='_blank'>Get Files</a></td>"
             if is_report:
                 html += f"<td><a  href='{link}/{report_template_name}/{modelname}/?{query}'>{report_title.title()}</a></td>"
 
@@ -55,11 +57,11 @@ def dictDropdown(action=[], link='', status='', modelname='', code='', report_ti
             html += "</div>"
 
             return format_html(html)
-        except:
-            pass
+        except Exception as e:
+            print(e)
 
 
-def singleDropdown(action=[], modelname='', link='', code='', report_title='', report_template_name='task', is_report=False):
+def singleDropdown(action=[], modelname='', link='', code='', report_title='', report_template_name='task', is_report=False, show_media=False):
         try:
             html = ""
             # get the status that match in the action object
@@ -73,6 +75,8 @@ def singleDropdown(action=[], modelname='', link='', code='', report_title='', r
                     html += f"<td><button  data-url='{x.get('href')}' value='{query}'>{x.get('name')}</button></td>"
                 else:
                     html += f"<td><a href='{x.get('href')}?{query}'>{x.get('name')}</a></td>"
+            
+            # if show_media:
             html += f"<td><a  href='{local_file_url_image(code)}?model={modelname}'>Upload File(s)</a></td>"
             html += f"<td><a  href='{api_fetch_image(code)}?model={modelname}' target='_blank'>Get Files</a></td>"
             

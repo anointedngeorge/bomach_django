@@ -37,6 +37,28 @@ class EngineeringReport(ReportingSheet):
     expenditure = MoneyField(verbose_name="Expenditure Of Labor", 
     max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     description = RichTextField(null=True)
+
+
+    def action(self):
+        modelname = self._meta.model.__name__
+
+        action = [
+                {"name":f"Accept", "href":f"", "is_button":False, 
+                "query":{'id':self.id}},
+
+                {"name":f"Reject", "href":f"", "is_button":False, 
+                "query":{'id':self.id}},
+
+                {"name":f"Print", "href":f"printout", "is_button":False, 
+                "query":{'id':self.id}},
+            ]
+        return singleDropdown(
+            action=action, 
+            status=self.status, 
+            modelname=modelname, 
+            code=self.code,
+            show_media=True,
+        )
     
    
     

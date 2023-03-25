@@ -33,11 +33,12 @@ class OperationProject(models.Model):
     client = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
     budget = MoneyField(max_digits=10, decimal_places=2, default=0.01, default_currency='NGN')
     # budget  = models.CharField(max_length = 150, null=True)
-    hour_estimated = models.TimeField(auto_now=False, default='00:00:00', null=True)
+    # hour_estimated  = models.CharField(max_length = 150)
+    
     project_desciption = models.TextField(null=True)
-    project_owner = models.CharField(
-        max_length = 150, null=True, help_text='Please Enter Unique Id.'
-        )
+    # project_owner = models.CharField(
+    #     max_length = 150, null=True, help_text='Please Enter Unique Id.'
+    #     )
     status = models.CharField(max_length = 150, choices=[
         ('completed','Completed'),
         ('rejected','Rejected'),
