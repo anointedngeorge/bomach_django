@@ -23,7 +23,7 @@ from django.utils import timezone
 
 
 
-Engineering_ADMIN_LIST = ['report_date','expenditure']
+Engineering_ADMIN_LIST = ['report_date','expenditure','report_site']
 
 class EngineeringReport(ReportingSheet):
     # OperationSite,OperationProject
