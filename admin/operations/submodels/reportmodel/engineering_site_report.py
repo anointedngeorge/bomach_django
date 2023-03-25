@@ -35,7 +35,7 @@ class EngineeringReport(ReportingSheet):
     expenditure = MoneyField(verbose_name="Expenditure Of Labor", 
     max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     material_received = models.ManyToManyField(to='operations.Stores', verbose_name='material received and time')
-    expenditure2 = MoneyField(verbose_name="Expenditure On Material Used", 
+    expenditure2 = MoneyField(verbose_name="Expenditure On Materials Received", 
     max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     material_used = models.ManyToManyField(to='operations.StoreExpenditure')
     proposed_activity = RichTextField(null=True)
