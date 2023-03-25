@@ -50,7 +50,8 @@ class EngineeringReport(ReportingSheet):
     def action(self):
         modelname = self._meta.model.__name__
 
-        action = [
+        action = {
+            'pending': [
                 {"name":f"Accept", "href":f"", "is_button":False, 
                 "query":{'id':self.id}},
 
@@ -60,7 +61,8 @@ class EngineeringReport(ReportingSheet):
                 {"name":f"Print", "href":f"printout", "is_button":False, 
                 "query":{'id':self.id}},
             ]
-        return singleDropdown(
+        }
+        return dictDropdown(
             action=action, 
             status=self.status, 
             modelname=modelname, 
