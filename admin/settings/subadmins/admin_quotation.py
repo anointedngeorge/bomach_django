@@ -15,5 +15,11 @@ class ActivitiesAdmin(admin.ModelAdmin):
 
 
 @admin.register(LaborBillQuotation)
-class LActivitiesAdmin(admin.ModelAdmin):
-    pass
+class LaborBillQuotationAdmin(admin.ModelAdmin):
+    
+    class Media:
+        js = (
+            'custom/jquery-3.6.4.min.js', 
+            'custom/app.js',       # project static folder
+          
+        )
