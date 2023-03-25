@@ -23,6 +23,8 @@ from django.utils import timezone
 
 
 
+Engineering_ADMIN_LIST = ['report_date','expenditure']
+
 class EngineeringReport(ReportingSheet):
     # OperationSite,OperationProject
     report_date = models.DateField(auto_now=False, default=timezone.now, null=True)
@@ -39,6 +41,9 @@ class EngineeringReport(ReportingSheet):
     
     description = RichTextField(null=True)
 
+
+    def __str__(self) -> str:
+        return f"{self.report_date}"
 
     def action(self):
         modelname = self._meta.model.__name__

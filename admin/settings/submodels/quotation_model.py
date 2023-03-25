@@ -29,7 +29,7 @@ class LaborBillQuotation(models.Model):
     name = models.CharField(max_length = 150, null=True)
     activity = models.CharField(max_length = 150, verbose_name='Activity/Descriptions', null=True)
     unity_price = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
-    qty  = models.IntegerField(verbose_name='Quantity', null=True)
+    qty  = models.FloatField(verbose_name='Quantity', null=True)
     amount = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     created_at = models.DateField(auto_now=True)
     
