@@ -32,7 +32,7 @@ class OperationSiteAdmin(admin.ModelAdmin):
       }),
       
       ('Add Store', {
-          'fields': ('store',)
+          'fields': ('stores',)
       }),
    )
     def response_add(self, request, obj, post_url_continue=None):
