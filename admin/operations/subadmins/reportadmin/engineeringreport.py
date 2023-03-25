@@ -19,7 +19,7 @@ from plugins.generator import generator
 
 @admin.register(EngineeringReport)
 class OperationsEngineeringReportAdmin(admin.ModelAdmin):
-    exclude = ['author','report_type','modelname','modelid','code']
+    exclude = ['author','report_type','modelname','modelid','code','status']
     list_display = Engineering_ADMIN_LIST
     actions = [codeGenerator]
 
