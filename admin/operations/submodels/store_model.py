@@ -14,7 +14,7 @@ class Stores(models.Model):
     unit_price = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     qty  = models.IntegerField(verbose_name='Quantity', null=True)
     amount = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
-    date_time  = models.CharField(max_length = 150, default=timezone.datetime.now)
+    date_time  = models.CharField(max_length = 150, default='')
     created_at = models.DateField(auto_now=True)
 
     class Meta:

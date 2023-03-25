@@ -6,6 +6,7 @@ from django.template.response import TemplateResponse
 # Register your models here.
 # from fpdf import FPDF
 from plugins.pdf import convert_to_file_to_pdf
+from actions.generator import generator
 
 from operations.models import *
 
@@ -20,6 +21,7 @@ from plugins.generator import generator
 class OperationsEngineeringReportAdmin(admin.ModelAdmin):
     exclude = ['author','report_type','modelname','modelid','code']
     list_display = Engineering_ADMIN_LIST
+    action = [generator]
 
     def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
         obj.code =  f"{uuid.uuid4().hex}"
