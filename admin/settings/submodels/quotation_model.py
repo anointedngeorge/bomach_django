@@ -9,6 +9,7 @@ from djmoney.models.fields import MoneyField
 
 
 class Quotation(models.Model):
+    code = models.CharField(max_length = 150, blank=True, null=True)
     name = models.CharField(max_length = 150, null=True)
     unity_price = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     qty  = models.IntegerField(verbose_name='Quantity', null=True)
@@ -26,11 +27,13 @@ class Quotation(models.Model):
 
 
 class LaborBillQuotation(models.Model):
+    code = models.CharField(max_length = 150, null=True, blank=True)
     name = models.CharField(max_length = 150, null=True)
     activity = models.CharField(max_length = 150, verbose_name='Activity/Descriptions', null=True)
     unity_price = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     qty  = models.FloatField(verbose_name='Quantity', null=True)
     amount = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
+    date_time = models.CharField(max_length = 150, default=timezone.datetime.now)
     created_at = models.DateField(auto_now=True)
     
     class Meta:

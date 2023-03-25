@@ -27,15 +27,17 @@ Engineering_ADMIN_LIST = ['report_date','expenditure']
 
 class EngineeringReport(ReportingSheet):
     # OperationSite,OperationProject
+    code = models.CharField(max_length = 150, blank=True, null=True)
     report_date = models.DateField(auto_now=False, default=timezone.now, null=True)
     site_activities = RichTextField(null=True)
-    report_sites = models.ManyToManyField(to="operations.OperationSite")
+    report_site  = models.ForeignKey(on_delete=models.CASCADE, to="operations.OperationSite", related_name='eng_report', null=True)
     labor_and_bill = models.ManyToManyField(to='settings.LaborBillQuotation')
     expenditure = MoneyField(verbose_name="Expenditure Of Labor", 
     max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     material_received = models.ManyToManyField(to='operations.Stores', verbose_name='material received and time')
+    expenditure2 = MoneyField(verbose_name="Expenditure On Material Used", 
+    max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     material_used = models.ManyToManyField(to='operations.StoreExpenditure')
-
     proposed_activity = RichTextField(null=True)
     materials_needed  = models.ManyToManyField(to='operations.stores', related_name='eng_material_rel')
     

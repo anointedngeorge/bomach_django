@@ -18,5 +18,10 @@ from plugins.generator import generator
 
 @admin.register(EngineeringReport)
 class OperationsEngineeringReportAdmin(admin.ModelAdmin):
-    exclude = ['author','report_type','modelname','modelid']
+    exclude = ['author','report_type','modelname','modelid','code']
     list_display = Engineering_ADMIN_LIST
+
+    def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
+        obj.code =  f"{uuid.uuid4().hex}"
+        obj.save()
+        return super().response_add(request, obj, post_url_continue)
