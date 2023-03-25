@@ -39,7 +39,7 @@ class EngineeringReport(ReportingSheet):
     proposed_activity = RichTextField(null=True)
     materials_needed  = models.ManyToManyField(to='operations.stores', related_name='eng_material_rel')
     
-    description = RichTextField(null=True)
+    description = RichTextField(null=True, verbose_name='Comment')
 
 
     def __str__(self) -> str:
