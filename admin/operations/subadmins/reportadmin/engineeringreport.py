@@ -21,7 +21,7 @@ from plugins.generator import generator
 class OperationsEngineeringReportAdmin(admin.ModelAdmin):
     exclude = ['author','report_type','modelname','modelid','code']
     list_display = Engineering_ADMIN_LIST
-    actions = [generator]
+    actions = [generator()]
 
     def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
         obj.code =  f"{uuid.uuid4().hex}"
