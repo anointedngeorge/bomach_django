@@ -7,7 +7,7 @@ from operations.models import *
 
 @admin.register(Stores)
 class StoreAdmin(admin.ModelAdmin):
-    exclude = ['code','amount']
+    exclude = ['code']
     list_display = STORE_ADMIN_LIST
 
     def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
@@ -18,7 +18,7 @@ class StoreAdmin(admin.ModelAdmin):
 
 @admin.register(StoreExpenditure)
 class StoreExpenditureAdmin(admin.ModelAdmin):
-    
+    exclude = ['amount']
 
     def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
         store =  obj.store.unit_price.amount
