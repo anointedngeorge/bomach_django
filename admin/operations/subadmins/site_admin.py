@@ -31,6 +31,9 @@ class OperationSiteAdmin(admin.ModelAdmin):
           'fields': ('site_map_location','scope_of_work','project',)
       }),
       
+      ('Add Store', {
+          'fields': ('store',)
+      }),
    )
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()

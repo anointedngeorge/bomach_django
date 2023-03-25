@@ -29,6 +29,8 @@ class OperationSite(models.Model):
     site_state = models.CharField(max_length=200, null=True)
     site_map_location = models.TextField(null=True)
     scope_of_work = models.CharField(max_length = 150, null=True)
+    stores = models.ManyToManyField(to='operations.Stores')
+    
     project = models.ForeignKey(OperationProject, on_delete=models.CASCADE, 
     related_name='project_site_related', null=True)
     status = models.CharField(max_length = 150, choices=[
