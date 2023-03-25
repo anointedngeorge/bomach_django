@@ -40,7 +40,8 @@ class EngineeringReport(ReportingSheet):
     material_used = models.ManyToManyField(to='operations.StoreExpenditure')
     proposed_activity = RichTextField(null=True)
     materials_needed  = models.ManyToManyField(to='operations.stores', related_name='eng_material_rel')
-    
+    STATUS_CHOICE = [('pending','Pending')]
+    status = models.CharField(max_length = 150, choices=STATUS_CHOICE, default='pending')
     description = RichTextField(null=True, verbose_name='Comment')
 
 
