@@ -3,9 +3,11 @@ from django_countries.fields import CountryField
 from djmoney.models.fields import MoneyField
 from django.utils import timezone
 
-STORE_ADMIN_LIST = ['name','activity','unit_price','qty','amount','date_time']
+STORE_ADMIN_LIST = ['name','activity','unit_price','qty','amount','site_code','is_site_taken','date_time']
 
 class Stores(models.Model):
+    site_code = models.CharField(max_length = 150, blank=True, null=True)
+    is_site_taken = models.BooleanField(default=False, blank=True, null=True, verbose_name='Item In Use')
     code = models.CharField(max_length = 150, blank=True, null=True)
     # site = models.ForeignKey(to='operations.operationsite', on_delete=models.CASCADE, 
     # related_name='store_site', null=True)

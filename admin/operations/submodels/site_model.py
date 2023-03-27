@@ -17,6 +17,7 @@ from plugins.dropdown import dictDropdown
 
 
 class OperationSite(models.Model):
+    site_code = models.CharField(max_length = 150, null=True, blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, 
     related_name="operation_site_rel")
     code = models.CharField(max_length = 150, null=True)
@@ -29,10 +30,10 @@ class OperationSite(models.Model):
     site_state = models.CharField(max_length=200, null=True)
     site_map_location = models.TextField(null=True)
     scope_of_work = models.CharField(max_length = 150, null=True)
-    stores = models.ManyToManyField(to='operations.Stores')
-    
+    stores = models.ManyToManyField(to='operations.Stores', related_name='site_store_rel', blank=True, null=True)
     project = models.ForeignKey(OperationProject, on_delete=models.CASCADE, 
     related_name='project_site_related', null=True)
+
     status = models.CharField(max_length = 150, choices=[
         ('completed','Completed'),
         ('rejected','Rejected'),

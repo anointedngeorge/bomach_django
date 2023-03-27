@@ -1,5 +1,5 @@
 FROM python:3.10.1
-
+# FROM python:3.6-slim-buster AS build
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
@@ -16,12 +16,11 @@ RUN pip3 install --upgrade pip
 # upgrade pip to latest
 
 # Copy codebase
-COPY . .
-
+COPY requirements.txt .
 # install requirements
 RUN pip3 install -r requirements.txt
 
-
+COPY . .
 # create a new user
 # RUN adduser --disabled-password --gecos '' bomach_django
 

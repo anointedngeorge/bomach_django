@@ -57,6 +57,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     salutation = models.CharField(max_length=300, choices=SALUTATION, default='---')
     code = models.CharField(max_length=300, blank=True, null=True)
     first_name = models.CharField(max_length=300, blank=True, null=True)
+    surname = models.CharField(max_length=300, blank=True, null=True)
     last_name = models.CharField(max_length=300, blank=True, null=True)
     email = models.EmailField(('email address'), unique=True, error_messages="Email Already Taken")
     username = models.CharField(max_length=300, unique=True)

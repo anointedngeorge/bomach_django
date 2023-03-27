@@ -9,14 +9,16 @@ from django.template.response import TemplateResponse
 from plugins.pdf import convert_to_file_to_pdf
 import uuid
 from plugins.generator import generator
-
+from actions.exportToDifferentFormat import DownloadPDF, viewDataInPDF
 
 
 
 @admin.register(Employee)
 class HrEmployeeAdmin(admin.ModelAdmin):
     list_display = ['user','branch','phone_number','gender','marital_status','designation','action']
+    printable_list = ['user']
     exclude = ['user', 'code']
+    actions = [viewDataInPDF]
     
 
     fieldsets = (
