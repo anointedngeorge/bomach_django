@@ -128,17 +128,10 @@ class Employee(models.Model):
     
     def get_related_task(self):
         task = self.operations_task_employee.all()
-        print(task)
+        
         return task
 
     
     def get_related_projects(self, dt1=None):
-        # r = ''
-        context = {}
         relatedNames =  self.project_members_rel.all()
-        print(relatedNames)
-
-        for x in relatedNames:
-            r = x.project_name
-            print(r)
         return relatedNames

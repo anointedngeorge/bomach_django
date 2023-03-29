@@ -15,5 +15,8 @@ class Department(models.Model):
     
     def __str__(self) -> str:
         return self.name
+
+    def natural_key(self):
+        return self.__str__()
     
     

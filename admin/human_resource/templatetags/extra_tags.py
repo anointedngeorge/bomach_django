@@ -35,16 +35,20 @@ def ListUlForSingleQuerySet(request=None, searchable_names='', queryset=None):
 def ListUlForMultipleQuerySet(request=None, searchable_names='', queryset=None):
     data_header =  searchable_names.split(',')
     ul = ""
-    
+    counter = 1
     try:
         ul += "<ul class='list-group list-group-flush'>"
+        
         res=request.META
 
         serialized_data =  serializers.serialize('python', queryset, use_natural_foreign_keys=True, use_natural_primary_keys=True) 
         for s in serialized_data:
             fields =  s.get('fields')
+            ul += f"<center><b>({counter})</b></center>"
             for h in data_header:
                 ul += f"<li class='list-group-item'><b>{str(h).replace('_',' ').title()}: </b>  {fields[h]} </li>"
+            counter = counter + 1
+            # print(len(serialized_data))
         ul += "</ul>"
         return format_html(ul)
     except Exception as e:
