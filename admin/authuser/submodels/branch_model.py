@@ -35,6 +35,7 @@ class Branch(models.Model):
 
     def natural_key(self):
         return self.__str__()
+        
 
 
 
