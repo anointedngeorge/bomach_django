@@ -22,6 +22,9 @@ class EmployeeType(models.Model):
         verbose_name = 'Employement Type'
         verbose_name_plural = 'Employment Type'
 
+    def natural_key(self):
+        return self.__str__()
+
 
 class Designation(models.Model):
     roles  = models.ManyToManyField(to="human_resource.Jobs", blank=True)
@@ -34,6 +37,9 @@ class Designation(models.Model):
     
     def __str__(self) -> str:
         return self.name
+
+    def natural_key(self):
+        return self.__str__()
 
 
 class Employee(models.Model):
