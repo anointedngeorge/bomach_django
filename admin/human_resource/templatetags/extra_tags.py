@@ -49,6 +49,7 @@ def ListUlForMultipleQuerySet(request=None, searchable_names='', queryset=None):
                 ul += f"<li class='list-group-item'><b>{str(h).replace('_',' ').title()}: </b>  {fields[h]} </li>"
             counter = counter + 1
             # print(len(serialized_data))
+            
         ul += "</ul>"
         return format_html(ul)
     except Exception as e:

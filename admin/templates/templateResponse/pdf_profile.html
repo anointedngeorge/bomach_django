@@ -51,7 +51,7 @@
                     </p>
                 </div>
                 <div class="card-body">
-                    {% ListUlForMultipleQuerySet request=request queryset=queryset.get_related_projects searchable_names='project_name,department,start_date,expected_end_date' %}
+                    {% ListUlForMultipleQuerySet request=request queryset=queryset.get_related_projects searchable_names='status,project_name,department,start_date,expected_end_date' %}
                 </div>
             </div>
             <!-- add extra here -->
