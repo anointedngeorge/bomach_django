@@ -6,14 +6,14 @@
 
 
 <div class="container">
-
+<!-- first -->
     <div class="row">
         <div class="col-lg-12">
             <h3 class="text text-dark shadow p-3">
                 <b>{{queryset.get_employee_fullname|upper}} <a href=""><i class=''>Back</i></i></a></b>
             </h3>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="card">
                 <div class="card-header">
                     <p class="text text-primary">
@@ -24,11 +24,11 @@
                     {% ListUlForSingleQuerySet request=request queryset=queryset searchable_names='branch,user,phone_number,gender,marital_status,designation' %}
                 </div>
             </div>
-            
+            <!-- add extra -->
         </div>
     
         <!-- second div -->
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="card">
                 <div class="card-header">
                     <p class="text text-primary">
@@ -36,14 +36,36 @@
                     </p>
                 </div>
                 <div class="card-body">
-                    {% related_item request=request object='OperationTask' lookup_field='assign_to' id=queryset.id searchable_names='task_title,task_project,branch,task_category,task_time,task_site,start_date,end_date,task_priority' %}
+                    {% ListUlForMultipleQuerySet request=request queryset=queryset.get_related_task searchable_names='task_title,task_project,branch,task_category,task_time,task_site,start_date,end_date,task_priority' %}
+                    <!-- {% related_item request=request object='OperationTask' lookup_field='assign_to' id=queryset.id searchable_names='task_title,task_project,branch,task_category,task_time,task_site,start_date,end_date,task_priority' %} -->
                 </div>
             </div>
-            
-            
+        <!-- add extra -->
         </div>
+
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <p class="text text-primary">
+                        <h3>Related Project(s)</h3>
+                    </p>
+                </div>
+                <div class="card-body">
+                    {% ListUlForMultipleQuerySet request=request queryset=queryset.get_related_projects searchable_names='project_name' %}
+                </div>
+            </div>
+            <!-- add extra here -->
+        </div>
+
+
     </div>
-    
+<!-- end -->
+
+
+
+
+
+
 </div>
   
 {% endblock content %}

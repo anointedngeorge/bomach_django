@@ -107,27 +107,38 @@ class Employee(models.Model):
     def action(self):
         modalname = self._meta.model.__name__
         action = [
-                {"name":'Profile', "href":f"employee-profile", "is_button":False, 
-                "query":{'id':self.id}},
+                # {"name":'Profile', "href":f"employee-profile", "is_button":False, 
+                # "query":{'id':self.id}},
                 ]
                 
         return singleDropdown(
             action=action, 
             modelname=modalname,
             report_template_name='tasks',
-            is_report=True, 
+            is_report=False, 
             report_title='Employee',
             link='/admin/reports/get-report'
         )
     
 
-
     def get_employee_fullname(self):
         employee_name =  f"{self.user.first_name} {self.last_name}" if self.user.surname != None else f"{self.user.first_name} {self.user.last_name}"
         return employee_name
 
-    # def get_related_items(self):
-    #     task =  OperationTask.objects.all().filter(assign_to=self.id)   
-    #     return {
-    #         'task':task
-    #     }
+    
+    def get_related_task(self):
+        task = self.operations_task_employee.all()
+        print(task)
+        return task
+
+    
+    def get_related_projects(self, dt1=None):
+        # r = ''
+        context = {}
+        relatedNames =  self.project_members_rel.all()
+        print(relatedNames)
+
+        for x in relatedNames:
+            r = x.project_name
+            print(r)
+        return relatedNames

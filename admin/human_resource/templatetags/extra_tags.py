@@ -15,12 +15,32 @@ register = template.Library()
 def ListUlForSingleQuerySet(request=None, searchable_names='', queryset=None):
     data_header =  searchable_names.split(',')
     ul = ""
-    
+
     try:
         ul += "<ul class='list-group list-group-flush'>"
         res=request.META
 
         serialized_data =  serializers.serialize('python', [queryset], use_natural_foreign_keys=True, use_natural_primary_keys=True) 
+        for s in serialized_data:
+            fields =  s.get('fields')
+            for h in data_header:
+                ul += f"<li class='list-group-item'><b>{str(h).replace('_',' ').title()}: </b>  {fields[h]} </li>"
+        ul += "</ul>"
+        return format_html(ul)
+    except Exception as e:
+        return f"{e}"
+
+
+@register.simple_tag
+def ListUlForMultipleQuerySet(request=None, searchable_names='', queryset=None):
+    data_header =  searchable_names.split(',')
+    ul = ""
+    
+    try:
+        ul += "<ul class='list-group list-group-flush'>"
+        res=request.META
+
+        serialized_data =  serializers.serialize('python', queryset, use_natural_foreign_keys=True, use_natural_primary_keys=True) 
         for s in serialized_data:
             fields =  s.get('fields')
             for h in data_header:
