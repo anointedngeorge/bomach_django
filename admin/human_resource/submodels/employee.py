@@ -128,7 +128,6 @@ class Employee(models.Model):
     
     def get_related_task(self):
         task = self.operations_task_employee.all()
-        
         return task
 
     
