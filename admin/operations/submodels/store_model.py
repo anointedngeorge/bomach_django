@@ -45,4 +45,7 @@ class StoreExpenditure(models.Model):
         return f"{self.store} has ${self.qty} at {self.amount}."
     
     
+    def natural_key(self):
+        return self.__str__()
+    
     

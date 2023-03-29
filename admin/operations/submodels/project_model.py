@@ -53,6 +53,8 @@ class OperationProject(models.Model):
     def __str__(self) -> str:
         return self.project_name
     
+    def natural_key(self):
+        return self.__str__()
 
     def action(self):
         modelname = self._meta.model.__name__

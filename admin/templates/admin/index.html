@@ -8,7 +8,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="text text-primary">Welcome, {{request.user}}</h2>
-                <h5 class="text text-dark">Designation: {{request.user.roles}}</h5>
+                <h5 class="text text-dark">Designation: 
+                {% if request.user.roles == None %}
+                    Superadmin
+                {% else %}
+                {{request.user.roles}}
+                {% endif %}
+                    </h5>
                 <i><i>{{request.user.email}}</i></i> <br>
                 <i>Last Seen: {{request.user.last_login}}</i>
             </div>
@@ -28,6 +34,6 @@
     <!-- { nclude "dash_template/dash_settings.html"} -->
 </div>
 
-<!-- {{ block.super }} -->
+{{ block.super }}
 {% endblock content %}
     

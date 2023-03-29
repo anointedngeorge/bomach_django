@@ -30,6 +30,9 @@ class Appointment(models.Model):
         verbose_name = 'Appointment'
         verbose_name_plural = 'Appointments'
 
+
+    def natural_key(self):
+        return self.__str__()
     
     def action(self):
         modalname = self._meta.model.__name__
@@ -46,6 +49,8 @@ class Appointment(models.Model):
 
 
                 }
+
+
             
  
         return dictDropdown(

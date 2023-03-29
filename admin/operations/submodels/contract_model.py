@@ -65,6 +65,8 @@ class OperationContract(models.Model):
     def __str__(self) -> str:
         return f"{self.contract_title} - {self.code}"
 
+    def natural_key(self):
+        return self.__str__()
 
     def action(self):
         modelname = self._meta.model.__name__

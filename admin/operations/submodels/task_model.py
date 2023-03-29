@@ -16,7 +16,7 @@ from plugins.dropdown import (dictDropdown, singleDropdown)
 class OperationTask(models.Model):
     branch = models.ForeignKey(to='authuser.Branch', on_delete=models.CASCADE, 
     related_name='task_related_branch', null=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, 
+    user = models.ForeignKey(to='authuser.User', null=True, on_delete=models.CASCADE, 
     related_name="operation_rel")
     code = models.CharField(max_length = 150, null=True)
     task_category = models.ForeignKey(to='settings.Service',
@@ -53,6 +53,9 @@ class OperationTask(models.Model):
         )
     def __str__(self) -> str:
         return self.task_title
+
+    def natural_key(self):
+        return self.__str__()
     
 
     def action(self):

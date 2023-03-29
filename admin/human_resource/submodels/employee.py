@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.core import serializers
 from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
@@ -8,7 +9,6 @@ from django_countries.fields import CountryField
 from plugins.dropdown import singleDropdown, dictDropdown
 from authuser.models import Branch
 # from phonenumber_field.modelfields import PhoneNumberField
-
 
 
 class EmployeeType(models.Model):
@@ -95,6 +95,9 @@ class Employee(models.Model):
     def __str__(self) -> str:
         return f"{self.user}"
 
+    def natural_key(self):
+        return self.__str__()
+
     def action(self):
         modalname = self._meta.model.__name__
         action = [
@@ -110,5 +113,15 @@ class Employee(models.Model):
             report_title='Employee',
             link='/admin/reports/get-report'
         )
-
     
+
+
+    def get_employee_fullname(self):
+        employee_name =  f"{self.user.first_name} {self.last_name}" if self.user.surname != None else f"{self.user.first_name} {self.user.last_name}"
+        return employee_name
+
+    # def get_related_items(self):
+    #     task =  OperationTask.objects.all().filter(assign_to=self.id)   
+    #     return {
+    #         'task':task
+    #     }

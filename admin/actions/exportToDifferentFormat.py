@@ -1,4 +1,5 @@
 from django.http import HttpResponse,JsonResponse
+from django.shortcuts import render
 from django.core import serializers
 import pandas as pd
 import os
@@ -78,15 +79,12 @@ def viewDataInPDF(modeladmin, request, queryset):
                 pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
                 if not pdf.err:
                     response = HttpResponse(result.getvalue(), content_type='application/{}'.format(file_format))
-                    # response['Content-Disposition'] = 'attachment; filename="{}.{}"'.format(app_name,file_format)
-                    result.seek(0)
-                    return response
-                return None
+                    # response['Content-Disposition'] = 'attachment; fownloadPDF, viewDataInPDF
     except Exception as e:
         print(e)
         return HttpResponse(e)
 
-viewDataInPDF.short_description = "View Profile"
+viewDataInPDF.short_description = "View Data PDF"
 
 
 def DownloadPDF(modeladmin, request, queryset):
@@ -111,3 +109,27 @@ def DownloadPDF(modeladmin, request, queryset):
         return HttpResponse(e)
 
 DownloadPDF.short_description = "Download In PDF"
+
+
+
+
+def ViewProfileAction(modeladmin, request, queryset):
+    try:
+        if len(queryset) ==  1:
+            filename = os.path.realpath(f"templates/templateResponse/pdf_profile.html")
+            context = dict(modeladmin.admin_site.each_context(request),)
+            data =  queryset[0]
+            context['queryset']=data
+            context['title'] = f"{data.get_employee_fullname()}"
+            # print(context)
+                # self.fileFormat(request, file_format, code)
+            if os.path.exists(filename):
+                return TemplateResponse(request=request, template=filename, context=context)
+            else:
+                return HttpResponse('File path not found')
+        else:
+            return HttpResponse('Multiple Selection not allowed. You can only select one data at a time.')
+    except Exception as e:
+        return HttpResponse(e)
+
+ViewProfileAction.short_description = "View Profile"

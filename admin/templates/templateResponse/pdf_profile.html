@@ -1,37 +1,49 @@
+{% extends 'admin/base_site.html' %}
 {% load table_tag %}
+{% load extra_tags %}
 
-<style>
-    .styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-.styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-}
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
+{% block content %}
 
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
 
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-</style>
-<!-- {% for seed in seeds.items %}
-    {{seed.0}}
-{% endfor %} -->
+<div class="container">
 
-{% _table head_data=modeldatas body_data=queryset %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="text text-dark shadow p-3">
+                <b>{{queryset.get_employee_fullname|upper}}</b>
+            </h3>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <p class="text text-primary">
+                        <h3>Profile</h3>
+                    </p>
+                </div>
+                <div class="card-body">
+                    {% ListUlForSingleQuerySet request=request queryset=queryset searchable_names='branch,user,phone_number,gender,marital_status,designation' %}
+                </div>
+            </div>
+            
+        </div>
+    
+        <!-- second div -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <p class="text text-primary">
+                        <h4>Related Task(s)</h4>
+                    </p>
+                </div>
+                <div class="card-body">
+                    {% related_item request=request object='OperationTask' lookup_field='assign_to' id=queryset.id searchable_names='task_title,task_project,branch,task_category,task_time,task_site,start_date,end_date,task_priority' %}
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+</div>
+  
+{% endblock content %}

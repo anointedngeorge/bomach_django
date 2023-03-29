@@ -31,6 +31,8 @@ class Service(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    def natural_key(self):
+        return self.__str__()
 
 
 
@@ -51,6 +53,9 @@ class ServiceCalculator(models.Model):
     
     def __str__(self) -> str:
         return self.name
+    
+    def natural_key(self):
+        return self.__str__()
 
 
 
