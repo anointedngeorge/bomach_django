@@ -139,3 +139,29 @@ def ViewProfileAction(modeladmin, request, queryset):
         return HttpResponse(e)
 
 ViewProfileAction.short_description = "View Profile"
+
+
+def SendEmailMessage(modeladmin, request, queryset):
+    qs = queryset
+    if len(qs) ==  1:
+        context = dict(modeladmin.admin_site.each_context(request),)
+        filename = os.path.realpath(f"templates/templateResponse/email.html")
+        if os.path.exists(filename):
+            return TemplateResponse(request=request, template=filename, context=context)
+        else:
+            return HttpResponse('File path not found')
+
+SendEmailMessage.short_description = "Send Email"
+
+
+def SendSmsMessage(modeladmin, request, queryset):
+    return 'Coming Soon'
+    
+SendSmsMessage.short_description = "Send SMS"
+
+
+def SendWhatsupMessage(modeladmin, request, queryset):
+    
+    return 'Coming Soon'
+    
+SendWhatsupMessage.short_description = "Send Whatsup Message"

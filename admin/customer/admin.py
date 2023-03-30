@@ -11,7 +11,7 @@ from actions.clientActions import *
 class customerAdmin(admin.ModelAdmin):
     list_display = CUSTOMER_ADMIN_LIST
     exclude = ['code']
-    actions = [ViewProfileAction,viewDataInPDF ,codeGenerator]
+    actions = [SendEmailMessage,SendSmsMessage,SendWhatsupMessage,ViewProfileAction,viewDataInPDF ,codeGenerator]
 
     def has_add_permission(self, request) -> bool:
         if not request.user.is_superuser:

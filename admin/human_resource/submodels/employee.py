@@ -110,7 +110,6 @@ class Employee(models.Model):
                 # {"name":'Profile', "href":f"employee-profile", "is_button":False, 
                 # "query":{'id':self.id}},
                 ]
-                
         return singleDropdown(
             action=action, 
             modelname=modalname,
@@ -131,6 +130,6 @@ class Employee(models.Model):
         return task
     
     
-    def get_related_projects(self, dt1=None):
+    def get_related_projects(self):
         relatedNames =  self.project_members_rel.all()
         return relatedNames
