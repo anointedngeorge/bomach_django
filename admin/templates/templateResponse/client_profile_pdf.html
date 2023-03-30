@@ -1,5 +1,6 @@
 {% load table_tag %}
 {% load extra_tags %}
+{% load static %}
 
 {% block content %}
 
@@ -29,10 +30,19 @@ ul > li {
     font-size: 15px;
 }
 
+img#logo {
+    width: 150px;
+    height: 150px;
+}
 </style>
 
 
 <div class="container">
+
+    <div class="col-lg-12">
+        <img src="static/logo3.png" alt="Preview" id="logo">
+    </div>
+
     <div class="col-lg-12">
         <h1 class="text text-dark shadow p-3">
             <b>{{queryset.get_client_fullname|title}}</b>
