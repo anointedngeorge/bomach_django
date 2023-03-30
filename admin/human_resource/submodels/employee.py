@@ -129,7 +129,7 @@ class Employee(models.Model):
     def get_related_task(self):
         task = self.operations_task_employee.all()
         return task
-
+    
     
     def get_related_projects(self, dt1=None):
         relatedNames =  self.project_members_rel.all()

@@ -18,7 +18,7 @@ def ListUlForSingleQuerySet(request=None, searchable_names='', queryset=None):
 
     try:
         ul += "<ul class='list-group list-group-flush'>"
-        res=request.META
+        res=request.META if not request == '' else request
 
         serialized_data =  serializers.serialize('python', [queryset], use_natural_foreign_keys=True, use_natural_primary_keys=True) 
         for s in serialized_data:
@@ -39,7 +39,7 @@ def ListUlForMultipleQuerySet(request=None, searchable_names='', queryset=None):
     try:
         ul += "<ul class='list-group list-group-flush'>"
         
-        res=request.META
+        res=request.META if not request == '' else request
 
         serialized_data =  serializers.serialize('python', queryset, use_natural_foreign_keys=True, use_natural_primary_keys=True) 
         for s in serialized_data:

@@ -49,6 +49,7 @@ class Customer(models.Model):
 
     def fullName(self):
         return f"{self.user}"
+        
 
     def projects(self):
         pro = self.client_rel.all().count()
@@ -62,6 +63,7 @@ class Customer(models.Model):
     def get_related_sites(self):
         sites = self.site_client_rel.all()
         return sites
+
 
     def get_related_projects(self, dt1=None):
         relatedNames =  self.client_rel.all()

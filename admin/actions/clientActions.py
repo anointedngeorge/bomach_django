@@ -64,7 +64,7 @@ def viewDataInPDF(modeladmin, request, queryset):
         app_name = f"{modeladmin.model.__name__}_{currentDateTime()}".lower()
         context = {}
         file_format = str('pdf').lower()
-        filename = os.path.realpath(f"templates/templateResponse/{PAGE_NAME}")
+        filename = os.path.realpath(f"templates/templateResponse/client_profile_pdf.html")
         if len(queryset) ==  1:
             context = dict(modeladmin.admin_site.each_context(request),)
             data =  queryset[0]
