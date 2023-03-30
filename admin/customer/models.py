@@ -7,6 +7,10 @@ from django.utils import timezone
 from django_countries.fields import CountryField
 
 
+
+CUSTOMER_ADMIN_LIST = ['code','fullName','country','phone','gender','projects','sites']
+
+
 class Customer(models.Model):
     code = models.CharField(max_length = 150, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True,
@@ -34,3 +38,31 @@ class Customer(models.Model):
         
     def __str__(self) -> str:
         return f"{self.user}"
+
+
+
+    def get_client_fullname(self):
+        return self.__str__()
+
+    def natural_keys(self):
+        return self.__str__()
+
+    def fullName(self):
+        return f"{self.user}"
+
+    def projects(self):
+        pro = self.client_rel.all().count()
+        return f"{pro}"
+    
+    def sites(self):
+        site_count = self.site_client_rel.all().count()
+        return f"{site_count}"
+
+
+    def get_related_sites(self):
+        sites = self.site_client_rel.all()
+        return sites
+
+    def get_related_projects(self, dt1=None):
+        relatedNames =  self.client_rel.all()
+        return relatedNames

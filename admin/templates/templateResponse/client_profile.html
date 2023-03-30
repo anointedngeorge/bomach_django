@@ -1,0 +1,65 @@
+{% extends 'admin/base_site.html' %}
+{% load table_tag %}
+{% load extra_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="col-lg-12">
+        <h3 class="text text-dark shadow p-3">
+            <b>{{queryset.get_client_fullname|title}} <a href=""><i class=''>Back</i></i></a></b>
+        </h3>
+    </div>
+
+   <div class="row">
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <p class="text text-primary">
+                    <h3>Profile</h3>
+                </p>
+            </div>
+            <div class="card-body" >
+                {% ListUlForSingleQuerySet request=request queryset=queryset searchable_names='gender,country' %}
+            </div>
+        </div>
+        <!-- add extra -->
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <p class="text text-primary">
+                    <h3>Related Project(s)</h3>
+                </p>
+            </div>
+            <div class="card-body" style="height:600px; overflow-x:scroll;">
+                {% ListUlForMultipleQuerySet request=request queryset=queryset.get_related_projects searchable_names='status,project_name,department,start_date,expected_end_date' %}
+            </div>
+        </div>
+        <!-- add extra here -->
+    </div>
+
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <p class="text text-primary">
+                    <h3>Related Site(s)</h3>
+                </p>
+            </div>
+            <div class="card-body" style="height:600px; overflow-x:scroll;">
+                {% ListUlForMultipleQuerySet request=request queryset=queryset.get_related_sites searchable_names='site_code,site_name,date_creation,service_category' %}
+            </div>
+        </div>
+        <!-- add extra here -->
+    </div>
+
+
+
+   </div>
+
+</div>
+  
+{% endblock content %}

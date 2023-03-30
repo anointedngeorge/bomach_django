@@ -3,14 +3,27 @@ from customer.models import *
 import uuid
 # Register your models here.
 from plugins.generator import generator
+from actions.generator import codeGenerator
+from actions.clientActions import *
+
 
 @admin.register(Customer)
 class customerAdmin(admin.ModelAdmin):
-    list_display = ['user']
-    exclude = ['user','code']
+    list_display = CUSTOMER_ADMIN_LIST
+    exclude = ['code']
+    actions = [ViewProfileAction,viewDataInPDF ,codeGenerator]
 
     def has_add_permission(self, request) -> bool:
-        return False
+        if not request.user.is_superuser:
+            return False
+        return True
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        if not request.user.is_superuser:
+            qs = queryset.filter(user_id=request.user.id)
+            return qs
+        return queryset
 
     def response_add(self, request, obj, post_url_continue=None):
         obj.code = generator()

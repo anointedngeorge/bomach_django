@@ -14,7 +14,7 @@ from admin.celery_config import *
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=af--evn#t-51+v#xb9@iefqh8kze0@ihe$_(%z0otqb@v#p!$'
 
-DEBUG = True
+DEBUG = False
 
 SITE_ID = 1
 
