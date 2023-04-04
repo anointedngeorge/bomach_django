@@ -11,6 +11,7 @@ import uuid
 from plugins.generator import generator
 from actions.generator import codeGenerator
 from actions.exportToDifferentFormat import *
+from actions.clientActions import *
 
 
 
@@ -19,7 +20,7 @@ class HrEmployeeAdmin(admin.ModelAdmin):
     list_display = ['user','branch','phone_number','gender','marital_status','designation','action']
     printable_list = ['user']
     exclude = ['user', 'code']
-    actions = [codeGenerator, ViewProfileAction]
+    actions = [codeGenerator,ViewProfileAction, SendMessage, SendBulkMessage]
     
 
     fieldsets = (

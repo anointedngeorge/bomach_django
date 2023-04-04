@@ -12,9 +12,10 @@ def emailPlugin(mail_subject, from_head, from_email, template_name, obj, data):
     try:
         data = data
         mail_subject = mail_subject
-        message = render_to_string(f"email_template/{template_name}.html", data)
-        to_email = f"{obj.email}"
+        message = render_to_string(f"templateResponse/email_template/{template_name}.html", data)
+        to_email = f"{obj.get('email')}"
         email = EmailMessage(mail_subject, message, to=[to_email], from_email=f"{from_head} <{from_email}>")
         email.send()
     except Exception as e:
-            return e
+        print(e)
+        return e

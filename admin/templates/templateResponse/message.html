@@ -1,0 +1,104 @@
+{% extends 'admin/base_site.html' %}
+{% load table_tag %}
+{% load extra_tags %}
+
+
+{% block content %}
+
+<div class="container">
+    <form action="/message/" method="POST" id="message_form">
+        {% csrf_token %}
+        <div class="row bg-white shadow p-4">
+            <div class="col-lg-8">
+                <p class="text text-left">Send message to <b>{{title|title}}</b></p>
+                <hr>
+                <div>
+                    <label>Message: </label>
+                    <textarea name="message" placeholder="Message" id="message" cols="60" rows="10" onkeyup="countWords(this.value);"></textarea>
+                    <!-- <label>Send to: </label> -->
+                    <input type="hidden" name="courier" id="courier">
+                </div>
+                <div class="mt-4">
+                    <span id="wordCount">0</span><span>/</span><span id="maxlength">0</span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <p>Categories</p>
+                <h4>Choose Message Type</h4>
+                <label>
+                    <i class="fa fa-envelope-o"></i>
+                    SMS
+                    <input type="radio" id="category1" name="category" data-courier="{{queryset.phone_number}}" data-word=200 value="sms" required>
+                </label>
+                <label>
+                    <i class="fa fa-address-book-o"></i>
+                    Email
+                    <input type="radio" id="category2" name="category" data-courier="{{queryset.user.email}}"  data-word=1000 value="email" required>
+                </label>
+                <label>
+                    <i class="fa fa-whatsapp"></i>
+                    Whatsapp
+                    <input type="radio" id="category3" name="category" data-courier="{{queryset.phone_number}}" data-word=500 value="whatsapp" required>
+                </label>
+                <div class="center">
+                    <!-- <center> -->
+                        <button class="btn btn-block btn-info" id="send">Send</button>
+                    <!-- </center> -->
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+async function sendmessage(event) {
+    event.preventDefault();
+    let context = {}
+    let formdata = new FormData(this)[0]
+    for(let [name, value] of formdata) {
+        console.log(name,'=',value);
+    }
+}
+
+// document.getElementById('message_form').addEventListener('submit', sendmessage, false);
+
+let category_name = document.getElementsByName('category');
+
+function countWords(word) {
+    let words = word.length;
+    let category = document.querySelector('input[name=category]:checked');
+    if (category != null) {
+        document.getElementById('wordCount').innerHTML = words;
+    } else {
+        let dt=document.getElementById('message');
+        dt.setAttribute('maxlength', 0);
+    }
+    
+}
+
+
+
+
+async function EventListenerTextAreaMaxLength(el) {
+    let dt=document.getElementById('message');
+    let data_length = el.target.dataset['word'];
+    let courier =  el.target.dataset['courier'];
+    document.getElementById('maxlength').innerHTML = data_length;
+    let required_length =  Math.abs(parseInt(dt.value.length) - parseInt(data_length));
+    // if (parseInt(dt.value.length) > parseInt(data_length)) {
+    //     dt.value = dt.value[required_length];
+    // }
+    document.getElementById('courier').value = courier;
+    // console.log(required_length);
+    dt.setAttribute('maxlength', parseInt(data_length));
+}
+
+
+for (let index = 0; index < category_name.length; index++) {
+    const element = category_name[index];
+    document.getElementById(element.id).addEventListener('change', EventListenerTextAreaMaxLength, false);
+}
+
+</script>
+  
+{% endblock content %}

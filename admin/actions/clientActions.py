@@ -141,27 +141,45 @@ def ViewProfileAction(modeladmin, request, queryset):
 ViewProfileAction.short_description = "View Profile"
 
 
-def SendEmailMessage(modeladmin, request, queryset):
-    qs = queryset
-    if len(qs) ==  1:
+
+
+def SendMessage(modeladmin, request, queryset):
+    try:
+        if len(queryset) ==  1:
+            filename = os.path.realpath(f"templates/templateResponse/message.html")
+            context = dict(modeladmin.admin_site.each_context(request),)
+            data =  queryset[0]
+            context['queryset']=data
+            context['title'] = f"{data.get_employee_fullname()}"
+            
+            
+            
+            if os.path.exists(filename):
+                return TemplateResponse(request=request, template=filename, context=context)
+            else:
+                return HttpResponse('File path not found')
+        else:
+            return HttpResponse('Multiple Selection not allowed. You can only select one data at a time.')
+    except Exception as e:
+        return HttpResponse(e)
+    
+SendMessage.short_description = "Send Message"
+
+
+
+def SendBulkMessage(modeladmin, request, queryset):
+    try:
+        filename = os.path.realpath(f"templates/templateResponse/message.html")
         context = dict(modeladmin.admin_site.each_context(request),)
-        filename = os.path.realpath(f"templates/templateResponse/email.html")
+
+        context['queryset']=queryset
+        context['title'] = f"Send Bulk Message"
+
         if os.path.exists(filename):
             return TemplateResponse(request=request, template=filename, context=context)
         else:
             return HttpResponse('File path not found')
-
-SendEmailMessage.short_description = "Send Email"
-
-
-def SendSmsMessage(modeladmin, request, queryset):
-    return 'Coming Soon'
+    except Exception as e:
+        return HttpResponse(e)
     
-SendSmsMessage.short_description = "Send SMS"
-
-
-def SendWhatsupMessage(modeladmin, request, queryset):
-    
-    return 'Coming Soon'
-    
-SendWhatsupMessage.short_description = "Send Whatsup Message"
+SendBulkMessage.short_description = "Send Bulk Message"

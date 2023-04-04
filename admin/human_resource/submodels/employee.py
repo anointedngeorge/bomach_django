@@ -118,7 +118,8 @@ class Employee(models.Model):
             report_title='Employee',
             link='/admin/reports/get-report'
         )
-    
+
+
 
     def get_employee_fullname(self):
         employee_name =  f"{self.user.first_name} {self.last_name}" if self.user.surname != None else f"{self.user.first_name} {self.user.last_name}"
