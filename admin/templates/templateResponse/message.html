@@ -80,7 +80,7 @@ async function sendmessage(event) {
         let result = "";
         let d =  res.message;
         result += `<h3>Status: ${d.code} <i>unit balance: ${d.balance}</i></h3>`
-        document.getElementById('message_area').innerHTML =JSON.stringify(res);
+        document.getElementById('message_area').innerHTML = result;
     }else{
         document.getElementById('message_area').innerHTML = JSON.stringify(req.statusText);
     }
