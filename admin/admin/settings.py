@@ -14,7 +14,7 @@ from admin.celery_config import *
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=af--evn#t-51+v#xb9@iefqh8kze0@ihe$_(%z0otqb@v#p!$'
 
-DEBUG = False
+DEBUG = True
 
 SITE_ID = 1
 
@@ -180,10 +180,10 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 
 # email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "mail.logisticsnumber1.com"
-EMAIL_PORT = 465
-EMAIL_HOST_USER = "support@logisticsnumber1.com"
-EMAIL_HOST_PASSWORD = "YO27S4ncx10UGJBo"
+EMAIL_HOST = "mail.bomachgroup.com"
+EMAIL_PORT = 26
+EMAIL_HOST_USER = "support@bomachgroup.com"
+EMAIL_HOST_PASSWORD = "Gfh2C?*oWI@^"
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 

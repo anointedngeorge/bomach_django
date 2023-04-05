@@ -7,7 +7,7 @@
         
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="text text-primary">Welcome, {{request.user}}</h2>
+                <h1 class="text text-dark">Welcome, {{request.user}}</h1>
                 <h5 class="text text-dark">Designation: 
                 {% if request.user.roles == None %}
                     Superadmin
@@ -34,6 +34,8 @@
     <!-- { nclude "dash_template/dash_settings.html"} -->
 </div>
 
-{{ block.super }}
+<div class="container bg-white p-3">
+    {{ block.super }}
+</div>
 {% endblock content %}
     

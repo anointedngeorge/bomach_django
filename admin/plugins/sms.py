@@ -18,5 +18,5 @@ def SMS(to_courier=2348133292427, from_message='sharashell', message=''):
         }
     headers = { 'Content-Type': 'application/json' }
     response = requests.request("POST", url, headers=headers, json=payload)
-    return response
+    return response.json()
 

@@ -101,6 +101,7 @@ class Employee(models.Model):
     def __str__(self) -> str:
         return f"{self.user}"
 
+
     def natural_key(self):
         return self.__str__()
 

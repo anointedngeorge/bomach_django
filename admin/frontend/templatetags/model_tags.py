@@ -29,3 +29,10 @@ def loadSystemSettingFile(code=None):
         print('Yes')
         return filepath
     return {}
+
+
+@register.simple_tag
+def count(data='[]'):
+    data = eval(data).objects.all().count()
+    return data
+

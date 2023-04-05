@@ -44,6 +44,7 @@
                     <!-- <center> -->
                         <button class="btn btn-block btn-info" id="send">Send</button>
                     <!-- </center> -->
+                    <span id="message_area"></span>
                 </div>
             </div>
         </div>
@@ -51,16 +52,42 @@
 </div>
 
 <script>
-async function sendmessage(event) {
-    event.preventDefault();
-    let context = {}
-    let formdata = new FormData(this)[0]
-    for(let [name, value] of formdata) {
-        console.log(name,'=',value);
-    }
+
+function getCookie(name) {
+    let cookie = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return cookie ? cookie[2] : null;
 }
 
-// document.getElementById('message_form').addEventListener('submit', sendmessage, false);
+async function sendmessage(event) {
+    const url =  event.target.action;
+    event.preventDefault();
+    let context = {}
+    let formdata = new FormData(this)
+
+    for(let [name, value] of formdata) {
+        context[name]=value;
+    }
+
+    const req = await fetch(url, {
+        method:'POST',
+        headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+        },
+        body:JSON.stringify(context)
+    })
+    const res = await req.json()
+    if (req.ok) {
+        let result = "";
+        let d =  res.message;
+        result += `<h3>Status: ${d.code} <i>unit balance: ${d.balance}</i></h3>`
+        document.getElementById('message_area').innerHTML = result;
+    }else{
+        document.getElementById('message_area').innerHTML = JSON.stringify(req.statusText);
+    }
+    
+}
+
+document.getElementById('message_form').addEventListener('submit', sendmessage, false);
 
 let category_name = document.getElementsByName('category');
 
