@@ -23,7 +23,7 @@ from django.utils import timezone
 
 
 
-Engineering_ADMIN_LIST = ['report_date','expenditure','report_site','action']
+Engineering_ADMIN_LIST = ['report_date','expenditure','material_received','report_site','action']
 
 class EngineeringReport(ReportingSheet):
     # OperationSite,OperationProject
@@ -37,6 +37,7 @@ class EngineeringReport(ReportingSheet):
     material_received = models.ManyToManyField(to='operations.Stores', verbose_name='material received and time')
     expenditure2 = MoneyField(verbose_name="Expenditure On Materials Received", 
     max_digits=10, decimal_places=2, null=True, default_currency='NGN')
+
     material_used = models.ManyToManyField(to='operations.StoreExpenditure')
     proposed_activity = RichTextField(null=True)
     materials_needed  = models.ManyToManyField(to='operations.stores', related_name='eng_material_rel')
