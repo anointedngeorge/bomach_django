@@ -23,7 +23,7 @@ from django.utils import timezone
 
 
 
-Engineering_ADMIN_LIST = ['report_date','expenditure','material_received','report_site','action']
+Engineering_ADMIN_LIST = ['report_date','expenditure','expenditure2','report_site','action']
 
 class EngineeringReport(ReportingSheet):
     # OperationSite,OperationProject
@@ -34,7 +34,9 @@ class EngineeringReport(ReportingSheet):
     labor_and_bill = models.ManyToManyField(to='settings.LaborBillQuotation')
     expenditure = MoneyField(verbose_name="Expenditure Of Labor", 
     max_digits=10, decimal_places=2, null=True, default_currency='NGN')
-    material_received = models.ManyToManyField(to='operations.Stores', verbose_name='material received and time')
+    material_received = models.ManyToManyField(to='operations.Stores', 
+    verbose_name='material received and time')
+    
     expenditure2 = MoneyField(verbose_name="Expenditure On Materials Received", 
     max_digits=10, decimal_places=2, null=True, default_currency='NGN')
 
@@ -72,7 +74,10 @@ class EngineeringReport(ReportingSheet):
             show_media=True,
         )
     
-   
+    def _material_received(self):
+        data = self.material_received.all()
+        print(data)
+        return 23
     
     
     
