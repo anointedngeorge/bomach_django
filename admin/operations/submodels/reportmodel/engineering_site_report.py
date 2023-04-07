@@ -5,7 +5,6 @@ from django.urls import reverse
 from django.utils import timezone
 from django_countries.fields import CountryField
 # Create your models here.
-
 from human_resource.models import *
 from customer.models import Customer
 from settings.submodels.model_service import ServiceCategory
