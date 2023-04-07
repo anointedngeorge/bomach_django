@@ -91,6 +91,11 @@ class RealEstatePlot(models.Model):
         except:
             pass
 
+    def user_code(self):
+        if self.user.code != None:
+            return f"{self.user.code}"
+        return "By Admin"
+
     def __str__(self) -> str:
         return self.name
 

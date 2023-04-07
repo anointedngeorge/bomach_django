@@ -15,7 +15,7 @@ from actions.generator import codeGenerator
 
 @admin.register(RealEstatePlot)
 class RealestatePlotAdmin(admin.ModelAdmin):
-    list_display = ['created_at','user','realestate','name','price','size','purchase_code','status','action']
+    list_display = ['created_at','user_code','realestate','name','price','size','purchase_code','status','action']
     # search_fields = ['student__startswith', 'year__startswith']
     list_filter = ['realestate','name','created_at','purchase_code']
     actions = [codeGenerator]
