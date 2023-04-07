@@ -37,16 +37,16 @@
         <div class="mt-4">
             <section>
                 <div class='row'>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <label>Customer Name</label>
-                        <input type="text" name="customer" class='form-control' />
-                    </div>
-                    <div class='col-md-4'>
+                        <input type="hidden" name="customer" class='form-control' />
+                    </div> -->
+                    <div class='col-md-6'>
                         <label>Customer email</label>
                         {% show_customers name='customer_email' classname='form-control' %}
                     </div>
 
-                    <div class='col-md-4'>
+                    <div class='col-md-6'>
                         <label>Total Amount</label>
                         <input readonly type="text" class="form-control" name="total_amount" value="{{amount}}" />
                     </div>
