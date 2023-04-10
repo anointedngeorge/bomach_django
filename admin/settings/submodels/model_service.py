@@ -37,6 +37,9 @@ class Service(models.Model):
 
 
 class ServiceCalculator(models.Model):
+    FUNCTIONS = [
+        ('function1','Function1')
+    ]
     name = models.CharField(max_length = 150, null=True, verbose_name='Title')
     service = models.ForeignKey(to="settings.Service", on_delete=models.CASCADE, null=True)
     up = models.IntegerField(default=0, verbose_name='unit price')
@@ -46,6 +49,13 @@ class ServiceCalculator(models.Model):
     nf =  models.IntegerField(default=0, verbose_name='Number of floor')
     mncb =  models.IntegerField(default=0, verbose_name='Maximum number of category bedroom')
     mncf =  models.IntegerField(default=0, verbose_name='Maximum number of category floor')
+    total = models.IntegerField(default=0)
+    
+    function = models.CharField(max_length = 150,
+    blank=True, null=True, 
+    choices=FUNCTIONS, 
+    help_text='Choose a function to calculate with!')
+    
     
     class Meta:
         verbose_name = 'Services Calculator'
