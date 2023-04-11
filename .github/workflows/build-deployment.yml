@@ -7,7 +7,7 @@ on:
       - "master"
 
 jobs:
-  build:
+  buildApp:
     runs-on: ubuntu-latest
     steps:
       - name: Push Repo
