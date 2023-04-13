@@ -1,0 +1,36 @@
+{% extends 'admin/base_site.html' %}
+{% load table_tag %}
+{% load extra_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="col-lg-12">
+        <h3 class="text text-dark shadow p-3">
+            <b>{{queryset.get_fullname|title}} <a href=""><i>Back</i></i></a></b>
+        </h3>
+    </div>
+
+   <div class="row">
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <p class="text text-primary">
+                    <h3>Details</h3>
+                </p>
+            </div>
+            <div class="card-body">
+             
+                {% ListUlForSingleQuerySet request=request queryset=queryset searchable_names='services,customer' %}
+            </div>
+        </div>
+        <!-- add extra -->
+    </div>
+
+
+   </div>
+
+</div>
+  
+{% endblock content %}

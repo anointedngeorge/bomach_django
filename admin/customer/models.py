@@ -37,7 +37,7 @@ class Customer(models.Model):
         verbose_name_plural = "Client"
         
     def __str__(self) -> str:
-        return f"{self.user}"
+        return f"{self.user.first_name} {self.last_name}"
 
 
 

@@ -38,17 +38,21 @@ class Service(models.Model):
 
 class ServiceCalculator(models.Model):
     FUNCTIONS = [
-        ('function1','Function1')
+        ('function1','Function1'),
+        ('general_engine_calc','General Engine Calculator')
     ]
     name = models.CharField(max_length = 150, null=True, verbose_name='Title')
     service = models.ForeignKey(to="settings.Service", on_delete=models.CASCADE, null=True)
     up = models.IntegerField(default=0, verbose_name='unit price')
     ebb =  models.IntegerField(default=0, verbose_name='Extra bedroom unit Price')
     efb =  models.IntegerField(default=0, verbose_name='Extra floor bill')
+    esrup =  models.IntegerField(default=0, verbose_name='Extra Sitting Room Unit Price')
     nb =  models.IntegerField(default=0, verbose_name='Number of bedroom')
     nf =  models.IntegerField(default=0, verbose_name='Number of floor')
+    ns =  models.IntegerField(default=0, verbose_name='Number of sitting room')
     mncb =  models.IntegerField(default=0, verbose_name='Maximum number of category bedroom')
     mncf =  models.IntegerField(default=0, verbose_name='Maximum number of category floor')
+    mncs =  models.IntegerField(default=0, verbose_name='Maximum number of category sitting room')
     total = models.IntegerField(default=0)
     
     function = models.CharField(max_length = 150,
@@ -62,7 +66,7 @@ class ServiceCalculator(models.Model):
         verbose_name_plural = 'Service Calculator'
     
     def __str__(self) -> str:
-        return self.name
+        return f"{self.service}"
     
     def natural_key(self):
         return self.__str__()
