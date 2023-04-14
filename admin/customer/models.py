@@ -8,7 +8,7 @@ from django_countries.fields import CountryField
 
 
 
-CUSTOMER_ADMIN_LIST = ['code','fullName','country','phone','gender','projects','sites']
+CUSTOMER_ADMIN_LIST = ['code','fullName','country','phone','gender','projects','sites','quotes']
 
 
 class Customer(models.Model):
@@ -37,9 +37,7 @@ class Customer(models.Model):
         verbose_name_plural = "Client"
         
     def __str__(self) -> str:
-        return f"{self.user.first_name} {self.last_name}"
-
-
+        return f"{self.user.first_name} {self.user.last_name}"
 
     def get_client_fullname(self):
         return self.__str__()
@@ -50,15 +48,18 @@ class Customer(models.Model):
     def fullName(self):
         return f"{self.user}"
         
-
     def projects(self):
         pro = self.client_rel.all().count()
         return f"{pro}"
+    
     
     def sites(self):
         site_count = self.site_client_rel.all().count()
         return f"{site_count}"
 
+    def quotes(self):
+        site_count = self.customer_quote_rel.all().count()
+        return f"{site_count}"
 
     def get_related_sites(self):
         sites = self.site_client_rel.all()

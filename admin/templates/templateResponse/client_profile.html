@@ -3,16 +3,14 @@
 {% load extra_tags %}
 
 {% block content %}
+<div class="container">
+    <h3 class="text text-white shadow p-3 bg-dark">
+        <b>{{queryset.get_fullname|title}} <a href=""><i>Back</i></i></a></b>
+    </h3>
+</div>
 
 <div class="container">
-    <div class="col-lg-12">
-        <h3 class="text text-dark shadow p-3">
-            <b>{{queryset.get_client_fullname|title}} <a href=""><i>Back</i></i></a></b>
-        </h3>
-    </div>
-
    <div class="row">
-
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header">

@@ -12,15 +12,14 @@ from plugins.generator import generator
 from actions.generator import codeGenerator
 from actions.exportToDifferentFormat import *
 from actions.clientActions import *
-
-
+from actions.reports import *
 
 @admin.register(Employee)
 class HrEmployeeAdmin(admin.ModelAdmin):
     list_display = ['user','branch','phone_number','gender','marital_status','designation','action']
     printable_list = ['user']
     exclude = ['user', 'code']
-    actions = [codeGenerator,ViewProfileAction, SendMessage, SendBulkMessage]
+    actions = [codeGenerator,ViewProfileAction, SendMessage, engineeringReportAction]
     
 
     fieldsets = (

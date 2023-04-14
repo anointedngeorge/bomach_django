@@ -5,14 +5,14 @@ from plugins.generator import generator
 from django.http import HttpResponse
 
 from actions.serviceQuote import *
-
+from actions.quotes import *
 
 @admin.register(QuotesModel)
 class QuotesModelAdmin(admin.ModelAdmin):
     list_display = ['code','customer','services','nb','nf','ns','total','status','action']
     exclude = ['total','code','amount_deposited','amount_pending']
-    actions = [ViewProfileAction]
-    
+    actions = [ViewProfileAction, viewQuoteOrders]
+
 
     def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
         obj.code = generator(length=6)

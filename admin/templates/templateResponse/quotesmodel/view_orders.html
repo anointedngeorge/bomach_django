@@ -1,0 +1,51 @@
+{% extends 'admin/base_site.html' %}
+{% load table_tag %}
+{% load extra_tags %}
+
+
+<!-- list_display = ['code','customer','services','nb','nf','ns','total','status','action']
+    exclude = ['total','code','amount_deposited','amount_pending'] -->
+{% block content %}
+
+<div class="container mt-4">
+    <h1>
+        Complated Order(s)
+    </h1>
+</div>
+
+
+<div class="container mt-4">
+
+    <div class="row">
+ 
+    {% for x in queryset  %}
+    <div class="col-lg-4 printable-div-class" id="{{x.code}}">
+        <div class="card">
+            <div class="card-header">
+                <p class="text text-primary">
+                    <h4 class="text-center">Order for {{x.customer}}</h4>
+                </p>
+            </div>
+            <div class="card-body">
+                    <p>
+                        <td>Code: </td>
+                        <td>{{x.code}}</td>
+                    </p>
+                    <p>
+                        <td>Customer: </td>
+                        <td>{{x.customer}}</td>
+                    </p>
+        <!--  -->
+                <br>
+                <button class="btn btn-block btn-warning"><i class="fa fa-print"></i> Print Receipt</button>
+                <br>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    </div>
+ </div>
+
+
+{% endblock content %}

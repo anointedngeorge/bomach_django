@@ -122,8 +122,7 @@ class Employee(models.Model):
         )
 
 
-
-    def get_employee_fullname(self):
+    def get_fullname(self):
         employee_name =  f"{self.user.first_name} {self.last_name}" if self.user.surname != None else f"{self.user.first_name} {self.user.last_name}"
         return employee_name
 

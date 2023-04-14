@@ -5,6 +5,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from plugins.dropdown import *
 
 
+
 class QuotesModel(models.Model):
     # 100 Payment Pending
     # 200 70 percent payment

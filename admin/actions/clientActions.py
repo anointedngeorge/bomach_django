@@ -126,7 +126,7 @@ def ViewProfileAction(modeladmin, request, queryset):
             context = dict(modeladmin.admin_site.each_context(request),)
             data =  queryset[0]
             context['queryset']=data
-            context['title'] = f"{data.get_client_fullname()}"
+            context['title'] = f"{data.get_fullname()}"
             # print(context)
                 # self.fileFormat(request, file_format, code)
             if os.path.exists(filename):
