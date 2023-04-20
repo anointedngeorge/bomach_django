@@ -6,21 +6,15 @@ from plugins.url import (
     api_fetch_image
 )
 
+from plugins.query_builder import queryFormat
+
 
 REPORT_LINK = '/admin/reports/get-reports'
 
 
 
 
-def queryFormat(param={}):
-    if len(param) > 0:
-        str =  ""
-        for x in param:
-            str += f"{x}={param.get(x)}&"
-            filtered =  str.rstrip('&')
-        return filtered
-    else:
-        return ''
+
 
 def dictDropdown(action=[], link='', status='', modelname='', code='', report_title='',  report_template_name='', is_report=False, show_media=False):
         """

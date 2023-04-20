@@ -16,6 +16,7 @@ from django.urls import path
 from django.urls import reverse
 from django.conf import settings 
 from django.contrib import messages
+from django.contrib.auth.decorators import permission_required
 
 
 PAGE_NAME = 'client_profile.html'

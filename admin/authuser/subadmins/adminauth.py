@@ -29,7 +29,7 @@ class AuthModelAdmin(admin.ModelAdmin):
     list_display = ['username','code', 'first_name','last_name', 'email','roles','roles_name','is_active','is_staff','is_superuser']
     list_filter = ['first_name','roles_name','roles']
     # actions = ['']
-    exclude = ['code','last_login','is_superuser','user_permissions',]
+    exclude = ['code','last_login','is_superuser','user_permissions']
     # actions = [send_bulk_message, approve_bulk, reject_bulk]
     form = userRegistrationForm
 
@@ -37,5 +37,7 @@ class AuthModelAdmin(admin.ModelAdmin):
     def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
         coded = str(uuid.uuid4()).replace("-", "")[:4]
         code = f"bom{coded}"
-        self.code = code
+        obj.code = code
+        obj.save()
         return super().response_add(request, obj, post_url_continue)
+    

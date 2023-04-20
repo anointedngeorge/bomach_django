@@ -30,8 +30,9 @@ class SetLoggedinUserRoleAsGroup(MiddlewareMixin):
         try:
              if (user.is_authenticated) and not ( user.is_superuser):
                  roles = request.user.roles.id
-                 permission_group = Group.objects.get(id=f"{roles}")
+                 permission_group = Group.objects.get(id=roles)
                  user.groups.add(permission_group)
+               #   print(user.groups.all())
         except Exception as e:
            return e
         

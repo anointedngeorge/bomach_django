@@ -3,11 +3,16 @@ from django.http import HttpResponse
 from operations.models import *
 from operations.forms import *
 import uuid
+from actions.appointment_action import *
+
+
+
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'phone','branch','designation','appointment_date','status','action']
     form = AppointmentForm
+    actions = [ViewAppointmentProfile]
 
     def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
         coded = f"{uuid.uuid4().hex}"

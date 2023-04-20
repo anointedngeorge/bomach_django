@@ -26,15 +26,13 @@ class OperationProject(models.Model):
     project_name = models.CharField(max_length = 150, null=True, blank=True)
     start_date = models.DateField(auto_now=False, default='2023-03-02')
     expected_end_date = models.DateField(verbose_name='end date(deadline)', auto_now=False, default='2023-03-02')
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, 
-    null=True, related_name='project_department')
+    department = models.ForeignKey(to='human_resource.Department', on_delete=models.CASCADE, related_name='project_department', null=True)
     project_members = models.ManyToManyField(Employee, related_name='project_members_rel', blank=True, null=True)
     project_category = models.ForeignKey(to="settings.Service", on_delete=models.CASCADE, null=True)
     client = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='client_rel', blank=True, null=True)
     budget = MoneyField(max_digits=10, decimal_places=2, default=0.01, default_currency='NGN')
     # budget  = models.CharField(max_length = 150, null=True)
     # hour_estimated  = models.CharField(max_length = 150)
-    
     project_desciption = models.TextField(null=True)
     # project_owner = models.CharField(
     #     max_length = 150, null=True, help_text='Please Enter Unique Id.'
