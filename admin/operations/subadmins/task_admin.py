@@ -9,14 +9,16 @@ from plugins.pdf import convert_to_file_to_pdf
 from operations.models import *
 import uuid
 from plugins.generator import generator
-
+from actions.reports import ViewEngineeringReportAction
 
 @admin.register(OperationTask)
 class OperationsTaskAdmin(admin.ModelAdmin):
     # list_display = []
+
     exclude =['user','code','is_done']
     list_display = ['branch','user','task_category','task_title','task_project','action']
     list_filter = ['branch']
+    # actions = [ViewEngineeringReportAction]
 
     def get_queryset(self, request):
         if request.user.is_superuser:

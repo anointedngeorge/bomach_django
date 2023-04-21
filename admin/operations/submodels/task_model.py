@@ -49,7 +49,10 @@ class OperationTask(models.Model):
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'
         permissions = (
-            ("can_view_table_actions", "Can View Table Actions"),
+            ("can_access_engineering_report", "Can Access Engineering Report"),
+            ("can_access_survey_report", "Can Access Survey Report"),
+            ("can_access_landing_report", "Can Access Landing Report"),
+
         )
     def __str__(self) -> str:
         return self.task_title

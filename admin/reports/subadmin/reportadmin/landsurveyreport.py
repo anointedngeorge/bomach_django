@@ -7,7 +7,7 @@ from django.template.response import TemplateResponse
 # from fpdf import FPDF
 from plugins.pdf import convert_to_file_to_pdf
 
-from operations.models import *
+from reports.models import *
 
 import uuid
 from plugins.generator import generator
@@ -16,7 +16,7 @@ from plugins.generator import generator
 
 
 
-@admin.register(GeneralReport)
-class OperationsContractReportAdmin(admin.ModelAdmin):
+@admin.register(LandSurveyReport)
+class OperationsSurveyReportAdmin(admin.ModelAdmin):
     exclude = ['author','report_type','modelname','modelid']
     # list_display = ['task_title','status','due_date','task_start_date']

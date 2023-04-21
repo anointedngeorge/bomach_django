@@ -22,7 +22,7 @@ from django.utils import timezone
 
 
 
-Engineering_ADMIN_LIST = ['report_date','expenditure','expenditure2','report_site','action']
+Engineering_ADMIN_LIST = ['report_date','expenditure','expenditure2','report_site','status','action']
 
 class EngineeringReport(ReportingSheet):
     # OperationSite,OperationProject
@@ -42,13 +42,31 @@ class EngineeringReport(ReportingSheet):
     material_used = models.ManyToManyField(to='operations.StoreExpenditure')
     proposed_activity = RichTextField(null=True)
     materials_needed  = models.ManyToManyField(to='operations.stores', related_name='eng_material_rel')
-    STATUS_CHOICE = [('pending','Pending')]
+    STATUS_CHOICE = [
+        ('pending','Pending'),
+        ('accepted','Accept'),
+        ('rejected','Reject'),
+    ]
     status = models.CharField(max_length = 150, choices=STATUS_CHOICE, default='pending')
     description = RichTextField(null=True, verbose_name='Comment')
 
 
+    class Meta:
+        verbose_name = 'Engineering Report'
+        verbose_name_plural = 'Engineering Reports'
+        permissions = (
+            ("can_perform_extra_action", "Can perform extra action"),
+        )
+
     def __str__(self) -> str:
         return f"{self.report_date}"
+
+    def get_profile(self):
+        return self.__str__()
+
+    
+    def get_full_profile(self):
+        return f"{self.report_date}-({self.code})"
 
     def action(self):
         modelname = self._meta.model.__name__
@@ -57,13 +75,16 @@ class EngineeringReport(ReportingSheet):
             'pending': [
                 {"name":f"Accept", "href":f"", "is_button":False, 
                 "query":{'id':self.id}},
-
                 {"name":f"Reject", "href":f"", "is_button":False, 
                 "query":{'id':self.id}},
+            ],
 
+            'accepted': [
                 {"name":f"Print", "href":f"printout", "is_button":False, 
                 "query":{'id':self.id}},
             ]
+
+
         }
         return dictDropdown(
             action=action, 

@@ -1,0 +1,78 @@
+{% load bootstrap_icons %}
+{% load model_tags %}
+
+<!-- admin/human_resource/employee/ -->
+<div class="container">
+
+    <div class="col-lg-12">
+        <caption><h3>Dashboard</h3></caption>
+        <table class="table">
+            <tr>
+                <td>
+                   
+                        <div class="card bg-info">
+                            <div class="card-body">
+                                <h5 class="card-title p">
+                                    {% bs_icon 'pencil-square' size='1.3em' %}
+                                    Task Details
+                                </h5>
+                                <br />
+                                <h5>{{tasks|length}}</h5>
+                            </div>
+                        </div>
+                    
+                </td>
+        
+                <td>
+                    <a href="">
+                        <div class="card bg-primary">
+                            <div class="card-body">
+                                
+                                <h5 class="card-title p">
+                                    {% bs_icon 'server' size='1.3em' %}
+                                    Site Details
+                                </h5>
+                                <br />
+                                <h5>{{sites|length}}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </td>
+
+                <td>
+                    <a href="">
+                        <div class="card bg-warning">
+                            <div class="card-body">
+                                
+                                <h5 class="card-title p">
+                                    {% bs_icon 'box-arrow-in-right' size='1.3em' %}
+                                    Project Details
+                                </h5>
+                                <br />
+                                <h5>{{projects|length}}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </td>
+
+                <td>
+                    <a href="">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 class="card-title p">
+                                    {% bs_icon 'list-task' size='1.3em' %}
+                                    Estates
+                                </h5>
+                                <br />
+                                <h5>{{realestates|length}}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </td>
+                
+            </tr>
+        </table>
+    </div>
+
+
+</div>

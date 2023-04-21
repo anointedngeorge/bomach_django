@@ -9,6 +9,9 @@ from plugins.dropdown import *
 class Appointment(models.Model):
     STATUS_CHOICE = [
         ('pending','Pending'),
+        ('accepted','Accepted'),
+        ('finished','Finished'),
+        ('cancelled','cancelled'),
     ]
     user = models.ForeignKey(to='authuser.User', on_delete=models.CASCADE, 
     related_name='appointment_user_rel', null=True)

@@ -11,9 +11,6 @@ from django_countries.fields import CountryField
 
 # for reporting
 from operations.submodels.model_appointment import *
-from operations.submodels.reportmodel.general_report import *
-from operations.submodels.reportmodel.engineering_site_report import *
-from operations.submodels.reportmodel.land_survey import *
 from operations.submodels.payroll import *
 from operations.submodels.store_model import *
 from operations.submodels.payroll import *

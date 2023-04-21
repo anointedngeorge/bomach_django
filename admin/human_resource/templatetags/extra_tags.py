@@ -59,6 +59,7 @@ def ListUlForMultipleQuerySet(request=None, searchable_names='', queryset=None):
 
 @register.simple_tag
 def related_item(request=None, object=None, lookup_field=None, id=None, searchable_names=''):
+    
     try:
         data =  {}
         ul = ""

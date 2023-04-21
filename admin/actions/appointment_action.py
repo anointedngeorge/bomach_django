@@ -52,18 +52,23 @@ def ViewAppointmentProfile(modeladmin, request, queryset):
                 data =  queryset[0]
                 context['queryset']=data
                 context['title'] = f"Appointment - {data.page_title()}".title()
-                data =  {
+                data2 =  {
                     'pending':[
-                        {'name':'Confirm','url':'confirm/', 'classname':'btn btn-sm btn-primary'},
-                        {'name':'Send Reminder','url':'confirm/', 'classname':'btn btn-sm btn-warning'},
-                        {'name':'Cancel Appointment','url':'confirm/', 'classname':'btn btn-sm btn-danger'}
+                        {'status':'accepted','name':'Accept Appointment','url':'confirm/', 'classname':'btn btn-sm btn-primary'},
+                        {'status':'message','name':'Send Reminder','url':'confirm/', 'classname':'btn btn-sm btn-warning'},
+                        {'status':'cancelled','name':'Cancel Appointment','url':'confirm/', 'classname':'btn btn-sm btn-danger'}
+                    ],
+
+                     'accepted':[
+                        {'status':'finished','name':'End Meeting','url':'confirm/', 'classname':'btn btn-dark'},
+                    
                     ],
                     'query':{'id':1}
                 }
-                context['action_btn'] = statusActions(data=data,request=request)
-
-
+            
+                context['action_btn'] = statusActions(data=data2,request=request, status=data.status)
                     # self.fileFormat(request, file_format, code)
+                # print(data.status)
                 if os.path.exists(filename):
                     return TemplateResponse(request=request, template=filename, context=context)
                 else:
@@ -74,6 +79,7 @@ def ViewAppointmentProfile(modeladmin, request, queryset):
             flash_message.error(request, "Permission denied.")
     except Exception as e:
         return HttpResponse(e)
+
 
 ViewAppointmentProfile.short_description = "View Appointment"
 

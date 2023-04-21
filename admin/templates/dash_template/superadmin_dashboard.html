@@ -1,0 +1,38 @@
+
+<div class="container bg-white p-3 shadow">
+    <div class="col-lg-12">
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="text text-dark">Welcome, {{request.user}}</h1>
+                <h5 class="text text-dark">Designation: 
+                {% if request.user.roles == None %}
+                    Superadmin
+                {% else %}
+                {{request.user.roles}}
+                {% endif %}
+                    </h5>
+                <i><i>{{request.user.email}}</i></i> <br>
+                <i>Last Seen: {{request.user.last_login}}</i>
+            </div>
+        
+        </div>
+        <hr>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            {% include "dash_template/admin/dash_content_right.html" %}
+        </div>
+    </div>
+
+    {% include "dash_template/admin/dash_content_left.html" %}
+
+    <!-- { nclude "dash_template/dash_settings.html"} -->
+</div>
+
+<div class="container bg-white p-3">
+    {{ block.super }}
+</div>
+
+    
