@@ -25,7 +25,9 @@ from django.utils import timezone
 Engineering_ADMIN_LIST = ['report_date','expenditure','expenditure2','report_site','status','action']
 
 class EngineeringReport(ReportingSheet):
+
     # OperationSite,OperationProject
+    user = models.ForeignKey(to='authuser.User', on_delete=models.CASCADE, blank=True, null=True)
     code = models.CharField(max_length = 150, blank=True, null=True)
     report_date = models.DateField(auto_now=False, default=timezone.now, null=True)
     site_activities = RichTextField(null=True)
@@ -46,6 +48,7 @@ class EngineeringReport(ReportingSheet):
         ('pending','Pending'),
         ('accepted','Accept'),
         ('rejected','Reject'),
+        ('cancelled','cancelled'),
     ]
     status = models.CharField(max_length = 150, choices=STATUS_CHOICE, default='pending')
     description = RichTextField(null=True, verbose_name='Comment')

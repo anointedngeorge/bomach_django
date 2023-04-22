@@ -15,7 +15,6 @@ def statusActions(data={}, status='pending', request=object, type='btn'):
     #     'query':{'id':1}
     # }
     try:
-        
         checkingroup = checkCodenameInPermGroup(
             group_name=request.user.roles,
             permission_codename='can_perform_extra_action'
@@ -30,10 +29,11 @@ def statusActions(data={}, status='pending', request=object, type='btn'):
             for x in check_data:
                 code = generator(6)
                 status =  x.get('status')
+                function =  x.get('function')
                 if checkingroup:
                     if type == 'btn':
                         # table += "<form>"
-                        table += f"<td><button data-message='{status}' type='button' class='{x.get('classname')} status-button' id='{code}'>{x.get('name')}</button></td>"
+                        table += f"<td><button data-message='{status}' data-function='{function}' type='button' class='{x.get('classname')} status-button' id='{code}'>{x.get('name')}</button></td>"
                         # table += "</form>"
                     elif type == 'anchor':
                         table += f"<td><a href='{x.get('url')}?{query}' class='{x.get('classname')}'>{x.get('name')}</a></td>"
@@ -41,7 +41,7 @@ def statusActions(data={}, status='pending', request=object, type='btn'):
                         table += 'Choose btw btn:submit | <a href></a>'
         else:     
             return '-'
-            
+        
         # print(status)
         table += "</tr>"
         table += '</table>'

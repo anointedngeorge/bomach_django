@@ -21,11 +21,12 @@ from datetime import datetime
 from ckeditor.fields import RichTextField
 from django.utils import timezone
 
+LIST_LANDSURVERY_REPORT = ['repo']
 
 class LandSurveyReport(ReportingSheet):
     # OperationSite,OperationProject
     report_sites = models.ManyToManyField(to="operations.OperationSite", related_name='engineering_sites_rel')
-    client = models.CharField(max_length = 150)
+    client  = models.ForeignKey(to='customer.Customer', on_delete=models.CASCADE, blank=True, null=True)
     state_of_site = models.CharField(max_length = 150)
     site_activities = RichTextField(null=True)
     survey_equipment = RichTextField(null=True)

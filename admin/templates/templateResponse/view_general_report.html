@@ -20,7 +20,7 @@
             </div>
 
             <div class="card-body">
-                {% ListUlForSingleQuerySet request=request queryset=queryset searchable_names='code,report_date,site_activities,report_site,labor_and_bill,expenditure,material_received,expenditure2,material_used,proposed_activity,status,description' %}
+                {% ListUlForSingleQuerySet request=request queryset=queryset searchable_names='code,report_title,report_date,report_tasks,status,user,report_comment' %}
             </div>
         </div>
         <!-- add extra -->
@@ -39,7 +39,7 @@
         let functions = el.target.dataset['function'];
 
         let id = parseInt("{{queryset.id}}")
-        let url = `engineering-status/${id}/${status}/${functions}`
+        let url = `update-status/${id}/${status}/${functions}`
         if (confirmPrompt) {
             const req = await fetch(url);
             const res =  await req.json()

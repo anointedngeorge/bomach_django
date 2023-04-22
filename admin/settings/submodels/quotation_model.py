@@ -11,7 +11,7 @@ from djmoney.models.fields import MoneyField
 class Quotation(models.Model):
     code = models.CharField(max_length = 150, blank=True, null=True)
     name = models.CharField(max_length = 150, null=True)
-    unity_price = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
+    unit_price = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     qty  = models.IntegerField(verbose_name='Quantity', null=True)
     amount = MoneyField(max_digits=10, decimal_places=2, null=True, default_currency='NGN')
     created_at = models.DateField(auto_now=True)
@@ -21,7 +21,7 @@ class Quotation(models.Model):
         verbose_name_plural = 'Quotations'
     
     def __str__(self) -> str:
-        return f"{self.name} {self.unity_price} {self.qty} {self.amount}"
+        return f"{self.name} {self.unit_price} {self.qty} {self.amount}"
 
 
 

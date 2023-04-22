@@ -7,6 +7,7 @@ import datetime as dt
 from datetime import datetime
 
 from io import BytesIO
+from reports.submodel.reportmodel.engineering_site_report import EngineeringReport
 from xhtml2pdf import pisa
 from django.template.loader import get_template
 from django.template.response import TemplateResponse
@@ -36,7 +37,7 @@ def viewQuoteOrders(modeladmin, request, queryset):
      
         context['queryset']=queryset
         context['title'] = f"Pending Orders"
-        context['form'] = EngineeringReportForm()
+        context['form'] = EngineeringReport()
         # print(context)
             # self.fileFormat(request, file_format, code)
         if os.path.exists(filename):

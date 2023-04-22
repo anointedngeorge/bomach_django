@@ -10,10 +10,12 @@ class QuotesModel(models.Model):
     # 100 Payment Pending
     # 200 70 percent payment
     # 300 Full payment
+    # 400 payment was registered
     STATUS = [
         ("100", 'Pending'),
         ("200", 'Mininium Of 70 Percent'),
-        ("300", 'Payment Completed')
+        ("300", 'Payment Completed'),
+        ("400", 'Payment was rejected'),
     ]
     code = models.CharField(max_length = 150, null=True)
     customer = models.ForeignKey(to='customer.Customer', 
@@ -51,8 +53,8 @@ class QuotesModel(models.Model):
     def action(self):
         modalname = self._meta.model.__name__
         action = [
-                {"name":'Send Payment Confirmation', "href":f"payment-request-confirmation", "is_button":False, 
-                "query":{'id':self.id, 'code':self.code}},
+                # {"name":'Send Payment Confirmation', "href":f"payment-request-confirmation", "is_button":False, 
+                # "query":{'id':self.id, 'code':self.code}},
                 ]
                 
         return singleDropdown(
@@ -61,6 +63,7 @@ class QuotesModel(models.Model):
             modelname=modalname,
             report_template_name='tasks',
             is_report=False, 
+            show_media=False,
             report_title='Employee',
             link='/admin/reports/get-report'
         )

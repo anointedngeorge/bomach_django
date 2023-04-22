@@ -7,6 +7,7 @@ import datetime as dt
 from datetime import datetime
 
 from io import BytesIO
+from reports.submodel.reportmodel.engineering_site_report import EngineeringReport
 from xhtml2pdf import pisa
 from django.template.loader import get_template
 from django.template.response import TemplateResponse
@@ -16,7 +17,7 @@ from django.urls import path
 from django.urls import reverse
 from django.conf import settings 
 from django.contrib import messages
-
+from plugins.status_actions import *
 
 PAGE_NAME = 'serivice_quote_profile.html'
 
@@ -70,7 +71,10 @@ def viewDataInPDF(modeladmin, request, queryset):
             data =  queryset[0]
             context['queryset']=data
             context['title'] = f"{data.get_client_fullname()}"
-        # self.fileFormat(request, file_format, code)
+
+
+
+
             if os.path.exists(filename):
                 template = get_template(filename)
                 html  = template.render(context)
@@ -117,6 +121,28 @@ def DownloadPDF(modeladmin, request, queryset):
 DownloadPDF.short_description = "Download In PDF"
 
 
+def viewQuoteOrders(modeladmin, request, queryset):
+    try:
+   
+        filename = os.path.realpath(f"templates/templateResponse/quotesmodel/view_orders.html")
+        context = dict(modeladmin.admin_site.each_context(request),)
+     
+        context['queryset']=queryset
+        context['title'] = f"Pending Orders"
+        context['form'] = EngineeringReport()
+        # print(context)
+            # self.fileFormat(request, file_format, code)
+        if os.path.exists(filename):
+            return TemplateResponse(request=request, template=filename, context=context)
+        else:
+            return HttpResponse('File path not found')
+       
+    except Exception as e:
+        return HttpResponse(e)
+
+viewQuoteOrders.short_description = "View Completed Orders"
+
+
 
 
 def ViewProfileAction(modeladmin, request, queryset):
@@ -127,8 +153,39 @@ def ViewProfileAction(modeladmin, request, queryset):
             data =  queryset[0]
             context['queryset']=data
             context['title'] = f"{data.get_fullname()}"
-            # print(context)
-                # self.fileFormat(request, file_format, code)
+            # 100 Payment Pending
+            # 200 70 percent payment
+            # 300 Full payment
+            # 400 Payment rejected
+            data2 = {
+                    '100':[
+                        {'name':'Make Payment','url':'Confirm Payment', 'status':'window','classname':'btn btn-sm btn-info',
+                        'function':'updateEngineeringReport'},
+                        {'name':'Confirm Half Payment','url':'Confirm Payment', 'status':'200','classname':'btn btn-sm btn-primary',
+                        'function':'updateEngineeringReport'},
+                        {'name':'Confirm full Payment','url':'Confirm Payment', 'status':'300','classname':'btn btn-sm btn-success',
+                        'function':'updateEngineeringReport'},
+                        {'name':'Reject Payment','url':'Confirm Payment', 'status':'400','classname':'btn btn-sm btn-danger',
+                        'function':'updateEngineeringReport'},
+                    ],
+
+                    '200':[
+                        {'name':'Print Receipt','url':'/', 'status':'receipt','classname':'btn btn-sm btn-info',
+                        'function':'updateEngineeringReport'},
+                    ],
+
+                     '300':[
+                        {'name':'Print Receipt','url':'/', 'status':'receipt','classname':'btn btn-sm btn-info',
+                        'function':'updateEngineeringReport'},
+                    ],
+                    'query':{}
+                }
+                
+            context['action'] = statusActions(
+                    data=data2,
+                    status=data.status,
+                    request=request
+                )
             if os.path.exists(filename):
                 return TemplateResponse(request=request, template=filename, context=context)
             else:
@@ -142,7 +199,6 @@ ViewProfileAction.short_description = "View Detail Page"
 
 
 
-
 def SendMessage(modeladmin, request, queryset):
     try:
         if len(queryset) ==  1:
@@ -152,8 +208,7 @@ def SendMessage(modeladmin, request, queryset):
             context['queryset']=data
             context['title'] = f"{data.get_employee_fullname()}"
             
-            
-            
+        
             if os.path.exists(filename):
                 return TemplateResponse(request=request, template=filename, context=context)
             else:

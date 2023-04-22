@@ -70,9 +70,9 @@ def singleDropdown(action=[], modelname='', link='', code='', report_title='', r
                 else:
                     html += f"<td><a href='{x.get('href')}?{query}'>{x.get('name')}</a></td>"
             
-            # if show_media:
-            html += f"<td><a  href='{local_file_url_image(code)}?model={modelname}'>Upload File(s)</a></td>"
-            html += f"<td><a  href='{api_fetch_image(code)}?model={modelname}' target='_blank'>Get Files</a></td>"
+            if show_media:
+                html += f"<td><a  href='{local_file_url_image(code)}?model={modelname}'>Upload File(s)</a></td>"
+                html += f"<td><a  href='{api_fetch_image(code)}?model={modelname}' target='_blank'>Get Files</a></td>"
             
             if is_report:
                 html += f"<td><a  href='{link}/{report_template_name}/{modelname}/?{query}'>{report_title.title()}</a></td>"

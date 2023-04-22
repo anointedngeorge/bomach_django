@@ -3,15 +3,46 @@ from operations.models import *
 from plugins.calculator import *
 from plugins.generator import generator
 from django.http import HttpResponse
-
 from actions.serviceQuote import *
-from actions.quotes import *
+from system_functions.engineering_function import *
+
 
 @admin.register(QuotesModel)
 class QuotesModelAdmin(admin.ModelAdmin):
     list_display = ['code','customer','services','nb','nf','ns','total','status','action']
     exclude = ['total','code','amount_deposited','amount_pending']
     actions = [ViewProfileAction, viewQuoteOrders]
+    
+    def get_urls(self):
+        qs = super().get_urls()    
+        urlpatterns = [
+            path('update-status/<int:id>/<str:status>/<str:function>',self.updateStatus, 
+            name='update-status'),
+            path('make-payment/<int:id>',self.makePayment, 
+            name='make-payment')
+        ]
+        return urlpatterns + qs
+
+    def updateStatus(self,request, id=None, status=None, function=''):
+        message = ''
+        md = self.model
+        if function in globals():
+            glob = globals()
+            # this will check if the function with the name saved in the function parameter
+            # if it is true, then, the function can be runned with the name
+            fn = glob.get(function)(model=md, data={'status':status}, filter_data={'id':id}, request=request)
+            if fn:
+                message = "Successful"
+            else:
+                message = "Failed"
+        else:
+            message = f"{function} name does not exist! create one it."
+        return JsonResponse({'message':message})
+
+    def makePayment(self, request, id=None):
+        context ={}
+        context['id'] = id
+        return TemplateResponse(request, 'templateResponse/make_payment.html', context=context)
 
 
     def response_add(self, request, obj, post_url_continue=None) -> HttpResponse:
