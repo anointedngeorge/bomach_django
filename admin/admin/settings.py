@@ -19,7 +19,7 @@ DEBUG = True
 SITE_ID = 1
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://superadmin.bgbot.app']
+CSRF_TRUSTED_ORIGINS = ['https://portal.bgbot.app']
 
 ADMIN_LOGIN_PATH = 'admin/'
 ADMIN_URI = "/admin"
