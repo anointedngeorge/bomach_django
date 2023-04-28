@@ -45,8 +45,6 @@ services:
     depends_on:
       - redis
 
-
-
   celery-beat:
     build: ./admin
     command: celery -A admin beat -l info
@@ -56,7 +54,6 @@ services:
     depends_on:
       - redis
      
-    
   redis:
     image: "redis:latest"
    
@@ -66,9 +63,6 @@ services:
     volumes:
       - redis_data:/data
     restart: "always"
-
-  
-
 
 volumes:
   postgres_data:

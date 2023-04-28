@@ -43,6 +43,20 @@ class OperationTask(models.Model):
     ('medium','Medium'), ('low','Low')])
     task_description = models.TextField(blank=True, null=True)
     is_done = models.BooleanField(default=False)
+    report_message = models.TextField(blank=True, null=True)
+    
+    STATUS = [
+        ('pending','Pending'),
+        ('todo','Todo'),
+        ('doing','Doing'),
+        ('completed','Completed'),
+        ('redo','Redo'),
+        ('suspended','Suspended')
+    ]
+    # todo: doing
+    # doing: completed, redo
+    # redo:suspended, completed, redo
+    status = models.CharField(max_length = 150 , default='pending', choices=STATUS)
     created_at = models.DateField(auto_now=True)
     
     class Meta:
@@ -60,13 +74,19 @@ class OperationTask(models.Model):
     def natural_key(self):
         return self.__str__()
     
+    def get_profile(self):
+        return f"{self.task_title}"
+    
+    def get_full_profile(self):
+        return f"{self.task_title}"
 
     def action(self):
         try:
             modelname = self._meta.model.__name__
             action = {
-                "pending": [{"name":f"{self.code}", "href":f"", "is_button":False, 
-                    "query":{'id':self.id}},
+                "pending": [
+                    # {"name":f"{self.code}", "href":f"", "is_button":False, 
+                    # "query":{'id':self.id}},
                 ],
                 "avaliable": [],
             }
@@ -77,7 +97,7 @@ class OperationTask(models.Model):
                 code=self.code,
                 report_template_name='tasks',
                 report_title='Task Report',
-                is_report=True,
+                is_report=False,
                 link='/admin/reports/get-report',
             )
         except:

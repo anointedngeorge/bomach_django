@@ -1,87 +1,42 @@
-"""
-4. Write a python program to input marks of 
-five subjects Physics, Chemistry, Biology, 
-Mathematics and Computer. Calculate percentage 
-and grade according to following:
 
-Percentage >= 90% : Grade A
-Percentage >= 80% : Grade B
-Percentage >= 70% : Grade C
-Percentage >= 60% : Grade D
-Percentage >= 40% : Grade E
-Percentage < 40% : Grade F
-"""
-import time
-
-mark_container = []
-
-maxi = 2
-flag = True
-grade = ''
-while flag:
-
-    if len(mark_container) <= maxi:
-        subject = input('Subject: ')
-        mark = int(input('Marks: '))
-        
-        if mark <= 39:
-            grade = "F"
-        elif (mark >= 40) and (mark <= 49):
-            grade = "E"
-
-        elif (mark >= 50) and (mark <=59):
-            grade = "D"
-        
-        elif (mark >= 60) and (mark <= 69):
-            grade = "C"
-        
-        elif (mark >= 70) and (mark <= 79):
-            grade = "B"
-        elif (mark >= 80):
-            grade = "A"
-            
-        data = {
-            'subject':subject.title(), 
-            'percentage':mark, 
-            'grade':grade.capitalize()
-        }
-        mark_container.append(data)
-
-        # terminate the loop when the length of mark container
-        # equals 5
-        
-    else: 
-        flag = False
-        print(mark_container)
-    # print out mark container
-    time.sleep(5)
+setdata =  {1,2,6,4,5,3,7}
+setdata2 =  {1,2,6,4,5,6}
+setdata.add(100)
+d =setdata.difference(setdata2)
+copied_data = setdata.copy()
+print(copied_data)
 
 
+# tup =  (1,2,3,4,567,7,89909,8978)
+# print(tup)
+# print(len(tup))
+# print(tup[6])
+# d = 4,9,67,0
+# # unpacking
+# w,x,y,z = d
+# print(w)
 
+# lst =  [145,2,3,47,5,60,7,8,9,10,47,21]
 
+# list_slice = lst[:5:2]
+# print(list_slice)
 
+# print(lst)
+# print(len(lst))
+# print(lst.append(123))
+# print(lst.count(47))
+# print(lst.index(60))
+# print(lst)
 
+# sf = {}
+# print(sf)
+# sf.update({1:'Collins'})
+# sf[2] = 'Buchi'
+# sf['id'] = 560
 
-# roomA = []
-# roomB = []
-# maxNumForRoomA = 5
-# counter = 1
-# flag = True
-# while flag:
-#     data = input('Register Student: ')
-#     if not (counter == maxNumForRoomA):
-#         print('Room A')
-#         roomA.append(data)
-#         print(roomA)
+# print(sf['id'])
+# print(sf.get('id'))
 
-#         if(counter >5):
-#             print('Room B')
-#             roomB.append(data)
-#             print(roomB)
-#     # else:
-#     #     flag = False
-#     # print(counter)
-#     counter = counter + 1
-#     time.sleep(2)
-
-
+# del sf['id']
+# sf.pop('id')
+# print(sf)

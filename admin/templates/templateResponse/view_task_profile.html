@@ -1,0 +1,66 @@
+{% extends 'admin/base_site.html' %}
+{% load table_tag %}
+{% load extra_tags %}
+
+{% block content %}
+<div class="container">
+    <h3 class="text text-white shadow p-3 bg-dark">
+        <b>{{queryset.get_full_profile|title}} <a href=""><i>Back</i></i></a></b>
+    </h3>
+</div>
+
+<div class="container">
+   <div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <p class="text text-primary">
+                    <h3>Profile</h3>
+                </p>
+            </div>
+
+            <div class="card-body">
+                {% ListUlForSingleQuerySet request=request queryset=queryset searchable_names='code' %}
+            </div>
+        </div>
+        <!-- add extra -->
+        {{action}}
+    </div>
+   </div>
+
+</div>
+  
+
+<script>
+    const lst = document.querySelectorAll('.status-button');
+    async function statusAction(el) {
+        let confirmPrompt = window.confirm('Are you sure?')
+        let status = el.target.dataset['message'];
+        let functions = el.target.dataset['function'];
+
+        let id = parseInt("{{queryset.id}}")
+        let url = `update-status/${id}/${status}/${functions}`
+        if (confirmPrompt) {
+            const req = await fetch(url);
+            const res =  await req.json()
+            if (req.status == 200) {
+                alert(JSON.stringify(res))
+            }else{
+                alert('Failed')
+            }
+        } 
+        // else {
+        //     alert(status)
+        // }
+       
+
+    }
+
+    for (let index = 0; index < lst.length; index++) {
+        const element = lst[index];
+        document.getElementById(element.id).addEventListener('click', statusAction, false)
+        
+    }
+</script>
+  
+{% endblock content %}

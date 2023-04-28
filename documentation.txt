@@ -1,3 +1,49 @@
 django money 
     currency
     amount
+
+
+a special plugin function to check permissions in a group 
+    plugins > permissions > checkCodenameInPermGroup(group_name=group_name, permission_codename='dasd')
+    
+    where:
+        - group_name = the group name
+        - permission_codename = the permission name
+    how it work:
+        - the function checkCodenameInPermGroup with correct arguments, returns a boolean value. True|False
+        - use an if condition with else statement
+
+
+a special plugin function to apply status actions
+     plugins > permissions > status_action
+
+    data = {
+            'pending':[
+                {'name':'Confirm','url':'confirm/', 'function':'', 'classname':'btn btn-sm btn-primary'}
+            ],
+            'query':{}
+        }
+        pending: is a status name. You can pass anything here.
+        function: is a function that will be passed as a string excute from system_functions.
+
+        query: this is used to build link query. eg link/?id=1,email=a@gmail.com
+     def statusActions(data={}, status='pending'):
+            pass
+
+    Script that is using:
+    from templateResponse
+        view_engineering_report.html
+
+
+
+class GeneralReport(ReportingSheet):
+    ST2 = [
+        ('pending', 'Pending'),
+        ('incomplete', 'Incomplete'),
+        ('to_do','To Do'),
+        ('redo','Redo'),
+        ('doing', 'Doing'),
+        ('completed','Completed')
+    ]
+
+
