@@ -21,7 +21,7 @@ services:
       - redis
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.admin.rule=Host(`superadmin.bgbot.app`)"
+      - "traefik.http.routers.admin.rule=Host(`portal.bgbot.app`)"
       - "traefik.http.routers.admin.tls=true"
       - "traefik.http.routers.admin.tls.certresolver=le"
 
