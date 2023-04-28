@@ -19,14 +19,16 @@ class ListTextWidget(forms.TextInput):
 
 
 def TypeFilter(type=''):
-    container = []
-    if type != '':
-        data =  Types.objects.all().filter(type=type)
-        for x in data:
-            data = (x.type,x.name)
-            container.append(data)
-
-    return container
+    try:
+        container = []
+        if type != '':
+            data =  Types.objects.all().filter(type=type)
+            for x in data:
+                data = (x.type,x.name)
+                container.append(data)
+        return container
+    except:
+        pass
 
 
     

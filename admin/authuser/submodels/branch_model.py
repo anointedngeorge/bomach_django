@@ -41,7 +41,7 @@ class Branch(models.Model):
 
 class BranchAccessories(models.Model):
     code = models.CharField(max_length = 150,blank=True, null=True)
-    branch = models.ForeignKey('Branch', on_delete=models.CASCADE, null=True, blank=True,
+    branch = models.ForeignKey(to='authuser.Branch', on_delete=models.CASCADE, null=True, blank=True,
      related_name="related_branch")
     name = models.CharField(max_length = 150)
     assets_type  = models.CharField(max_length = 150, blank=True, null=True, 
