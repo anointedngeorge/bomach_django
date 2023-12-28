@@ -24,7 +24,7 @@ DEBUG = True
 
 SITE_ID = 1
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://portal.bgbot.app']
 
 ADMIN_LOGIN_PATH = 'admin/'
@@ -76,18 +76,15 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'superadmin.urls'
 
 
-TEMPLATE_ROOT = os.path.abspath('../templates')
-TEMPLATE_ROOT_MAIN = TEMPLATE_ROOT if os.path.exists(TEMPLATE_ROOT) else 'templates/'
-sys.path.append(TEMPLATE_ROOT_MAIN)
+# TEMPLATE_ROOT = os.path.abspath('../templates')
+# TEMPLATE_ROOT_MAIN = TEMPLATE_ROOT if os.path.exists(TEMPLATE_ROOT) else 'templates/'
+# sys.path.append(TEMPLATE_ROOT_MAIN)
 
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            TEMPLATE_ROOT, 
-            # os.path.join(BASE_DIR, 'icons'),
-        ],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
 
         'APP_DIRS': True,
 
@@ -131,6 +128,8 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+
 
 
 CACHES = {

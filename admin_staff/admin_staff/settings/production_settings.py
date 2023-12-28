@@ -16,6 +16,8 @@ from .core_apps import CORE_APPS
 APPS_DIR = os.path.abspath('../myapps')
 sys.path.append(APPS_DIR)
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=af--evn#t-51+v#xb9@iefqh8kze0@ihe$_(%z0otqb@v#p!$'
@@ -24,7 +26,7 @@ DEBUG = True
 
 SITE_ID = 1
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://portal.bgbot.app']
 
 ADMIN_LOGIN_PATH = 'admin/'
@@ -32,7 +34,7 @@ ADMIN_URI = "/admin"
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
+    'dashboard.apps.DashboardConfig',
     'django.contrib.admin',
     'authuser',
     'django.contrib.auth',
@@ -76,18 +78,15 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'admin_staff.urls'
 
 
-TEMPLATE_ROOT = os.path.abspath('../templates')
-TEMPLATE_ROOT_MAIN = TEMPLATE_ROOT if os.path.exists(TEMPLATE_ROOT) else 'templates/'
-sys.path.append(TEMPLATE_ROOT_MAIN)
+# TEMPLATE_ROOT = os.path.abspath('../templates')
+# TEMPLATE_ROOT_MAIN = TEMPLATE_ROOT if os.path.exists(TEMPLATE_ROOT) else 'templates/'
+# sys.path.append(TEMPLATE_ROOT_MAIN)
 
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            TEMPLATE_ROOT, 
-            # os.path.join(BASE_DIR, 'icons'),
-        ],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
 
         'APP_DIRS': True,
 
@@ -131,6 +130,8 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+
 
 
 CACHES = {
