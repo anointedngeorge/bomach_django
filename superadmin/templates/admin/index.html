@@ -1,0 +1,12 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+{% if request.user.is_superuser %}
+    {% include "dash_template/superadmin_dashboard.html" %}
+{% elif request.user.roles == 'customer' %}
+    {% include "dash_template/customer_dashboard.html" %}
+{% else %}
+    {% include "dash_template/staff_dashboard.html" %}
+{% endif %}
+
+{% endblock content %}

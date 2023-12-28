@@ -1,0 +1,16 @@
+{% load custom_crispy_forms %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'custom/form_style.css' %}">
+{% endblock extrahead %}
+<div class="col-lg-12">
+    <h3>{{title}}</h3>
+    <form action="/{{adminsite}}/{{register_url}}" method="POST">
+        {% csrf_token %}
+        {{form|render_form4}}
+        <button class="btn btn-secondary btn-sm">Save</button>
+    </form>
+    {{data}}
+</div>
+

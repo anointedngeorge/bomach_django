@@ -16,6 +16,8 @@ from .core_apps import CORE_APPS
 APPS_DIR = os.path.abspath('../myapps')
 sys.path.append(APPS_DIR)
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=af--evn#t-51+v#xb9@iefqh8kze0@ihe$_(%z0otqb@v#p!$'
@@ -32,6 +34,7 @@ ADMIN_URI = "/admin"
 # Application definition
 
 INSTALLED_APPS = [
+    'dashboard.apps.DashboardConfig',
     'django.contrib.admin',
     'authuser',
     'django.contrib.auth',
@@ -75,18 +78,15 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'admin_staff.urls'
 
 
-TEMPLATE_ROOT = os.path.abspath('../templates')
-TEMPLATE_ROOT_MAIN = TEMPLATE_ROOT if os.path.exists(TEMPLATE_ROOT) else 'templates/'
-sys.path.append(TEMPLATE_ROOT_MAIN)
+# TEMPLATE_ROOT = os.path.abspath('../templates')
+# TEMPLATE_ROOT_MAIN = TEMPLATE_ROOT if os.path.exists(TEMPLATE_ROOT) else 'templates/'
+# sys.path.append(TEMPLATE_ROOT_MAIN)
 
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            TEMPLATE_ROOT, 
-            # os.path.join(BASE_DIR, 'icons'),
-        ],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
 
         'APP_DIRS': True,
 
@@ -123,7 +123,7 @@ ASGI_APPLICATION = 'admin_staff.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/sharashell/DjangoProjects/bomach_apps/bomach_django/db.sqlite3',
+        'NAME': '/home/sharashell/DjangoProjects/BOMACH_PROJECTS/bomach_django/db.sqlite3',
     }
 }
 

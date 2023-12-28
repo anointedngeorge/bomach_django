@@ -1,0 +1,48 @@
+{% load custom_crispy_forms %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'custom/form_style.css' %}">
+{% endblock extrahead %}
+<div class="col-lg-12">
+    <h3>
+        <b>{{title}}</b>
+    </h3>
+    <form action="/{{adminsite}}/{{register_url}}" method="POST">
+        {% csrf_token %}
+        {{form|render_form4}}
+        <button type="submit" class="btn btn-primary btn-sm">Save</button>
+    </form>
+    {{data}}
+</div>
+<br>
+<div class="container p-3 mt-4">
+    <caption>
+        <h3>
+            <b>{{full_name}} Allocated Bikes</b>
+        </h3>
+    </caption>
+    <div class="table-responsive">
+        <table class="table table-lg bg-primary p-3">
+            <tbody>
+                {% for item in items  %}
+                <tr>
+                    <td>
+                        <b>{{forloop.counter}}:</b>
+                    </td>
+                    <td>{{item.user}}</td>
+                    <td>{{item.motocycle.motocycle_make}}</td>
+                    <td>{{item.motocycle.motocycle_model}}</td>
+                    <td>{{item.motocycle.date_of_purchase}}</td>
+                    <td>{{item.motocycle.address}}</td>
+                    <td>{{item.motocycle.vendor_name}}</td>
+                    <td>{{item.motocycle.vendor_contact_number}}</td>
+                    <td>{{item.motocycle.engine_number}}</td>
+                    <td>{{item.motocycle.chasis_number}}</td>
+                    <td>{{item.motocycle.plate_number}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

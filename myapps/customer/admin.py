@@ -1,8 +1,15 @@
+import os
+import sys
+sys.path.append(os.path.abspath('../../bomach_django'))
+
 from django.contrib import admin
 from customer.models import *
 import uuid
 # Register your models here.
-from plugins.generator import generator
+
+
+
+
 from actions.generator import codeGenerator
 from actions.clientActions import *
 

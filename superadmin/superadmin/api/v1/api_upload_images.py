@@ -1,7 +1,6 @@
 
-
 from ninja import Router
-from settings.submodels.model_gallery import *
+from system_settings.models import *
 from superadmin.schemas.schema_gallery import *
 from django.shortcuts import get_object_or_404
 from typing import List

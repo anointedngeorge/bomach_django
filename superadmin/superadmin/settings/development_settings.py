@@ -76,18 +76,15 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'superadmin.urls'
 
 
-TEMPLATE_ROOT = os.path.abspath('../templates')
-TEMPLATE_ROOT_MAIN = TEMPLATE_ROOT if os.path.exists(TEMPLATE_ROOT) else 'templates/'
-sys.path.append(TEMPLATE_ROOT_MAIN)
+# TEMPLATE_ROOT = os.path.abspath('../templates')
+# TEMPLATE_ROOT_MAIN = TEMPLATE_ROOT if os.path.exists(TEMPLATE_ROOT) else 'templates/'
+# sys.path.append(TEMPLATE_ROOT_MAIN)
 
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            TEMPLATE_ROOT, 
-            # os.path.join(BASE_DIR, 'icons'),
-        ],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
 
         'APP_DIRS': True,
 

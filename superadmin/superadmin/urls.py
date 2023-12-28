@@ -16,12 +16,8 @@ urlpatterns = [
     path(f"", include('realestate.urls')),
     path(f"", include('notifier.urls')),
     path(f"", include('human_resource.urls')),
-    # path(f"", include('reports.urls')),
     path(f"api/{VERSION}/", api.urls),
-    # path('ckeditor/', include('ckeditor_uploader.urls')),
-    # path("__debug__/", include("debug_toolbar.urls")),
 
-    
     url(r'^media/(?P<path>.*)$', serve,  {'document_root': settings.MEDIA_ROOT}),
     url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]

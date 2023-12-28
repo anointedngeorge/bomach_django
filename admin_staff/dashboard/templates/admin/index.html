@@ -1,0 +1,209 @@
+{% extends "admin/base.html" %}
+{% load system_tags %}
+
+{% block content %}
+<div class="right_col" role="main">
+    <!-- {% for x in app_lists  %}
+    <hr>
+    {{x}}
+    <hr>
+    {% endfor %} -->
+    <!-- top tiles -->
+    <div class="row" style="display: inline-block;">
+        <div class="tile_count">
+            <div class="col-md-3 bg-white p-3 col-sm-4  tile_stats_count">
+                <span class="count_top">
+                    <i class="fa fa-user"></i>
+                    Total Registered  Driver
+                </span>
+                <div class="count">
+                    {% show_count object='authuser.models.user.Driver' %}
+                </div>
+                <!-- <span class="count_bottom">
+                    <i class="green">4%</i>
+                    From last Week
+                </span> -->
+            </div>
+            <div class="col-md-3 bg-white p-3 col-sm-4  tile_stats_count">
+                <span class="count_top">
+                    <i class="fa fa-clock-o"></i>
+                    Total Created Orders
+                </span>
+                <div class="count">
+                    {% show_count object='orders.models.orders.Order' %}
+                </div>
+                <!-- <span class="count_bottom">
+                    <i class="green">
+                        <i class="fa fa-sort-asc"></i>3%</i>
+                    From last Week
+                </span> -->
+            </div>
+            <div class="col-md-3 bg-white p-3 col-sm-4  tile_stats_count">
+                <span class="count_top">
+                    <i class="fa fa-user"></i>
+                    Total Created Packages
+                </span>
+                <div class="count green">
+                    {% show_count object='packages.models.Packages' %}
+                </div>
+                <!-- <span class="count_bottom">
+                    <i class="green">
+                        <i class="fa fa-sort-asc"></i>34%</i>
+                    From last Week
+                </span> -->
+            </div>
+            <div class="col-md-3 bg-white p-3 col-sm-4  tile_stats_count">
+                <span class="count_top">
+                    <i class="fa fa-user"></i>
+                    Total Registered Agent
+                </span>
+                <div class="count">
+                    {% show_count object='authuser.models.user.Agent' %}
+                </div>
+                <!-- <span class="count_bottom">
+                    <i class="red">
+                        <i class="fa fa-sort-desc"></i>12%</i>
+                    From last Week
+                </span> -->
+            </div>
+            <div class="col-md-3 bg-white p-3 col-sm-4  tile_stats_count">
+                <span class="count_top">
+                    <i class="fa fa-user"></i>
+                    Total Completed Packages
+                </span>
+                <div class="count">
+                    {% show_count object='packages.models.Packages' status='completed' %}
+                </div>
+                <span class="count_bottom">
+                    <i class="green">
+                        <i class="fa fa-sort-asc"></i>From last week</i>
+                </span>
+            </div>
+            <div class="col-md-3 bg-white p-3 col-sm-4  tile_stats_count">
+                <span class="count_top">
+                    <i class="fa fa-user"></i>
+                    Total Completed Orders
+                </span>
+                <div class="count">
+                    {% show_count object='orders.models.orders.Order' delivery_status='COMP' %}
+                </div>
+                <span class="count_bottom">
+                    <i class="green">
+                        <i class="fa fa-sort-asc"></i>From last Week</i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- /top tiles -->
+    <div class="row">
+        {% include "admin/chart.html" %}
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4 col-sm-4 ">
+            <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                    <h2>Pending Task(s)</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="close-link">
+                                <i class="fa fa-close"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <!-- show_table_data -->
+                    <!-- {% show_filtered_data object='tasks.models.tasks.Task' delivery_status='pending' as pending_task %} -->
+                    {% show_filtered_data object='tasks.models.tasks.Task' delivery_status='completed' task_type='order' as pending_task %}
+                    {% show_table_data queryset=pending_task fields='orders,delivery_status' classattrs='table table-striped' %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 ">
+            <div class="x_panel tile fixed_height_320 overflow_hidden">
+                <div class="x_title">
+                    <h2>Pending Packages</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a
+                                href="#"
+                                class="dropdown-toggle"
+                                data-toggle="dropdown"
+                                role="button"
+                                aria-expanded="false"
+                            >
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Settings 1</a>
+                                <a class="dropdown-item" href="#">Settings 2</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="close-link">
+                                <i class="fa fa-close"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    {% show_filtered_data object='tasks.models.tasks.Task' delivery_status='pending' task_type='package' as pending_task_package %}
+                    {% show_table_data queryset=pending_task_package fields='orders,delivery_status' classattrs='table table-striped' %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 ">
+            <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                    <h2>Recent Reports</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a
+                                href="#"
+                                class="dropdown-toggle"
+                                data-toggle="dropdown"
+                                role="button"
+                                aria-expanded="false"
+                            >
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Settings 1</a>
+                                <a class="dropdown-item" href="#">Settings 2</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="close-link">
+                                <i class="fa fa-close"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    {% show_data_list object='reports.models.CustomReports'  as reports_data %}
+                    {% show_table_data queryset=reports_data fields='user,message,status,created' classattrs='table table-striped' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

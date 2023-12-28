@@ -1,7 +1,7 @@
 CORE_APPS = [
-        'realestate',
+    'realestate',
     'customer',
-    'settings',
+    'system_settings',
     'notifier', # this contains tasks
     'channels',
     "django_htmx",

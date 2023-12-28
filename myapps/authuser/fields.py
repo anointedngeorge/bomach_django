@@ -1,5 +1,5 @@
 from django import forms
-from settings.submodels.model_types import Types
+from system_settings.models.model_types import Types
 
 class ListTextWidget(forms.TextInput):
     def __init__(self, data_list, name, *args, **kwargs):
