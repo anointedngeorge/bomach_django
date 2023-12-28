@@ -2,7 +2,7 @@
 /venv12
 
 __pycache__/
-**/migrations/
+# **/migrations/
 **/__pycache__/
 
 **/media
