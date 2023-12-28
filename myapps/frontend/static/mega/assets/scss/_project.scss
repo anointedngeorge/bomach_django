@@ -1,0 +1,227 @@
+
+/*----------------------------------------*/
+/*  17. Project Css
+/*----------------------------------------*/
+
+.aportfolio:hover {
+    & img {
+        opacity: 0.7;
+    }
+}
+.aportfolio-menu {
+    @media #{$md} {
+            text-align: left !important;
+            margin-bottom: 50px;
+        }
+    @media #{$xs} {
+            text-align: left !important;
+            margin-bottom: 40px;
+        }
+    & button {
+        border: 1px solid #dce1e4;
+        height: 40px;
+        line-height: 38px;
+        padding: 0px 30px;
+        border-radius: 50px;
+        background: none;
+        color: $heading-color;
+        margin-left: 10px;
+        outline: none;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        @media #{$lg} {
+            padding: 0px 25px;
+        }
+        @media #{$xs} {
+            margin-bottom: 10px;
+            margin-left: 0px;
+            margin-right: 10px;
+        }
+        &.active {
+            background: $theme-color;
+            color: $white;
+            border-color: $theme-color;
+        }
+        &:first-child {
+            margin-left: 0px;
+        }
+    }
+}
+.aportfolio__img {
+    overflow: hidden;
+    position: relative;
+    & img {
+        width: 100%;
+    }
+}
+.aportfolio {
+    &:hover {
+        & img {
+            opacity: 0.7;
+            transform: scale3d(1.1, 1.1, 1.1);
+        }
+        & .aportfolio__img--icon {
+            height: 100%;
+            & a{
+               visibility: visible;
+               opacity: 1;
+            }
+        }
+    }
+}
+
+//portfolio inner
+
+.aportfolio__img--icon {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 0%;
+    width: 100%;
+    background: rgba(253, 187, 83, 0.7);
+    @include transition(.5s);
+    & a {
+        height: 55px;
+        width: 55px;
+        line-height: 55px;
+        vertical-align: middle;
+        font-size: 18px;
+        color: $white;
+        display: inline-block;
+        background: transparent;
+        border: 1px solid $white;
+        text-align: center;
+        border-radius: 50%;
+        visibility: hidden;
+        opacity: 0;
+        @include transition(.3s);
+        margin: 0px 7px;
+        &:hover {
+            background: $theme-color2;
+            color: $white;
+            border:1px solid $theme-color2;
+        }
+    }
+}
+.aportfolio-menu-inner {
+    @media #{$xs} {
+        text-align: center !important;
+    }
+    & button {
+        margin: 0px 3px;
+        margin-bottom: 10px;
+        @media #{$md} {
+            padding: 0px 25px;
+        }
+    }
+}
+.aportfolio__img--icon-middle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    transform: translate(-50%,-50%);
+}
+.project-pagination{
+    &  ul {
+        & li {
+            display: inline-block;
+            & a {
+                height: 60px;
+                width: 60px;
+                text-align: center;
+                line-height: 60px;
+                display: inline-block;
+                background: $white;
+                border-radius: 50%;
+                border: 1px solid #ddd;
+                color: $heading-color;
+                @include transition(.3s);
+                margin: 0 10px;                
+                &:hover{
+                    background: $theme-color2;
+                    border: 1px solid $theme-color2;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+
+// project details page design
+
+.tp-service-details{
+    &-img{
+        & img{
+            width: 100%;
+        }
+        &-overlay{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: rgba(7, 95, 51, 0.251);
+            top: 0px;
+            left: 0px;
+            &-icon{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                & a{
+                    color: $white;
+                    font-size: 18px;
+                    height: 100px;
+                    width: 100px;
+                    text-align: center;
+                    line-height: 100px;
+                    border-radius: 50%;
+                    background: $theme-color2;
+                    display: inline-block;
+                    animation: pulse 2s infinite;
+                    @include transition(.3s);
+                    &:hover{
+                        background: $theme-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.service-details-wrapper {
+    & p{
+        color: #626664;
+        font-size: 16px;
+        line-height: 27px;
+        & i{
+            color: $theme-color2;
+            line-height: 1;
+            transform: translateY(6px);
+            display: inline-block;
+            margin-right: 12px;
+        }
+    }
+}
+
+.tp-faqs-left-sidebar{
+    &  ul {
+      & li {
+            list-style: none;
+            padding: 20px 0px 20px 0px;
+            border-bottom: 1px solid #dadddf;
+            font-weight: 600;
+            color: #09150f;
+            font-size: 18px;
+            & span{
+                font-weight: 400;
+                color: #626664;
+                font-size: 18px;
+            }
+        }
+    }
+    & .service__sidebar--widget__title{
+        margin-bottom: 0px;
+    }
+}

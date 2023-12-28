@@ -9,7 +9,7 @@ services:
       - ./admin/:/admin/
       - /var/run/docker.sock:/var/run/docker.sock
     command: gunicorn admin.wsgi:application --reload -w 2 -b 0.0.0.0:8010
-    
+
     env_file:
       - .env
 
@@ -35,25 +35,6 @@ services:
         - POSTGRES_PASSWORD=odoo
       restart: "always"
 
-  celery:
-    build: ./admin
-
-    command: celery -A admin worker -l info
-    volumes:
-      - ./admin/:/usr/src/app/
-      
-    depends_on:
-      - redis
-
-  celery-beat:
-    build: ./admin
-    command: celery -A admin beat -l info
-    volumes:
-      - ./admin/:/usr/src/app/
-
-    depends_on:
-      - redis
-     
   redis:
     image: "redis:latest"
    

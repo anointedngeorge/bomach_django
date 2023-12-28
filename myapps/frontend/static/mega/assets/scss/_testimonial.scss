@@ -1,0 +1,73 @@
+/*----------------------------------------*/
+/*  13. Testimonial Css
+/*----------------------------------------*/
+.testimonial__wrapper-br {
+	border: 1px solid #616161;
+	padding: 10px;
+}
+
+.testimonial__wrapper{
+   background: $white;
+   padding: 40px 35px 30px 35px;
+   @media #{$lg,$md,$xs} {
+    padding: 30px 25px 20px 25px;
+    }
+    &-info-author{
+        & h4{
+           font-size: 22px;
+           color: $heading-color;
+           text-transform: capitalize;
+           font-family: $SairaSemi;
+           margin-bottom: 3px;
+           @media #{$lg,$xs} {
+          font-size: 17px;
+            }
+        }
+        & span{
+            color: $heading-color;
+            @media #{$lg,$xs} {
+                font-size: 14px;
+                }
+        }
+    }
+    &-info-quotes {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 25px;
+        width: 25px;
+        background: $theme-color2;
+        text-align: center;
+        line-height: 25px;
+        border-radius: 50%;
+        & i{
+            color: $white;
+        }
+    }
+   &-content{
+       & p{
+           font-size: 16px;
+       }
+   }
+}
+
+
+.testimonail-area .owl-carousel .owl-dots span {
+	background: #515151;
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.testimonail-area .owl-carousel .owl-dots {
+	position: absolute;
+	left: 50%;
+	bottom: -66px;
+	transform: translateX(-50%);
+	display: flex;
+    
+}
+.testimonail-area .owl-carousel .owl-dots .active span{
+  background-color: $white;
+  }

@@ -1,0 +1,103 @@
+/*----------------------------------------*/
+/*  12. Solutions Css
+/*----------------------------------------*/
+.achievement-item2{
+    border: 1px solid #e9eced;
+    margin-right: -52px;
+    @media #{$xxl,$xl,$lg,$md,$sm,$xs} {
+        margin-right: 0px;
+    }
+}
+
+.mabout2 {
+	margin-left: 10px;
+    @media #{$xl,$lg,$md,$sm,$xs} {
+        margin-left: 0px;
+    }
+}
+.solutions__thumb {
+	text-align: right;
+    @media #{$xl} {
+        text-align: center;
+    }
+    @media #{$md} {
+        text-align: left;
+    }
+
+    @media #{$xl,$lg,$md,$sm,$xs} {
+        img {
+            min-width: 100%;
+        }
+    }
+    
+}
+.achievement-item-box1 {
+    & li{
+        & i{
+            background: $theme-color2;
+            color: $white;
+        }
+    }
+}
+.achievement-item-box2{
+    & li{
+        & i{
+            background: $theme-color-blue;
+            color: $white;
+        }
+    }
+}
+.achievement-item-box3{
+    & li{
+        & i{
+            background: $theme-color;
+            color: $white;
+        }
+    }
+}
+
+.achievement-extra{
+    & li{
+        @media #{$xl} {
+            margin-right: 20px;
+        }
+        & h2{
+           color: $heading-color;
+        }
+        & p{
+            color: $heading-color;
+            @media #{$xs} {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.mabout-icon-dfcolor{
+    & a{
+        background: $theme-color2;
+        & i{
+            color: $white;
+        }
+    }
+    
+}
+.mabout-icon-dfcolor2{
+    & a{
+        background: $theme-color-blue;
+        & i{
+            color: $white;
+        }
+    }
+   
+}
+.mabout-icon-dfcolor3{
+    & a{
+        background: $theme-color;
+        & i{
+            color: $white;
+        }
+    }
+    
+}
+

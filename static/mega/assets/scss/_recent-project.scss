@@ -1,0 +1,203 @@
+/*----------------------------------------*/
+/*  10. Recent Project Css
+/*----------------------------------------*/
+
+.recent-project-thumb {
+	position: relative;
+	z-index: 2;
+    @media #{$lg,$md,$sm,$xs} {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    img {
+        min-width: 100%;
+    }
+}
+
+//team home three start here
+
+
+.custom-subtitle{
+    max-width: 410px;
+    @media #{$xl,$xs} {
+        margin-bottom: 10px;
+    }
+}
+
+.project-active-1 {
+	margin-left: 15px;
+    @media #{$xs,$sm} {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+.mproject__1 {
+    position: relative;
+    overflow: hidden;
+    & img {
+        width: 100%;
+    }
+    .mproject__1--overlay {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0,0.5);
+        opacity: 0;
+        visibility: hidden;
+        @include transition(.5s);
+        &__social {
+            position: absolute;
+            top: 30%;
+            left: 0px;
+            right: 0px;
+            text-align: center;
+            transform: translateY(-50%);
+            @include transition(.5s);
+            & a {
+                height: 50px;
+                line-height: 50px;
+                width: 95px;
+                text-align: center;
+                font-size: 18px;
+                color: $heading-color;
+                display: inline-block;
+                background: $theme-color;
+                border-radius: 25px;
+                &:hover {
+                    background: $white;
+                    color: $theme-color;
+                    & i {
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+        }
+        &__text {
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            text-align: center;
+            bottom: -100px;
+            @include transition(.5s);
+        }
+    }
+    &:hover {
+        .mproject__1--overlay {
+            opacity: 1;
+            visibility: visible;
+            & .mproject__1--overlay__social {
+                top: 50%;
+            }
+            & .mproject__1--overlay__text {
+                bottom: 44px;
+                @media #{$lg,$md,$xs} {
+                    bottom: 30px;
+                }
+            }
+        }
+    }
+}
+
+.mproject__1--title {
+    font-size: 20px;
+    margin-bottom: 0px;
+    font-weight: 600;
+    color: $white;
+    &:hover {
+        color: $theme-color;
+    }
+}
+
+
+// nvkmdfhgkjfh
+
+
+.recent-project-area{
+    @media #{$xl,$lg,$md,$sm,$xs} {
+        padding-bottom: 120px !important;
+    }
+}
+
+.thumb-left {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 37%;
+	height: 100%;
+	z-index: 0;
+    @media #{$xl,$lg,$md,$sm,$xs} {
+        width: 100%;
+    }
+}
+  .thumb-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .padding-swiper {
+    margin-right: -150px;
+    @media #{$sm,$xs} {
+        margin-right: 0px;
+    }
+  }
+  
+.padding-swiper {
+	margin-right: -150px;
+	position: relative;
+    @media #{$xl,$lg,$md} {
+        margin-right: 0px;
+        margin-left: -15px;
+    }
+    @media #{$sm,$xs}{
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+}
+.padding-swiper::before {
+	position: absolute;
+	content: "";
+    width: calc(100% + 100px);
+	height: 2000px;
+	background: #fdbb53;
+	top: -200px;
+	left: -15px;
+    @media #{$xl,$lg,$md,$sm,$xs} {
+        top: -30px;
+    }
+}
+
+.project-button-next {
+	width: 60px;
+	height: 60px;
+	background: #fff;
+	color: #000;
+	position: absolute;
+	z-index: 2;
+	text-align: center;
+	line-height: 60px;
+	left: -75px;
+	bottom: -112px;
+    font-size: 20px;
+    @media #{$xl,$lg,$md,$sm,$xs} {
+        left: 50%;
+        transform: translateX(-100%);
+    }
+}
+.project-button-prev {
+	width: 60px;
+	height: 60px;
+	background: #000;
+	color: #fff;
+	position: absolute;
+	z-index: 2;
+	text-align: center;
+	line-height: 60px;
+	left: -15px;
+	bottom: -112px;
+    font-size: 20px;
+    @media #{$xl,$lg,$md,$sm,$xs} {
+        left: 50%;
+    }
+}

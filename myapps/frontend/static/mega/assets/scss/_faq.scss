@@ -1,0 +1,108 @@
+/*----------------------------------------*/
+/*  15. Faq Css
+/*----------------------------------------*/
+.faq-bg {
+	position: absolute;
+	width: 68%;
+	height: 100%;
+	background: $business-sbg;
+	right: 0;
+	top: 0;
+    z-index: -1;
+	@media #{$md,$sm,$xs} {
+        width: 100%;
+    }
+}
+
+.mfaq-left{
+	@media #{$md,$sm,$xs} {
+        margin-left: 0px;
+    }
+}
+.faq__thumb {
+	margin-left: -135px;
+	@media #{$lg} {
+        margin-left: 0px;
+    }
+	@media #{$md,$sm,$xs} {
+        margin-left: 0px;
+		margin-bottom: 40px;
+    }
+}
+.faq-content .accordion-item{
+  border-bottom: 1px solid #3063a5;
+}
+.faq-content .accordion-item:last-child{
+  border-bottom: 0;
+}
+
+.faq-content .accordion-item:first-of-type .accordion-button {
+	border-radius: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.faq-content .accordion-button::after {
+	font-family: "Font Awesome 5 pro";
+	width: 20px;
+	height: 20px;
+	margin-left: auto;
+	content: "\f067";
+	background-color: $theme-color;
+	color: $heading-color;
+	background-image: none;
+	text-align: center;
+	line-height: 20px;
+	border-radius: 50%;
+	font-size: 12px;
+}
+.accordion-button:not(.collapsed)::after {
+    content: "\f068";
+    font-family: "Font Awesome 5 Pro";
+    color: $white;
+	background-color: $theme-color2;
+  }
+  .faq-content .accordion-button:not(.collapsed) {
+	background: transparent;
+}
+.faq-white .accordion-button {
+	color: $white;
+	background: transparent;
+	border: none;
+	font-size: 18px;
+	font-weight: 600;
+	padding: 30px 0px;
+}
+.faq-white .accordion-button:focus {
+	z-index: 3;
+	border-color: none;
+	outline: 0;
+	box-shadow: none;
+}
+
+.faq-white .accordion-collapse {
+	border: none;
+  
+}
+.faq-white .accordion-body {
+	background: transparent;
+    border: none;
+    padding: 0px 0px 30px 0px;
+    font-weight: 400;
+}
+.faq-content .accordion-body p {
+	margin: 0;
+	color: $white;
+}
+
+
+// faq single page
+.faq-white .accordion-button-black{
+	color: $heading-color;
+}
+.faq-white .accordion-body-text p {
+	color: $body-text-color;
+}
+.faq-white .accordion-item2 {
+	border-bottom: 1px solid #e1e1e1;
+}

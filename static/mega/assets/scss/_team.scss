@@ -1,0 +1,218 @@
+/*----------------------------------------*/
+/*  14. Team Css
+/*----------------------------------------*/
+.mgteam__title{
+    font-size: 22px;
+    font-family: $SairaSemi;
+    text-transform: capitalize;
+    margin-bottom: 2px;
+    @include transition(.3s);
+    &:hover{
+        color: $theme-color2;
+    }
+}
+.mgteam__space {
+	border: 1px solid #ddd;
+	padding: 9px;
+}
+.mgteam-p-right{
+    @media #{$sm,$xs} {
+        padding-right: 0px;
+    }
+}
+.mgteam__wrapper{
+    &-fixicon {
+        position: absolute;
+        left: 0;
+        bottom: 20px;
+        & a{
+            font-size: 25px;
+            color: $white;
+            height: 60px;
+            width: 60px;
+            background: $theme-color2;
+            line-height: 60px;
+            text-align: center;
+            display: inline-block;
+        }
+        .mgteam__wrapper-social{
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            top: auto;
+        }
+    }
+    & img {
+        min-width: 100%;
+    }
+    &-social {
+        position: absolute;
+        left: 0px;
+        top: 32%;
+        opacity: 0;
+        visibility: hidden;
+        @include transition(.3s);
+        @media #{$lg,$md,$xs} {
+            top: 14%;
+        }
+        @media #{$md} {
+            top: 25%;
+        }
+        
+        & a {
+            display: block;
+            margin-bottom: 15px;
+            height: 50px;
+            width: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 5px;
+            background: $white;
+            color: $heading-color;
+            font-size: 20px;
+            @include transition(.3s);
+            &:hover{
+                background: $theme-color2;
+                & i{
+                    color: $white;
+                    transform: rotate(360deg);
+                }
+            }
+          }
+      }
+      &-info{
+        & span {
+            font-size: 15px;
+        }
+    }
+}
+
+  .mgteam__wrapper-fixicon:hover .mgteam__wrapper-social{
+    opacity: 1;
+    visibility: visible;
+    left: 5px;
+  }
+
+//   team single page
+
+.mgteam__bg {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 46%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media #{$md,$sm,$xs} {
+        display: none;
+    }
+}
+
+.necessary-link {
+    & li {
+        margin-bottom: 15px;
+        display: flex;
+        & i{
+            height: 20px;
+            width: 20px;
+            line-height: 20px;
+            background: $theme-color2;
+            color: $white;
+            margin-right: 10px;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 13px;
+            transform: translateY(4px);
+            display: inline-block;
+            flex: 0 0 auto;
+        }
+    }
+}
+
+
+// team details css
+.team__sidebar--widget{
+    &-single {
+        padding: 20px 20px 10px 20px;
+    }
+   &__title {
+    font-size: 22px;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+    position: relative;
+    & span {
+        color: $theme-color;
+    }
+}
+&__info{
+    & li{
+        margin-bottom: 15px;
+    }
+    &-text{
+        & h5{
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: capitalize;
+            margin-bottom: 5px;
+            & i{
+                margin-right: 8px;
+                color: $theme-color2;
+            }
+        }
+    }
+}
+}
+.team-details-subtitle {
+    font-size: 27px;
+    text-transform: capitalize;
+}
+
+.team__qualification-single{
+    span{
+        margin-bottom: 3px;
+        display: inline-block;
+    }
+   &-title{
+      font-size: 18px;
+      text-transform: capitalize;
+      color: $theme-color2;
+   }
+}
+.team-details__sthumb {
+	margin-right: -55px;
+    height: 100%;
+    @media #{$lg}{
+        margin-right: 0;
+    }
+    @media #{$md,$sm,$xs} {
+        margin-right: 0px;
+        height: 470px;
+        margin-bottom: 30px;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-height: 300px;
+    }
+}
+.mgteam__single-fixicon {
+	bottom: 10px;
+}
+.mgteam__single-social {
+	top: 28%;
+    @media #{$lg} {
+        top: 10%;
+    }
+    @media #{$xs} {
+        top: 13%;
+    }
+    & a{
+        margin-bottom: 10px;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        font-size: 20px;
+    }
+}

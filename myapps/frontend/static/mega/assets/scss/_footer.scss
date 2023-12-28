@@ -1,0 +1,208 @@
+/*----------------------------------------*/
+/* 18. Footer Css
+/*----------------------------------------*/
+
+.footer__widget-title {
+        font-size: 20px;
+        color: $white;
+        position: relative;
+        text-transform: uppercase;
+        &:before{
+            position: absolute;
+            content: "";
+            bottom: -8px;
+            left: 0;
+            width: 27px;
+            height: 3px;
+            background: #fdbb53;
+        }
+    
+}
+.footer__info{
+    &  ul {
+        & li {
+            margin-bottom: 20px;
+        }
+    }
+}
+.footer__info-icon {
+	height: 35px;
+	width: 35px;
+	line-height: 35px;
+	background: $footer-socail-bg;
+	text-align: center;
+    margin-top: 5px;
+    & i{
+        color: $theme-color;
+    }
+}
+.footer__info-text{
+    & a{
+        color: $footer-text-color;
+        @include transition(.3s);
+        &:hover{
+            color: $white;
+        }
+    }
+    & h5{
+        color: $white;
+        font-weight: 500;
+        margin-bottom: 5px;
+        font-size: 15px;
+        text-transform: capitalize;
+    }
+}
+.footer__blog-sm-thumb {
+	margin-top: 5px;
+    & img{
+        border-radius: 5px;
+    }
+}.footer__blog-sm{
+    overflow: hidden;
+}
+.footer__blog-sm-title {
+	font-size: 15px;
+	color: $footer-text-color;
+	font-weight: 400;
+    font-family: $mulish;
+    line-height: 25px;
+    text-transform: capitalize;
+    @include transition(.3s);
+    &:hover{
+        color: $white;
+    }
+}
+.footer__blog-sm-meta span {
+	color: #d9dae0;
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
+// footer-subscribe area
+.footer__subscribe-form-3 input {
+	margin-bottom: 0;
+	width: 74%;
+	height: 70px;
+	line-height: 70px;
+	padding: 30px;
+	font-size: 15px;
+	color: $body-text-color;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    font-family: $mulish;
+    @media #{$lg}{
+        width: 79%;
+    }
+    @media #{$md}{
+        width: 72%;
+    }
+    @media #{$sm,$xs} {
+        width: 100%;
+    }
+}
+.footer__subscribe-title {
+    & h3 {
+        font-size: 48px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 700;
+        @media #{$xs} {
+            font-size: 36px;
+        }
+    }
+}
+.footer__top {
+	border-bottom: 1px solid $border-f-color;
+}
+
+.footer__subscribe-form-3 button {
+	position: absolute;
+	top: 0;
+	right: -5px;
+	height: 100%;
+    text-transform: capitalize;
+    @media #{$sm,$xs} {
+        width: 100%;
+        position: inherit;
+        margin-top: 10px;
+        right: 0;
+    }
+}
+.footer-1{
+    @media #{$sm,$xs} {
+        padding-right: 0px;;
+    }
+}
+.footer-2{
+    @media #{$sm,$xs} {
+        padding-left: 0px;;
+    }
+}
+.footer-3{
+    @media #{$sm,$xs,$md,$lg} {
+        padding-left: 0px;;
+    }
+}
+
+// footer copyright
+
+.footer__text {
+    & p {
+        margin-bottom: 0;
+        color: $white;
+        & a{
+            color: $theme-color;
+        }
+    }
+    @media #{$sm,$xs} {
+        text-align: center;
+    }
+}
+.footer__cmenu {
+    & a {
+        color: $white;
+        padding-left: 5px;
+        @include transition(.3s);
+        &:hover{
+            color: $theme-color;
+        }
+    }
+    @media #{$sm,$xs} {
+        text-align: center !important;
+    }
+}
+
+.footer__widget p {
+	margin-bottom: 36px;
+    color: $footer-text-color;
+}
+.footer__social{
+    & li {
+        display: inline-block;
+        & a {
+            font-size: 14px;
+            color: #aaaaaa;
+            height: 45px;
+            width: 45px;
+            line-height: 45px;
+            text-align: center;
+            background: #2b2b2b;
+            margin-right: 5px;
+            display: block;
+            @include transition(.3s);
+            &:hover{
+                background: $theme-color;
+                & i{
+                    color: #000;
+                }
+            }
+            & i{
+                color: $white;
+                @include transition(.3s);
+            }
+        }
+    }
+}
+
+

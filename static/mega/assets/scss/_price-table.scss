@@ -1,0 +1,45 @@
+/*----------------------------------------*/
+/*  06. Price Table Css
+/*----------------------------------------*/
+
+.section-title-black{
+    color: $heading-color;
+}
+
+.mprice{ 
+   box-shadow: 0 10px 20px rgba(16, 0, 71, 0.1);
+   &__top{
+    padding: 40px 0px 25px 0px;
+	background: $theme-color;
+    & span{
+        color: #000000;
+        font-size: 20px;
+        font-family: "Saira Semi Condensed", sans-serif;
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: inline-block;
+        text-transform: uppercase;
+    }
+    & .price-title{
+        font-size: 48px;
+        font-weight: 700;
+    }
+   }
+    &__bottom{
+        padding: 43px 0px 40px 0px;
+        & ul{
+            & li{
+                margin-bottom: 15px;
+                & i{
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+.price-btn {
+	padding: 0px 50px;
+    background: $heading-color;
+    color: $white;
+}
+

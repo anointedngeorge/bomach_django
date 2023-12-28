@@ -1,0 +1,279 @@
+/*----------------------------------------*/
+/*  11. About Css
+/*----------------------------------------*/
+.about-area {
+	border-bottom: 1px solid #e9e9eb;
+}
+.aabout__since {
+	text-align: center;
+	height: 210px;
+	width: 200px;
+	background: $theme-color2;
+	border: 8px solid #f4f5f6;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 32%;
+	z-index: 2;
+	animation: pulse-grey 8s infinite;
+    
+     @media #{$lg} {
+        left: 28%;
+     }
+     @media #{$md} {
+        left: 28%;
+     }
+     
+     @media #{$xs} {
+        left: 16%;
+     }
+     @media #{$sm} {
+        left: 30%;
+     }
+    & i{
+        font-size: 48px;
+        color: $white;
+        margin-bottom: 5px;
+    }
+    & h2{
+        font-size: 42px;
+        font-family: $SairaSemi;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    & h3{
+        font-size: 16px;
+        color: $white;
+        font-family: $mulish;
+        font-weight: 600;
+        margin-bottom: 0px;
+    }
+}
+.mgabout__since{
+    background: $theme-color;
+    & i{
+        color: $heading-color;
+    }
+    & h2{
+        color: $heading-color;
+    }
+    & h3{
+        color: $heading-color;
+    }
+}
+.counter-count2 span{
+    margin-right: 0px;
+}
+
+.msubtitle {
+    & p{
+        color: #555;
+    }
+}
+.mabout{
+    &__single-icon {
+
+        & a {
+            height: 80px;
+            width: 80px;
+            background: #e8f3fe;
+            display: inline-block;
+            border-radius: 50%;
+            line-height: 90px;
+            @include transition(.3s);
+            text-align: center;
+            & i{
+                font-size: 40px;
+                vertical-align: middle;
+                color: $theme-color-blue;
+            }
+        }
+    }
+
+}
+.mabout-title{
+    font-size: 22px;
+    font-family: $SairaSemi;
+    text-transform: capitalize;
+    @include transition(.3s);
+    &:hover{
+        color: $theme-color2;
+    }
+}
+.mabout__single-icon2{
+    & a{
+        background: #f8e3e7;
+        & i{
+            color: $theme-color2;
+        }
+    }
+}
+
+.mabout__author{
+    &-icon{
+        margin-left: 20px;
+        @media #{$xs} {
+            margin-left: 0px;
+         }
+        & a {
+            & i{
+               font-size: 40px;
+               color: $theme-color2;
+               
+            }
+        }
+    }
+    &-text{
+        & .mabout-title{
+            font-size: 20px;
+            font-family: $SairaSemi;
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.mabout-right{
+    @media #{$lg,$xs} {
+        padding-right: 0px;
+     }
+}
+
+
+.mabout-bottom-btn{
+    @media #{$xs} {
+        display: inherit !important;
+     }
+}
+.mbtn-btm-30{
+    @media #{$xs} {
+        display: inherit !important;
+        margin-bottom: 30px;
+     }
+}
+
+
+
+
+
+// about single page 
+.about-area2{
+    border-bottom: 0;
+}
+.brand-bg-psingle{
+    width: 100%;
+}
+
+.mgservices {
+    padding: 0px 15px;
+    &__icon{
+      & a{
+         height: 80px;
+         width: 80px;
+         line-height: 80px;
+         text-align: center;
+         display: inline-block;
+         border-radius: 50%;
+        & i{
+          color: $white;
+          font-size: 35px;
+          vertical-align: middle;
+        }
+      }
+      
+    }
+    &__content{
+        &-title{
+        font-size: 22px;
+        text-transform: capitalize;
+        margin-bottom: 15px;
+        @include transition(.3s);
+       
+        }
+        & p{
+
+        }
+    }
+    &:hover .mgservices__content-title{
+        color: $theme-color2;
+    }
+    
+}
+.msr-color1{
+    background: $theme-color2;
+}
+.msr-color2{
+    background: $theme-color-blue;
+}
+.msr-color3{
+    background: $theme-color;
+    & i{
+        color: $heading-color !important;
+    }
+}
+.msr-color4{
+    background: $heading-color;
+}
+
+// about service review
+ .mtest-bg {
+	background: $gry-bg  !important;
+}
+
+.test-br2 {
+	border: 1px solid #e1e4e5 !important;	
+}
+
+.achievement-item-box.achievement-abs{
+    & li{
+        margin-right: 40px;
+         @media #{$xs} {
+               margin-right: 25px;
+             }
+             &:last-child{
+                 margin-right: 0px;
+             }
+        & h2{
+            color: $white;
+            @media #{$xs} {
+                font-size: 40px;
+             }
+            & span{
+                color: $white;
+            }
+        }
+        & p{
+            color: $white;
+            @media #{$lg} {
+              font-size: 16px;
+             }
+             @media #{$xs} {
+                font-size: 16px;
+             }
+        }
+        & i{
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            line-height: 110px;
+        }
+    }
+    & li:last-child{
+        margin-right: 0px;
+    }
+}
+
+
+// price section css
+
+.price-button-fix-color{
+    background: $theme-color2;
+}
+.mprice__top2{
+    background: $theme-color2;
+    & span{
+        color: $white;
+    }
+    &-title{
+        color: $white;
+    }
+}

@@ -1,0 +1,235 @@
+{% extends "mega/base.html" %}
+{% load static %}
+{% static "mega/assets/css" as cx %}
+{% static "mega/assets/js" as jx %}
+{% static "mega/assets/vendor" as vend %}
+{% static "mega/assets/img" as img %}
+{% static "mega/assets/fonts" as fonts %}
+{% block content %}
+
+<!-- page title area start here-->
+<div class="page-title-area pt-170 pb-175" data-background="{{img}}/bg/page-banner.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-title-wrapper text-center">
+                    <h1 class="page-title">Service Details</h1>
+                    <div class="breadcrumb breadcrumb-list">
+                        <nav aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs">
+                            <ul class="trail-items">
+                                <li  class="trail-item trail-begin">
+                                    <a href="{% url 'frontend:index' %}"><span >Home</span></a>  
+                                </li>
+                                <li class="trail-item trail-end"><span>Service Details</span></li>
+                            </ul>
+                        </nav>                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page title area end here-->
+
+<!-- service details area start here -->
+<section class="service-details-area pt-120 pb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="service__sidebar mb-50">
+                    <div class="service__sidebar--widget grey-soft-bg mb-30 wow fadeInUp"  data-wow-delay=".3s">
+                        <ul class="service__sidebar--widget__links">
+                            <li><a href="#">Civil Engineering <i class="fal fa-angle-right"></i></a></li>
+                            <li><a href="#">Mechanical Works <i class="fal fa-angle-right"></i></a></li>
+                            <li class="fix-colorservice"><a href="#" >Chemical Industry<i class="fal fa-angle-right"></i></a></li>
+                            <li><a href="#">Petroleum Refinery <i class="fal fa-angle-right"></i></a></li>
+                            <li><a href="#">Power & Energy <i class="fal fa-angle-right"></i></a></li>
+                            <li><a href="#">Bridge Construction <i class="fal fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="service__sidebar--widget services-ex-bg mb-30 wow fadeInUp"  data-wow-delay=".9s">
+                        <h4 class="service__sidebar--widget__title text-white">Download</h4>
+                        <div class="service__sidebar--widget__btn">
+                            <a href="#"><i class="fal fa-file-pdf"></i> Our Presentation</a>
+                            <a href="#"><i class="fal fa-file-alt"></i> Download.txt</a>
+                            <a href="#"><i class="fal fa-file-alt"></i> Terms & Condition</a>
+                        </div>
+                    </div>
+                    <div class="service__sidebar--widget  service__sidebar--widget-single grey-soft-bg mb-30 wow fadeInUp"  data-wow-delay=".6s">
+                        <div class="service__side--widget-thumb mb-25">
+                            <img src="{{img}}/services-ex/service-details-left.jpg" alt="img not found">
+                        </div>
+                        <h4 class="service__sidebar--widget__title">Contact Us</h4>
+                        <ul class="service__sidebar--widget__info">
+                            <li>
+                                <div class="service__sidebar--widget__info-text">
+                                    <h5><i class="fal fa-address-card"></i>Address</h5>
+                                    <span>25/A, Broke Square, California</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="service__sidebar--widget__info-text">
+                                    <h5><i class="fal fa-address-card"></i>Phone</h5>
+                                    <span><a href="tel:02(205)5552255">02 (205) 555 2255</a></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="service__sidebar--widget__info-text">
+                                    <h5><i class="fal fa-envelope-open-text"></i>Address</h5>
+                                    <span><a href="mailto:info@megacentre.com">info@megacentre.com</a></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="service-details-wrapper mb-50">
+                    <div class="service-details mb-30 fix wow fadeInUp"  data-wow-delay=".5s">
+                        <img src="{{img}}/services-ex/service-details.jpg" class="img-fluid" alt="img">
+                    </div>
+                    <h4 class="service-details-subtitle mb-20 wow fadeInUp"  data-wow-delay=".9">Chemical Industry</h4>
+                    <p class="mb-15 wow fadeInUp"  data-wow-delay=".7s">Consectetuer elementum ipsum habitant platea consectetuer, ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing. Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper, mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum. Risus urna maecenas iaculis nec bibendum habitant nonummy sodales, convallis curabi tur. Dignissim dis imperdiet varius hymenaeos interdum eleifend.</p>
+                    <p class="mb-30 wow fadeInUp"  data-wow-delay="1.1s">Ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum.</p>
+                </div>
+                <div class="row mb-30">
+                    <h4 class="service-details-subtitle mb-30 wow fadeInUp"  data-wow-delay=".9">Service Feature</h4>
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="mservices mb-30 text-center">
+                            <div class="mservices__icon mservices__icon-psingle mb-40 p-relative">
+                                <i class="flaticon-partnership"></i>
+                                <img src="{{img}}/services-ex/sr-shape.png" alt="img">
+                            </div>
+                            <div class="mservices__content transition-3">
+                                <h3 class="mservices__content-title"><a href="service-details.html">Powerfull Strategy</a></h3>
+                                <p>Benenatis ture dolor magnis tristique a tool and done </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="mservices mb-30 text-center">
+                            <div class="mservices__icon mservices__icon-psingle mb-40 p-relative">
+                                <i class="flaticon-idea"></i>
+                                <img src="{{img}}/services-ex/sr-shape.png" alt="img">
+                            </div>
+                            <div class="mservices__content transition-3">
+                                <h3 class="mservices__content-title"><a href="service-details.html">Flexible Service</a></h3>
+                                <p>Benenatis ture dolor magnis tristique a tool and done </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="mservices mb-30 text-center">
+                            <div class="mservices__icon mservices__icon-psingle mb-40 p-relative">
+                                <i class="flaticon-3d-cube"></i>
+                                <img src="{{img}}/services-ex/sr-shape.png" alt="img">
+                            </div>
+                            <div class="mservices__content transition-3">
+                                <h3 class="mservices__content-title"><a href="service-details.html">Modern Technology</a></h3>
+                                <p>Benenatis ture dolor magnis tristique a tool and done </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-10">
+                    <div class="col-xl-6">
+                        <div class="how-we-work-left mb-30">
+                            <img src="{{img}}/services-ex/how-work.jpg" alt="img not found">
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="mabout mabout2">
+                            <h4 class="service-details-subtitle mb-30 wow fadeInUp"  data-wow-delay=".9">How We Work</h4>
+                            <div class="mabout__single mabout__single2 d-flex mb-30">
+                                <div class=" mabout-icon-dfcolor mabout-icon--size mr-30 ">
+                                    <a  href="#"><i class="flaticon-data-analysis"></i></a>
+                                </div>
+                                <div class="mabout__single-text">
+                                    <h5 class="mabout-title mb-10"> <a href="#">Analize Service</a></h5>
+                                    <p>Entedum habitan grave platea tibus socise over the posuere orna</p>
+                                </div>
+                            </div>
+                            <div class="mabout__single mabout__single2 d-flex  mb-30">
+                                <div class=" mabout-icon-dfcolor2 mabout-icon--size mr-30 ">
+                                    <a  href="#"><i class="flaticon-fast-delivery"></i></a>
+                                </div>
+                                <div class="mabout__single-text">
+                                    <h5 class="mabout-title mb-10"> <a href="#">Choose Plan</a></h5>
+                                    <p>Entedum habitan grave platea tibus socise over the posuere orna</p>
+                                </div>
+                            </div>
+                            <div class="mabout__single mabout__single2 d-flex  mb-30">
+                                <div class=" mabout-icon-dfcolor3 mabout-icon--size mr-30 ">
+                                    <a href="#"><i class="flaticon-fast-delivery"></i></a>
+                                </div>
+                                <div class="mabout__single-text">
+                                    <h5 class="mabout-title mb-10"> <a href="#">Start Your Work</a></h5>
+                                    <p>Entedum habitan grave platea tibus socise over the posuere orna</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="faq-content faq-white">
+                        <h4 class="service-details-subtitle service-details-subtitle2 wow fadeInUp"  data-wow-delay=".9">Essential Question</h4>
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item accordion-item2">
+                                <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button accordion-button-black collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    What are the trends in sales over recent years?
+                                </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body accordion-body-text">
+                                    <p>Natoque tempus tempor pharetra ligula ultrices viverra Inceptos fringilla taciti fusce necesi elementum pharetra duis naostra enim hace varius massarang urna parturient conubia </p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item accordion-item2">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button accordion-button-black" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        What are management trends in the industry?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body accordion-body-text">
+                                        <p>Natoque tempus tempor pharetra ligula ultrices viverra Inceptos fringilla taciti fusce necesi elementum pharetra duis naostra enim hace varius massarang urna parturient conubia</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item accordion-item2">
+                                <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button accordion-button-black collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    What type of lifestyle is relevant for the market?
+                                </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body accordion-body-text">
+                                    <p>Natoque tempus tempor pharetra ligula ultrices viverra Inceptos fringilla taciti fusce necesi elementum pharetra duis naostra enim hace varius massarang urna parturient conubia</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item accordion-item2">
+                                <h2 class="accordion-header" id="headingThree1">
+                                <button class="accordion-button accordion-button-black collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                                    What are the main percent of males and females?
+                                </button>
+                                </h2>
+                                <div id="collapseThree1" class="accordion-collapse collapse" aria-labelledby="headingThree1" data-bs-parent="#accordionExample">
+                                <div class="accordion-body accordion-body-text">
+                                    <p>Natoque tempus tempor pharetra ligula ultrices viverra Inceptos fringilla taciti fusce necesi elementum pharetra duis naostra enim hace varius massarang urna parturient conubia </p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- service details area end here -->
+
+
+{% endblock content %}

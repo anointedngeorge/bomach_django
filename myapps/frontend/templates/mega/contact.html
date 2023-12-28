@@ -1,0 +1,151 @@
+{% extends "mega/base.html" %}
+{% load static %}
+{% static "mega/assets/css" as cx %}
+{% static "mega/assets/js" as jx %}
+{% static "mega/assets/vendor" as vend %}
+{% static "mega/assets/img" as img %}
+{% static "mega/assets/fonts" as fonts %}
+
+
+{% block content %}
+
+<!-- page title area start here-->
+    <div class="page-title-area pt-170 pb-175" data-background="{{img}}/bg/page-banner.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-title-wrapper text-center">
+                    <h1 class="page-title">Contact Us</h1>
+                    <div class="breadcrumb breadcrumb-list">
+                        <nav aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs">
+                            <ul class="trail-items">
+                                <li  class="trail-item trail-begin">
+                                    <a href="/"><span >Home</span></a>  
+                                </li>
+                                <li class="trail-item trail-end"><span>Contact Us</span></li>
+                            </ul>
+                        </nav>                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page title area end here-->
+
+<div class="tp-map-area pt-120 pb-115">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="tp-contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830894612!2d-74.11976383964465!3d40.69766374865766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1636888514620!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- contact area start here -->
+<section class="tp-contact-area pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="section_title_wrapper mb-50 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <span class="subtitle service-ex-subtitle">
+                        Get Free Estimate
+                    </span>                       
+                    <h2 class="msection-title mb-35">
+                        If you Have Any Query, Don’t Hesitate <span>Contact</span>  with us 
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="row custom-mar-20">
+                    <div class="col-lg-12 col-md-4 col-sm-6 custom-pad-20">
+                        <div class="tp-contact-info mb-40 wow fadeInUp" data-wow-delay=".4s">
+                            <div class="tp-contact-info-icon">
+                                <i class="flaticon-location"></i>
+                            </div>
+                            <div class="tp-contact-info-text">
+                                <h4 class="tp-contact-info-title mb-15">Address</h4>
+                                <p>5/A 5suvastu arcade, 3rd Floor <br>palace road, London.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-4 col-sm-6 custom-pad-20">
+                        <div class="tp-contact-info mb-40 wow fadeInUp" data-wow-delay=".6s">
+                            <div class="tp-contact-info-icon tp-contact-info-icon-phone">
+                                <i class="flaticon-phone-call"></i>
+                            </div>
+                            <div class="tp-contact-info-text">
+                                <h4 class="tp-contact-info-title mb-15">Phone</h4>
+                                <a href="tel:333888200-55">333888200-55</a>
+                                <a href="tel:444555300-25">444555300-25</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-4 col-sm-6 custom-pad-20">
+                        <div class="tp-contact-info mb-40 wow fadeInUp" data-wow-delay=".8s">
+                            <div class="tp-contact-info-icon">
+                                <i class="flaticon-letter"></i>
+                            </div>
+                            <div class="tp-contact-info-text">
+                                <h4 class="tp-contact-info-title mb-15">Email</h4>
+                                <a href="mailto:info@themepure.com">info@themepure.com</a>
+                                <a href="mailto:info@themepure.com">info@themepure.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <form id="contact-form" action="assets/mail.php" method="POST">
+                    <div class="tp-contact-form wow fadeInUp" data-wow-delay=".6s">
+                        <div class="row custom-mar-20">
+                            <div class="col-md-6 custom-pad-20">
+                                <div class="tp-contact-form-field mb-20">
+                                    <input name="name" type="text" placeholder="Full name">
+                                </div>
+                            </div>
+                            <div class="col-md-6 custom-pad-20">
+                                <div class="tp-contact-form-field mb-20">
+                                    <input name="email" type="email" placeholder="Email Address">
+                                </div>
+                            </div>
+                            <div class="col-md-6 custom-pad-20">
+                                <div class="tp-contact-form-field mb-20">
+                                    <input type="text" placeholder="Phone">
+                                </div>
+                            </div>
+                            <div class="col-md-6 custom-pad-20 mb-20">
+                                <div class="tp-contact-form-field select-field-arrow ">
+                                    <select name="contact-select">
+                                        <option value="">Choose Subject</option>
+                                        <option value="">Civil Engineering</option>
+                                        <option value="">Mechanical Works</option>
+                                        <option value="">Chemical Industry</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 custom-pad-20">
+                                <div class="tp-contact-form-field mb-20">
+                                    <textarea name="message" placeholder="Your Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 custom-pad-20">
+                                <div class="tp-contact-form-field">
+                                    <button type="submit" class="theme-btn home2-btn btn-before"><i class="fal fa-angle-double-right"></i> Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- contact area end here -->
+  
+{% endblock content %}

@@ -1,0 +1,484 @@
+/*----------------------------------------*/
+/*  05. Services Css
+/*----------------------------------------*/
+.services{
+    padding: 40px 36px 24px 36px;
+    border: 2px solid $services-br;
+    border-radius: 5px;
+    @include transition(.3s);
+    @media #{$lg} {
+        padding: 40px 30px;
+     }
+    &__icon{
+        margin-bottom: 32px;
+        & i{
+            display: inline-block;
+            width: 82px;
+            height: 82px;
+            line-height: 92px;
+            text-align: center;
+            background-color: $theme-color;
+            font-size: 40px;
+            color: $heading-color;
+            border-radius: 5px;
+            @include transition(.3s);
+        }
+    }
+    &__title{
+        font-size: 20px;
+        margin-bottom: 15px;
+        @include transition(.3s);
+        &:hover{
+            color: $theme-color;
+        }
+    }
+}
+.services:hover .services__icon i{
+    color: $theme-color;
+    background: $heading-color;
+}
+.services:hover .services__title{
+    color: $theme-color;
+}
+
+
+// Popular Service
+.popular__services{
+    &-thumb{
+        overflow: hidden;
+         & img{
+            width: 100%;
+            height: auto;
+            transform: scale(1);
+            transition: 0.4s ease-in-out;
+        }
+       &-title{
+          width: 100%;
+          position: absolute;
+          bottom: 0px;
+          padding: 30px 0px 20px 0px;
+          line-height: 60px;
+          text-align: center;
+          background-color: $services-ex-bg;
+         @include transition(.3s);
+          & h5{
+              color: $theme-color;
+              font-size: 20px;
+              font-weight: 600;
+              &:hover{
+                  color: $white;
+              }
+          }
+       }
+       &:hover{
+        .popular__services-thumb-title{
+            opacity: 0;
+            visibility: none;
+        }
+        .popular__services-thumb-text{
+            opacity: 1;
+            visibility: visible;
+            bottom: 10px;
+        }
+    }
+  
+    &-text{
+        opacity: 0;
+        visibility: none;
+        position: absolute;
+        bottom: 0px;
+        left: 10px;
+        right: 10px;
+        background-color: $white;
+        padding: 50px 30px 40px 30px;
+        @include transition(.3s);
+        &-icon i{
+            height: 70px;
+            width: 70px;
+            background: $theme-color;
+            display: inline-block;
+            line-height: 82px;
+            font-size: 40px;
+            color: $heading-color;
+            border-radius: 5px;
+        }
+        &-button{
+            color: $heading-color;
+            font-family: $mulish;
+            font-weight: 600;
+            & a{
+                text-decoration: underline;
+                font-size: 16px;
+                @include transition(.3s);
+                &:hover{
+                    color: $theme-color;
+                }
+            }
+        }
+        &-content{
+            & p{
+                margin-bottom: 10px;
+            }
+        }
+    }
+    }
+    &:hover .popular__services-thumb img{
+        transform: scale(1.1);
+       }
+}
+
+// service-achievement
+.sr-achievement__thumb {
+	margin-left: -98px;
+    @media #{$xl,$lg,$md,$sm,$xs} {
+        margin-left: 0px;
+    }
+}
+.business-quality-group{
+    @media #{$lg,$md,$xs,$sm} {
+        margin-left: 0px;
+        padding-right: 0px;
+    }
+}
+.achievement-batch {
+	position: absolute;
+	top: 27%;
+	left: 22%;
+    @media #{$sm}{
+        top: 21%;
+        left: 21%;
+    }
+    @media #{$xs} {
+        display: none;
+    }
+}
+.success__single-text2 {
+    span {
+        text-transform: capitalize !important;
+        font-size: 16px !important;
+        margin-bottom: 7px !important;
+    }
+}
+.success__single-icon2{
+    position: relative;
+    & a {
+        i {
+            font-size: 80px;
+            color: $theme-color;
+        }
+    }
+    &::before {
+        position: absolute;
+        content: "\f109";
+        font-family: "flaticon";
+        font-size: 60px;
+        color: #eaeaea;
+        left: 20px;
+        z-index: -1;
+        transform: rotate(24deg) translate(27px, 40px);
+        transform-origin: bottom right;
+    }
+}
+
+
+
+// home 02 mservices area
+
+
+.mservices{
+        & i {
+            display: inline-block;
+            font-size: 60px;
+            color: $theme-color2;
+            border-radius: 5px;
+            text-align: center;
+            position: relative;
+    }
+    &__content{
+        &-title{
+            font-size: 22px;
+            font-family: $SairaSemi;
+            text-transform: capitalize;
+            margin-bottom: 18px;
+            @include transition(.3s);
+            &:hover{
+                color: $theme-color2;
+            }
+        }
+    }
+    &__icon img {
+        position: absolute;
+        left: 33%;
+        top: 0;
+        z-index: -1;
+        @media #{$md} {
+            left: 37%;
+        }
+        @media #{$sm} {
+            left: 41%;
+        }
+        @media #{$xs} {
+            left: 36%;
+        }
+    }
+}
+
+// Business service
+.title-br{
+    position: relative;
+   &::before {
+	position: absolute;
+	background: #688fc0;
+	height: 105px;
+	width: 1px;
+	top: 24px;
+	right: 0;
+	content: '';
+    @media #{$md,$sm,$xs} {
+        display: none;
+        }
+   }
+   
+}
+.business-right-btn {
+    @media #{$md,$sm,$xs} {
+        margin-left: 0px;
+    }
+}
+
+.business__services-single{
+    border: 10px solid $business-br;
+    & img{
+        min-width: 100%;
+    }
+    &-content{
+        position: absolute;
+        bottom: 10px;
+        background: $white;
+        padding: 15px 100px 10px 30px;
+        @include transition(.3s);
+        &:hover{
+            background: $theme-color;
+            & span{
+                color: $heading-color;
+            }
+            & .business-title{
+                color: $heading-color;
+            }
+        }
+        @media #{$xxl,$xl,$lg,$xs} {
+            padding: 15px 30px 10px 30px;
+        }
+       
+        & span{
+            color: $heading-color;
+            font-size: 14px;
+            font-family: $mulish;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        & .business-title{
+            font-size: 22px;
+            text-transform: capitalize;
+            &:hover{
+                color: $theme-color2;
+            }
+            @media #{$xl,$md,$xs} {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+// Service single page css
+
+.sr-icon-bg i {
+	background: $theme-color2;
+	color: $white;
+}
+.popular-srtitle-color{
+    & h5{
+        color: $white;
+        text-transform: capitalize;
+    }
+}
+//service details start here
+.service__sidebar--widget {
+    padding: 40px 20px 40px 20px;
+}
+.service__sidebar--widget__title {
+    font-size: 22px;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+    position: relative;
+    &:before{
+        position: absolute;
+        width: 100px;
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        background: #ddd;
+        content: '';
+    }
+    & span {
+        color: $theme-color;
+    }
+}
+.service__sidebar--widget__links {
+    & li {
+        list-style: none;
+        background: $white;
+        margin-bottom: 12px;
+        line-height: 1;
+        height: 60px;
+        line-height: 60px;
+        padding: 0px 25px;
+        @include transition(.3s);
+        &:hover{
+            background: $theme-color2;
+        }
+        &:last-child {
+            margin-bottom: 0px;
+        }
+        & a {
+            font-size: 18px;
+            color: $heading-color;
+            line-height: 1;
+            font-weight: 600;
+            font-family: $SairaSemi;
+            & i {
+                font-size: 16px;
+                color: $body-text-color;
+                float: right;
+                margin-top: 23px;
+            }
+        }
+        &:hover {
+            & a {
+                color: $white;
+                & i{
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.service__sidebar--widget__links li.fix-colorservice{
+    background: $theme-color2;
+    & a{
+        color: $white;
+        & i{
+            color: $white;
+        }
+    }
+}
+.service__sidebar--widget__info{
+    & li{
+        margin-bottom: 15px;
+    }
+    &-text{
+        & h5{
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: capitalize;
+            margin-bottom: 5px;
+            & i{
+                margin-right: 8px;
+                color: $theme-color2;
+            }
+        }
+    }
+}
+.service__sidebar--widget__btn {
+    & a {
+        font-size: 18px;
+        color: $white;
+        height: 60px;
+        line-height: 60px;
+        background: $theme-color2;
+        display: inline-block;
+        margin-bottom: 15px;
+        font-family: $SairaSemi;
+        position: relative;
+        width: 100%;
+        padding-left: 80px;
+        @media #{$md,$sm} {
+            flex-basis: 48%;
+        }
+        &:last-child {
+            margin-bottom: 0px;
+        }
+        & i {
+            height: 60px;
+            width: 60px;
+            background: #d3647a;
+            color: #ffffff;
+            text-align: center;
+            line-height: 60px;
+            margin-right: 20px;
+            font-size: 25px;
+            vertical-align: middle;
+            top: 0;
+            position: absolute;
+            left: 0;
+        }
+    }
+}
+.service-details-subtitle {
+    font-size: 27px;
+    text-transform: capitalize;
+}
+
+
+
+// service details page
+.service__side--widget-thumb {
+    img {
+        min-width: 100%;
+    }
+}
+.service__sidebar--widget-single {
+	padding: 20px 20px 10px 20px;
+}
+.mservices__icon-psingle::before {
+	width: 95px;
+	height: 70px;
+	left: 66px;
+    margin: 0 auto;
+    border-radius: 0px 0px 100px 0px;
+    @media #{$lg} {
+        left: 40px;
+    }
+    @media #{$md} {
+        left: 114px;
+    }
+    @media #{$sm} {
+        left: 210px;
+    }
+    @media #{$sm-l} {
+        left: 180px;
+    }
+    @media #{$xs} {
+        left: 100px;
+    }
+}
+
+.mabout-icon--size{
+    & a{
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        display: inline-block;
+        border-radius: 50%;
+        text-align: center;  
+        & i{
+            font-size: 30px;
+            vertical-align: middle;
+        }
+    }
+}
+
+.service-details-subtitle2{
+    margin-bottom: 0px;
+}

@@ -61,6 +61,7 @@ JAZZMIN_SETTINGS = {
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "employee"},
         {"app": "customer"},
+        {"app": "frontend"},
     ],
 
     #############
@@ -72,7 +73,7 @@ JAZZMIN_SETTINGS = {
         {"name": "Support", 
             "url": "https://github.com/farridav/django-jazzmin/issues",
         "new_window": True},
-        {"model": "authuser.user"}
+        # {"model": "authuser.user"}
     ],
 
     #############
@@ -89,7 +90,7 @@ JAZZMIN_SETTINGS = {
 
     # Hide these models when generating side menu (e.g auth.user)
     "hide_models": [
-            # 'operations.GeneralReport'
+            # 'frontend.DataJosn'
         ],
 
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)

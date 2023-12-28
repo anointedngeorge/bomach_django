@@ -1,29 +1,14 @@
-/admin/env
+/admin/venv12
+/venv12
 
-/staff_app/frontend/__pycache__
-/staff_app/customer/frontend/__pycache__
-/staff_app/employee/frontend/__pycache__
-/staff_app/task/frontend/__pycache__
-/staff_app/realestate/frontend/__pycache__
+__pycache__/
+**/migrations/
+**/__pycache__/
 
+**/media
+**/medias
 
-/customer_app/frontend/__pycache__
-/customer_app/customer/frontend/__pycache__
-/customer_app/employee/frontend/__pycache__
-/customer_app/task/frontend/__pycache__
-/customer_app/realestate/frontend/__pycache__
-
-/admin/customer/frontend/__pycache__
-/admin/employee/frontend/__pycache__
-/admin/task/frontend/__pycache__
-/admin/realestate/frontend/__pycache__
-
-/operations/migrations/__pycache__
-
-
-/admin/admin/__pycache__/
-/authuser/__pycache__/
-/admin/customer/__pycache__/
-/admin/notifier/__pycache__/
-/admin/settings/__pycache__/
-admin/realestate/__pycache__/
+db.sqlite3
+app.txt
+.envs
+.env

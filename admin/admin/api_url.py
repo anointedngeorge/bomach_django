@@ -7,7 +7,7 @@ from admin.api.v1.api_driver import router as router3
 from admin.api.v1.api_upload_images import router as router4
 
 from django.contrib.admin.views.decorators import staff_member_required
-
+from admin.api.v1.estate import router as router4
 
 # docs_decorator=staff_member_required
 

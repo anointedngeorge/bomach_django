@@ -1,0 +1,316 @@
+/*----------------------------------------*/
+/*  16. Contact Css
+/*----------------------------------------*/
+.contact__maps {
+	margin-right: -55px;
+    height: 100%;
+}
+.mgcontact__trial {
+	margin-left: 55px;
+    padding: 42px 50px 42px 50px;
+	background: $theme-color2;
+    height: 100%;
+    @media #{$lg,$md,$sm,$xs} {
+        margin-left: 0px;
+        padding: 55px 30px 50px 30px;
+    }
+    &-form textarea::placeholder{
+        color: $body-text-color;
+        font-weight: 400;
+        font-family: $mulish;
+    }
+    &-form input::placeholder{
+        color: $body-text-color;
+        font-weight: 400;
+        font-family: $mulish;
+    }
+   &-form .nice-select span{
+    font-weight: 400;
+    font-family: $mulish;
+   }
+   & .nice-select {
+	border: 1px solid $white;
+	width: 100%;
+	margin-bottom: 15px;
+	height: 60px;
+	line-height: 60px;
+	padding: 0 20px;
+	background-color: $white;  
+    &  ul {
+        width: 100%;
+    }
+    &::after {
+        height: 8px;
+        right: 22px;
+        top: 50%;
+        width: 8px;
+    }
+   }
+}
+
+.sidebar-title h3 {
+	font-size: 36px;
+    color: $white;
+    text-transform: capitalize;
+    font-family: $SairaSemi;
+
+}
+.mgcontact__trial-form input, .mgcontact__trial-form textarea {
+	width: 100%;
+	height: 60px;
+	padding: 0 20px;
+	border: 1px solid $white;
+	border-radius: 3px;
+	margin-bottom: 13px;
+    
+}
+
+.mgcontact__trial-form textarea {
+	height: 120px;
+	resize: none;
+	padding: 15px 20px;
+}
+
+.mgcontact__trial-form button{
+    width: 100%;
+}
+
+.contact__maps{
+    @media #{$lg}{
+        margin-right: 0;
+    }
+    @media #{$md,$sm,$xs} {
+        margin-right: 0px;
+        overflow: hidden;
+        margin-bottom: 30px;
+        height: 590px;
+     }
+}
+.contact__maps iframe {
+	min-width: 100%;
+	min-height: 590px;
+    height: 100%;
+}
+.mopening_info {
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	background: $heading-color;
+    padding: 35px 40px 35px 40px;
+    width: 308px;
+    @media #{$xs} {
+        left: 0;
+        width: 290px;
+     }
+    &-time{
+       &-title{
+           color: $theme-color;
+           text-transform: capitalize;
+           font-size: 22px;
+       }
+    }
+    &-time{
+        & ul {
+            & li{
+                color: $white;
+                padding-bottom: 14px;
+                padding-top: 10px;
+                border-bottom: 1px solid #ddd;
+                &:first-child{
+                    padding-top: 0px;
+                }
+                &:last-child{
+                    border-bottom: none;
+                    padding-bottom: 0px;
+                }
+                & span{
+                    &:first-child {
+                        margin-right: 30px;
+                        font-weight: 600;  
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// // project contact form 
+.project-contect-form{
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.contact__form {
+	padding: 0px 60px;
+    @media #{$xs} {
+        padding: 0px;
+    }
+}
+.contact__item {
+	width: 100%;
+}
+.contact__input {
+    width: 100%;
+    border: 1px solid transparent;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    font-size: 15px;
+    color: $body-text-color;
+    background-color: $grey3;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(16, 0, 71, 0.1);
+    &::placeholder {
+        color: $body-text-color;
+        font-size: 15px;
+        font-weight: 400;
+    }
+    &:focus {
+        border-color: transparent;
+    }
+}
+
+.txt-area::placeholder {
+    color: $body-text-color;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.contact__input.txt-area {
+    height: 220px;
+    padding: 20px;
+    resize: none;
+    line-height: 1;
+    margin-bottom: 15px;
+    box-shadow: 0 10px 20px rgba(16, 0, 71, 0.1);
+}
+
+
+// contact page css
+.tp-contact-map iframe {
+	width: 100%;
+	height: 600px;
+}
+
+/*----------------------------------------*/
+/*  20. Contact
+/*----------------------------------------*/
+
+.tp-contact-info {
+    display: flex;
+    &-icon{
+        min-width: 60px;
+        @media #{$md,$sm} {
+            min-width: 35px;
+        }
+        & i{
+            font-size: 42px;
+            color: $theme-color2;
+            line-height: 1;
+            transform: translateY(4px);
+            @media #{$md,$sm} {
+                font-size: 24px;
+            }
+        }
+        &-phone i{
+            animation: phone-icon-animate 1s ease-in-out infinite;
+            display: inline-block;
+        }
+    }
+    &-text p{
+        font-size: 16px;
+        color: #626664;
+        line-height: 27px;
+        display: block;
+        margin-bottom: 0px;
+        @media #{$md,$sm,$xs} {
+            br{
+                display: none;
+            }
+        }
+    }
+    & a{
+        font-size: 16px;
+        color: #626664;
+        line-height: 27px;
+        display: block;
+        margin-bottom: 0px;
+        @media #{$md,$sm,$xs} {
+            br{
+                display: none;
+            }
+        }
+    }
+   &-title {
+    font-size: 24px;
+    color: #09150f;
+    text-transform: capitalize;
+    }
+}
+  
+
+
+
+// contact input
+.tp-contact-form-field .nice-select{
+    color: $body-text-color;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    background: #ffffff;
+    font-weight: 400;
+    border: 1px solid #dfe0e5;
+    outline: none;
+    padding: 0px 20px;
+    width: 100%;
+    border-radius: 4px;
+    &::after{
+        height: 8px;
+        width: 8px;
+    }
+    & ul{
+        width: 100%;
+    }
+}
+
+.tp-contact-form-field input, .tp-contact-form-field textarea {
+    color: $body-text-color;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    height: 70px;
+    background: $white;
+    font-weight: 400;
+    border: 1px solid #dfe0e5;
+    outline: none;
+    padding: 0px 20px;
+    width: 100%;
+    border-radius: 4px;
+  }
+  .tp-contact-form-field input::-moz-placeholder, .tp-contact-form-field input::placeholder, .tp-contact-form-field select::placeholder, .tp-contact-form-field textarea::-moz-placeholder, .tp-contact-form-field textarea::placeholder {
+    color: $body-text-color;
+    font-weight: 400;
+    font-size: 16px;
+    opacity: 1;
+  }
+  .tp-contact-form-field textarea {
+    height: 200px;
+    padding: 20px;
+  }
+  .select-field-arrow {
+	position: relative;
+}
+  .tp-contact-form-field.select-field-arrow::after {
+    color: $body-text-color;
+  }
+  
+  @media (max-width: 767px) {
+    .tp-contact-area h2 br {
+      display: none;
+    }
+  }
+
