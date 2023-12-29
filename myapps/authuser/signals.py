@@ -20,4 +20,4 @@ def post_save_create_staff(sender, instance, created, *args, **kwargs):
                 Salary.objects.all().create(employee_id=filtered.get().id)
                 # Skill.objects.all().create(employee_id=filtered.get().id)
             else:
-                print('No employee id found')
+                return ('No employee id found')

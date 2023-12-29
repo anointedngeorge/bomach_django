@@ -142,7 +142,7 @@ def custom_result_list(context, cl):
 @register.simple_tag
 def is_camel_or_pascal_case(word='testWord'):
     # Check if the word is in camel-case or Pascal-case
-    print(word)
+    # print(word)
     return re.match(r'^[a-z]+(?:[A-Z][a-z]*)*$', word) is not None
 
 

@@ -5,6 +5,6 @@ lst.append('das')
 lst.append([3,4,6])
 lst.append({'sd':4})
 lst.append((3,4))
-print(lst)
+# print(lst)
 
 dt = {'d_dsad':445}

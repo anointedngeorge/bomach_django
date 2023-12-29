@@ -21,7 +21,7 @@ class BranchAccessoriesForm(forms.ModelForm):
         super(BranchAccessoriesForm, self).__init__(*args, **kwargs)
         # Types.objects.all()
         _datalist = kwargs.pop('data_list', None)
-        print(kwargs)
+        # print(kwargs)
         self.fields['assets_type'].widget = ListTextWidget(data_list=_datalist, name='assets_type') 
 
 

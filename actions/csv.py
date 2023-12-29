@@ -6,7 +6,6 @@ from django.http import HttpResponse
 from django.core.exceptions import PermissionDenied
 from django.template.loader import get_template
 import csv
-from xhtml2pdf import pisa
 import json
 import os
 import importlib
@@ -14,6 +13,6 @@ import importlib
 
 def codeGenerator(modeladmin, request, queryset):
     for x in queryset:
-        print(x)
+        pass
         
 codeGenerator.short_description = "Generate Code"

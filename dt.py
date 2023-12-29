@@ -4,7 +4,7 @@ setdata2 =  {1,2,6,4,5,6}
 setdata.add(100)
 d =setdata.difference(setdata2)
 copied_data = setdata.copy()
-print(copied_data)
+# print(copied_data)
 
 
 # tup =  (1,2,3,4,567,7,89909,8978)

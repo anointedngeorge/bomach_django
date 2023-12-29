@@ -81,7 +81,7 @@ def viewDataInPDF(modeladmin, request, queryset):
                     response = HttpResponse(result.getvalue(), content_type='application/{}'.format(file_format))
                     # response['Content-Disposition'] = 'attachment; fownloadPDF, viewDataInPDF
     except Exception as e:
-        print(e)
+        # print(e)
         return HttpResponse(e)
 
 viewDataInPDF.short_description = "View Data PDF"

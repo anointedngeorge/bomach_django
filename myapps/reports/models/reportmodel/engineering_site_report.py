@@ -99,7 +99,7 @@ class EngineeringReport(ReportingSheet):
     
     def _material_received(self):
         data = self.material_received.all()
-        print(data)
+        # print(data)
         return 23
     
     

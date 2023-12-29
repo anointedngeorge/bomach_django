@@ -11,5 +11,5 @@ class Demomiddleware:
         return response
 
     def process_view(self, request,view_func, view_args, view_kwargs):
-        print(f"Process view: {self}")
+        return (f"Process view: {self}")
     

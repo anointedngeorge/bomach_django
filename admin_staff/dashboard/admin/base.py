@@ -1,6 +1,3 @@
-import os
-import sys
-sys.path.append(os.path.abspath('../../bomach_django'))
 
 from typing import Any, Dict, List, Optional
 from django.http import HttpResponse

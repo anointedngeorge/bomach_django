@@ -10,7 +10,7 @@ def updateEngineeringReport(model:object, request:object, data:dict, filter_data
         else: message = False
         return message
     except Exception as e:
-        print(e)
+        # print(e)
         return False
 
 
@@ -19,10 +19,10 @@ def contactSenderEngineeringReport(model:object, request:object, data:dict, filt
         md =  model.objects.all()
         if md.filter(id=filter_data.get('id')).exists():
             details = md.filter(id=filter_data.get('id')).get()
-            print(details)
+            # print(details)
             message = True
         else: message = False
         return message
     except Exception as e:
-        print(e)
+        # print(e)
         return False

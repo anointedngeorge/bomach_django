@@ -14,7 +14,7 @@ def get_system_settings_json(request):
             'setting_items':evaluated.items()
         }
     else:
-        print('No')
+        # print('No')
         return {}
 
 def gettotal():
