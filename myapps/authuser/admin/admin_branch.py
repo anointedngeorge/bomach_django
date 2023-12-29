@@ -1,9 +1,5 @@
-import os
-import sys
-sys.path.append(os.path.abspath('../../bomach_django'))
-
-from actions import generator
-from actions.csv import codeGenerator
+# from actions import generator
+from plugins.code_generator import generateUniqueId
 from django.contrib import admin
 from django.contrib.admin.sites import site
 from django.http import request
@@ -42,10 +38,10 @@ class BranchModel(admin.ModelAdmin):
     list_display = ['name','country','state','office_address','no_of_staff','branch_date']
     list_filter = ['name']
     exclude = ['code']
-    actions = [codeGenerator]
+    actions = [generateUniqueId]
 
     def response_add(self, request, obj, post_url_continue=None):
-        obj.code = generator()
+        obj.code = generateUniqueId()
         obj.save()
         return super().response_add(request, obj, post_url_continue)
 
@@ -57,10 +53,10 @@ class BranchAccessoriesModel(admin.ModelAdmin):
     list_display = ['name','serial_number','value_of_asset','date_of_purchase','action']
     list_filter = ['name']
     exclude = ['code']
-    actions = [codeGenerator]
+    actions = [generateUniqueId]
     # form = BranchAccessoriesForm
 
     def response_add(self, request, obj, post_url_continue=None):
-        obj.code = generator()
+        obj.code = generateUniqueId()
         obj.save()
         return super().response_add(request, obj, post_url_continue)

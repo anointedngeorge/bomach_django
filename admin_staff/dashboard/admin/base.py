@@ -8,6 +8,7 @@ from django.urls.resolvers import URLResolver
 from django.urls import path, include, re_path
 from django.template.response import TemplateResponse
 from django.contrib.auth import views as auth_views
+from plugins.logging import CreateErrorLog
 # from plugins.django_pdf import generate_pdf
 from dashboard.forms.authentication import (
     CustomAuthenticationForm,
@@ -17,7 +18,7 @@ from authuser.models import *
 import importlib
 
 import os
-from plugins.logging import CreateErrorLog
+
 # import logic files
 
 

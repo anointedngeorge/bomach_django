@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.contrib import messages as msg
 from django.core.mail import send_mail
 # Create your views here.
-from plugins.sms import (SMS)
+from plugins.sms import SMS
 from plugins.email import (
     emailPlugin
 )
