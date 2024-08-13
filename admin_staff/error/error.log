@@ -1078,3 +1078,4 @@ AttributeError: 'User' object has no attribute 'first_name'
 2024-08-13 14:28:14,487 [WARNING] Not Found: /admin/
 2024-08-13 14:28:17,920 [WARNING] Not Found: /admin
 2024-08-13 14:28:20,892 [WARNING] Not Found: /admin/
+2024-08-13 14:51:38,860 [INFO] /home/sharashell/DjangoProjects/BOMACH_PROJECTS/bomach_django/admin_staff/admin_staff/settings/core_apps.py changed, reloading.

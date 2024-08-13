@@ -11,6 +11,6 @@ CORE_APPS = [
     'django_bootstrap_icons',
     'reports',
     'ckeditor',
-    'frontend',
+    # 'frontend',
     'storages',
 ]
