@@ -12,7 +12,7 @@ VERSION = 'v1'
 
 urlpatterns = [
     path("", include("dashboard.urls")),
-    path(f"", include('frontend.urls')),
+    # path(f"", include('frontend.urls')),
     path(f"", include('realestate.urls')),
     path(f"", include('notifier.urls')),
     path(f"", include('human_resource.urls')),

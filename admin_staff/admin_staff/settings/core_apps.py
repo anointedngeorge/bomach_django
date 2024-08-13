@@ -2,7 +2,7 @@ CORE_APPS = [
     'realestate',
     'customer',
     'system_settings',
-    'notifier', # this contains tasks
+    'notifier',
     'channels',
     "django_htmx",
     'djmoney',
@@ -11,6 +11,6 @@ CORE_APPS = [
     'django_bootstrap_icons',
     'reports',
     'ckeditor',
-    # 'frontend',
+    'frontend',
     'storages',
 ]

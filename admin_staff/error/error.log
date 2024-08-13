@@ -1079,3 +1079,14 @@ AttributeError: 'User' object has no attribute 'first_name'
 2024-08-13 14:28:17,920 [WARNING] Not Found: /admin
 2024-08-13 14:28:20,892 [WARNING] Not Found: /admin/
 2024-08-13 14:51:38,860 [INFO] /home/sharashell/DjangoProjects/BOMACH_PROJECTS/bomach_django/admin_staff/admin_staff/settings/core_apps.py changed, reloading.
+2024-08-13 14:51:54,806 [INFO] Watching for file changes with StatReloader
+2024-08-13 14:53:21,664 [INFO] /home/sharashell/DjangoProjects/BOMACH_PROJECTS/bomach_django/admin_staff/admin_staff/settings/core_apps.py changed, reloading.
+2024-08-13 14:53:24,435 [INFO] Watching for file changes with StatReloader
+2024-08-13 14:53:28,626 [INFO] /home/sharashell/DjangoProjects/BOMACH_PROJECTS/bomach_django/admin_staff/admin_staff/settings/core_apps.py changed, reloading.
+2024-08-13 14:53:31,235 [INFO] Watching for file changes with StatReloader
+2024-08-13 14:56:01,491 [INFO] /home/sharashell/DjangoProjects/BOMACH_PROJECTS/bomach_django/admin_staff/admin_staff/settings/core_apps.py changed, reloading.
+2024-08-13 14:56:04,554 [INFO] Watching for file changes with StatReloader
+2024-08-13 14:56:06,510 [INFO] /home/sharashell/DjangoProjects/BOMACH_PROJECTS/bomach_django/admin_staff/admin_staff/settings/core_apps.py changed, reloading.
+2024-08-13 14:56:08,986 [INFO] Watching for file changes with StatReloader
+2024-08-13 14:56:38,584 [INFO] /home/sharashell/DjangoProjects/BOMACH_PROJECTS/bomach_django/admin_staff/admin_staff/urls.py changed, reloading.
+2024-08-13 14:56:40,922 [INFO] Watching for file changes with StatReloader
