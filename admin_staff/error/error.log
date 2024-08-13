@@ -1071,3 +1071,10 @@ AttributeError: 'User' object has no attribute 'first_name'
 2023-12-29 16:14:32,737 [WARNING] Not Found: /static/images/favicon.ico
 2023-12-29 16:15:43,106 [WARNING] Not Found: /staff/authuser/agent/
 2023-12-29 16:15:43,573 [WARNING] Not Found: /favicon.ico
+2024-08-13 14:21:29,331 [INFO] Watching for file changes with StatReloader
+2024-08-13 14:27:59,055 [WARNING] Not Found: /admin
+2024-08-13 14:28:00,474 [WARNING] Not Found: /favicon.ico
+2024-08-13 14:28:04,753 [WARNING] Not Found: /admin/
+2024-08-13 14:28:14,487 [WARNING] Not Found: /admin/
+2024-08-13 14:28:17,920 [WARNING] Not Found: /admin
+2024-08-13 14:28:20,892 [WARNING] Not Found: /admin/

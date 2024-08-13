@@ -1,0 +1,23 @@
+nano /etc/systemd/system/bomach_server.service
+sudo systemctl enable bomach_server 
+sudo systemctl start bomach_server
+sudo systemctl status bomach_server
+sudo systemctl restart bomach_server
+
+# service
+sudo systemctl restart httpd
+
+
+[Unit]
+Description=Gunicorn instance to serve bomach django application
+
+[Service]
+User=root
+Group=root
+
+WorkingDirectory=/root/bomach_django/admin_staff
+ExecStart=/bin/bash -c '/root/bomach_django/bomach_env/bin/gunicorn admin_staff.wsgi:application -b 0.0.0.0:3001'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
