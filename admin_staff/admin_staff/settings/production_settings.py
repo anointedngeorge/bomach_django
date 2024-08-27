@@ -34,7 +34,7 @@ ADMIN_URI = "/admin"
 # Application definition
 
 INSTALLED_APPS = [
-    'dashboard.apps.DashboardConfig',
+    # 'dashboard.apps.DashboardConfig',
     'django.contrib.admin',
     'authuser',
     'django.contrib.auth',
