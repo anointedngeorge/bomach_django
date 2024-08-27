@@ -11,6 +11,7 @@ from django.conf import settings
 VERSION = 'v1'
 
 urlpatterns = [
+    path("admin/", admin.site.urls),
     path("", include("dashboard.urls")),
     # path(f"", include('frontend.urls')),
     path(f"", include('realestate.urls')),
