@@ -34,7 +34,6 @@ ADMIN_URI = "/admin"
 # Application definition
 
 INSTALLED_APPS = [
-    'dashboard.apps.DashboardConfig',
     'django.contrib.admin',
     'authuser',
     'django.contrib.auth',
@@ -43,8 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    #  "debug_toolbar",
 ]
 
 INSTALLED_APPS += CORE_APPS
@@ -108,17 +105,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'admin_staff.wsgi.application'
 ASGI_APPLICATION = 'admin_staff.asgi.application'
 
-
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-#         'CONFIG': {
-#             "hosts": [('redis', 6379)],
-#         },
-#     },
-# }
-
-# database connection
 
 DATABASES = {
     'default': {

@@ -1090,3 +1090,7 @@ AttributeError: 'User' object has no attribute 'first_name'
 2024-08-13 14:56:08,986 [INFO] Watching for file changes with StatReloader
 2024-08-13 14:56:38,584 [INFO] /home/sharashell/DjangoProjects/BOMACH_PROJECTS/bomach_django/admin_staff/admin_staff/urls.py changed, reloading.
 2024-08-13 14:56:40,922 [INFO] Watching for file changes with StatReloader
+2024-09-16 06:59:59,737 [INFO] Watching for file changes with StatReloader
+2024-09-16 07:01:56,298 [INFO] /home/sharashell/DjangoProjects/BOMACH_PROJECTS/bomach_django/admin_staff/admin_staff/settings/development_settings.py changed, reloading.
+2024-09-16 07:02:02,092 [WARNING] Not Found: /favicon.ico
+2024-09-16 07:02:43,795 [INFO] /home/sharashell/DjangoProjects/BOMACH_PROJECTS/bomach_django/admin_staff/admin_staff/settings/development_settings.py changed, reloading.

@@ -78,11 +78,6 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'admin_staff.urls'
 
 
-# TEMPLATE_ROOT = os.path.abspath('../templates')
-# TEMPLATE_ROOT_MAIN = TEMPLATE_ROOT if os.path.exists(TEMPLATE_ROOT) else 'templates/'
-# sys.path.append(TEMPLATE_ROOT_MAIN)
-
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
