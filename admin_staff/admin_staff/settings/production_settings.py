@@ -27,7 +27,7 @@ DEBUG = True
 SITE_ID = 1
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://portal.bgbot.app']
+CSRF_TRUSTED_ORIGINS = ['https://dash.bgbot.app']
 
 ADMIN_LOGIN_PATH = 'admin/'
 ADMIN_URI = "/admin"
