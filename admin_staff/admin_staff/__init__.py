@@ -1,5 +1,5 @@
 
-# from admin_staff.celery import app as celery_app
+from admin_staff.celery import app as celery_app
 
 # import pymysql
 
@@ -11,4 +11,4 @@
 
 
 
-# __all__ = ("celery_app",)
+__all__ = ("celery_app",)
